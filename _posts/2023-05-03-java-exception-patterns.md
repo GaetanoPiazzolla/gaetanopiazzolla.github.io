@@ -108,7 +108,7 @@ class ExceptionHandler implements Thread.UncaughtExceptionHandler {
 
 **References** 
 
-1. [https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptio\ns-part2.html](https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html)
+1. [https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html](https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html)
 2. [https://www.baeldung.com/java-global-exception-handler](https://www.baeldung.com/java-global-exception-handler)
 3. [https://www.baeldung.com/exception-handling-for-rest-with-spring#controlleradvice](https://www.baeldung.com/exception-handling-for-rest-with-spring#controlleradvice)
 
