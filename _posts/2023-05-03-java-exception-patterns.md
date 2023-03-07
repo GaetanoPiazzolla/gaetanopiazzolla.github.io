@@ -45,7 +45,7 @@ First, let’s start by defining two kinds of errors in Java. First, we have to 
 
 The fault barrier pattern is a pattern that handles faults.
 
-**How**: “In the fault barrier pattern, any application component can throw a fault exception, but only the component acting as the ‘fault barrier’ catches them.”  [Source](https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptio\ns-part2.html). The fault barrier component should record the information contained in the fault exception for future action (logging) and close out the operation in a controlled manner.
+**How**: “In the fault barrier pattern, any application component can throw a fault exception, but only the component acting as the ‘fault barrier’ catches them.”  [Source](https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html). The fault barrier component should record the information contained in the fault exception for future action (logging) and close out the operation in a controlled manner.
 
 <div align="center">
 <img src="/assets/FaultBarrier.jpg" style="content-visibility:auto"
