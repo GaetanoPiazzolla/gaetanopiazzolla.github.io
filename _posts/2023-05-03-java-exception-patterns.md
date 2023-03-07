@@ -10,7 +10,7 @@ In this article, which results from a lot of research and insights (and some exp
 we will see 4 peculiar patterns/best practices for handling errors or exceptions in Java.
 
 <div align="center">
-<img src="/assets/parachute.png" style="content-visibility:auto"
+<img src="/assets/Parachute.png" style="content-visibility:auto"
 alt="Fault Barrier"
 loading="lazy"
 decoding="async">
