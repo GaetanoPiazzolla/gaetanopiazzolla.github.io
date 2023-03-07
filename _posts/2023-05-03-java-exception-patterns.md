@@ -9,6 +9,14 @@ Error handling is one of the most crucial parts of any application.
 In this article, which results from a lot of research and insights (and some experience in the field), 
 we will see 4 peculiar patterns/best practices for handling errors or exceptions in Java.
 
+<div align="center">
+<img src="/assets/parachute.png" style="content-visibility:auto"
+alt="Fault Barrier"
+loading="lazy"
+decoding="async">
+</div>
+<p style="text-align:center">Photo by <a href="https://unsplash.com/@grafik_bock?utm_source=medium&utm_medium=referral">Julian Bock</a> on Unspash</p>
+
 ## 1- Exception Wrapper Pattern
 
 **How**: All exceptions thrown by methods in a <span style="text-decoration:underline;">peculiar</span> package should be wrapped into <span style="text-decoration:underline;">peculiar</span> exceptions.
@@ -122,18 +130,16 @@ This pattern should also be called the “Validator Pattern”. It is a way of i
 
 **When:** It can be used in any application that needs input validation. Basically, every time.
 
-**Why**: There are several ways of doing input validation in Java. You should, for example, return a boolean that checks for validations. Exceptions are a good way to go because you can provide an insightful message inside them and distinguish among different kinds of input errors. Additionally, throwing exceptions to the upper layer means freeing the application from the logic of handling exceptions, avoiding repetitions.
+**Why**: There are several ways of doing input validation in Java. You should, for example, return a boolean that checks for validations. Exceptions are a good way to go because you can provide an insightful message inside them and distinguish among different kinds of input errors. Additionally, throwing exceptions to the upper layer means freeing the application from the logic of handling exceptions, and avoiding repetitions.
 
 **Example**:The most basic example in Vanilla Java is simply to define a method, called before the business logic act, that just validates input and throws exceptions.
 
 {% highlight java %}
 public boolean checkInput(SomeBean bean) {
-    if(bean == null )
-    {
+    if(bean == null ){
         throw new IllegalArgumentException("The bean is null");
     }
-    if(bean.getName() == null )
-    {
+    if(bean.getName() == null ){
         throw new IllegalArgumentException("the name is null")
     }
 }
