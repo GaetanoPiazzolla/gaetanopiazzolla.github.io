@@ -23,7 +23,7 @@ decoding="async">
 
 **When**: This pattern is very useful if the code is to be shipped in the form of Java libraries, or if it includes several packages, all of which don’t have the same business logic. If your code is simple enough or does not provide any kind of libraries, using this pattern is not advisable as it will increase abstraction.
 
-**Why**: Re-throwing exceptions will show implementation details to the client, which should be hidden. The client of the code should not be required to modify the catch cause for every update of the service code. Remember that the throw cause is part of the signature of the method, and any changes to the signature will impact the client. Say you have a large user-base for your package, this will result in a huge refactor. \
+**Why**: Re-throwing exceptions will show implementation details to the client, which should be hidden. The client of the code should not be required to modify the catch cause for every update of the service code. Remember that the throw cause is part of the signature of the method, and any changes to the signature will impact the client. Say you have a large user-base for your package, this will result in a huge refactor.
 
 **Example**: For their DAO support, Spring defines a consistent exception hierarchy hiding and wrapping low-level exceptions as Hibernate-specific exceptions, SQL Exceptions, etc.
 
@@ -188,7 +188,7 @@ This exception can also be refined and enriched with opportune details and well 
 
 **When**: It can be used in any Java project that uses checked exceptions as business errors.
 
-**Why**: Giving a number/code for each different exception message is a good practice for documentation and faster communication. In addition, it's easy to hide information that can otherwise be exposed to clients. \
+**Why**: Giving a number/code for each different exception message is a good practice for documentation and faster communication. In addition, it's easy to hide information that can otherwise be exposed to clients.
 
 **Example**: Suppose you have a REST method that saves a book object into the database. To save this book object, some constraints have to be validated, like:
 
