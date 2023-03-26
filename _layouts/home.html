@@ -30,7 +30,7 @@ layout: base
 
           {% if post.external_url %}
           <a class="post-link" href="{{ post.external_url }}">
-            {{ post.title | escape }}
+            [External Link] - {{ post.title | escape }}
           </a>
           {% else %}
           <a class="post-link" href="{{ post.url | relative_url }}">
