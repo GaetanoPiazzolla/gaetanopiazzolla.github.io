@@ -6,4 +6,5 @@ Born to centralize all my public contributions and a personal place to share thi
 
 # Info:
 
-Site built with Jekyll with Minima Theme hosted by Github Pages.
+Site built with Jekyll with Minima Theme hosted by GitHub Pages.
+Run locally with `bundle exec jekyll serve`
