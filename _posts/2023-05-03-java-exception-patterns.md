@@ -2,7 +2,8 @@
 layout: post
 title:  Java Efficient Patterns for Exception Handling
 date:   2023-03-05 16:19:53 +0100
-categories: java
+categories: 
+  - Java
 ---
 
 Error handling is one of the most crucial parts of any application.

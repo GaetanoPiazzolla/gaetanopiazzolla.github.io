@@ -6,6 +6,8 @@ permalink: /about/
 
 Hello!
 My name is Gaetano and I'm a Passionate Software Engineer and a Tech. Blogger. 
+I focus on Java, Spring, Kubernetes and in general Backend Engineering.
+With my writings I hope I can help people find a good solution for technical problems.
 
 Currently, I write on:
 [Medium](https://gae-piaz.medium.com/) / [Baeldung](https://www.baeldung.com/author/gaetanopiazzolla) / [Substack](https://substack.com/profile/73392149-gaetano-piazzolla)
@@ -22,6 +24,5 @@ loading="lazy" width="300px"
 decoding="async">
 </div>
 
---- 
+---
 
-This website will eventually contain all my technical public contribution to the IT.

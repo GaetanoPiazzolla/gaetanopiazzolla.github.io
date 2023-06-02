@@ -1,5 +1,5 @@
 title: Gaetano Piazzolla
-description: This website will eventually contain all my technical public contribution to the IT.
+description: GitHub Page Website - Made with Jekyll and Minima Theme.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: http://gaetanopiazzolla.github.io # the base hostname & protocol for your site, e.g. http://example.com
 github_username: GaetanoPiazzolla
@@ -15,6 +15,5 @@ minima:
   social_links:
     - { platform: github,  user_url: "https://github.com/GaetanoPiazzolla" }
     - { platform: stackoverflow, user_url: "https://stackoverflow.com/users/2768318/gaetano-piazzolla" }
-    - { platform: youtube, user_url: "https://www.youtube.com/channel/UCeRPYGCMQw8ZEGCCPa7fM-g" }
 
 google_analytics: G-PPMZFEW9CK
