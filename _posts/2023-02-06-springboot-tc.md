@@ -1,7 +1,7 @@
 ---
 title: Tremendous Simplification of SpringBoot Development with TestContainers
 layout: post
-date:   2023-05-27 08:00:00 +0100
+date:   2023-06-02 08:00:00 +0100
 categories:
   - Java
   - Docker
