@@ -28,15 +28,10 @@ layout: base
         <span class="post-meta">{{ post.date | date: date_format }}</span>
         <h3>
 
-          {% if post.external_url %}
-          <a class="post-link" href="{{ post.external_url }}">
-            [External Link] - {{ post.title | escape }}
-          </a>
-          {% else %}
           <a class="post-link" href="{{ post.url | relative_url }}">
             {{ post.title | escape }}
           </a>
-          {% endif %}
+
         </h3>
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
