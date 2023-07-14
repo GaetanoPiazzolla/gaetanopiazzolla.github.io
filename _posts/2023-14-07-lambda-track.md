@@ -13,6 +13,8 @@ loading="lazy"
 decoding="async">
 </div>
 
+<p style="text-align:center">Photo by <a href="https://unsplash.com/@tabeaschimpf?utm_source=medium&utm_medium=referral">Tabea Schimpf</a> on Unspash</p>
+
 ## Introduction
 
 Distributed tracing and troubleshooting in a cloud environment presents a series of challenges. 
