@@ -1,5 +1,5 @@
 ---
-title: TestContainers with DockerCompose in SpringBoot 3  
+title: TestContainers with Docker Compose in SpringBoot 3  
 layout: post
 date:   2024-05-16 08:00:00 +0100
 categories:
@@ -11,7 +11,7 @@ categories:
 ## Introduction
 
 In the previous article, we talked about how to use TestContainers with Spring Boot 3.1 to simplify [Integration Testing (I&T)](https://en.wikipedia.org/wiki/Integration_testing).
-Going a little bit in depth, we can use _TestContainers_ with _DockerCompose_ to simplify the testing of more complex scenarios.
+Going a little bit in-depth, we can use _TestContainers_ with _Docker Compose_ to simplify the testing of more complex scenarios.
 In this case we want to test a Spring Boot application that uses a _PostgreSQL_ database initialized with a _Liquibase_ changelog.
 
 
@@ -33,7 +33,7 @@ YAGNI principle applies here.
 
 
 Maintenance of tests with different database technologies can be a nightmare when using specific database features.
-That's why in this article we'll use _TestContainers_ with _DockerCompose_ to build some solid, reliable and maintainable tests.
+That's why in this article we'll use _TestContainers_ with _Docker Compose_ to build some solid, reliable, and maintainable tests.
 The complete code of the application is here [github.com/GaetanoPiazzolla/testcontainers-docker-compose](https://github.com/GaetanoPiazzolla/springboot-testcontainers-docker-compose).
 
 ## The Application
@@ -71,10 +71,10 @@ public interface PersonRepository extends PagingAndSortingRepository<Person, Int
 
 Then we can expose the repository as a REST service at the following URL: [http://localhost:8080/repository/person](http://localhost:8080/repository/person. 
 
-## Test with TestContainers and DockerCompose
-Now let's get to the spicy part. In order to test the application in the most similar as possible way to the production environment, 
+## Test with TestContainers and Docker Compose
+Now let's get to the spicy part. To test the application in the most similar as possible way to the production environment, 
 we need to start a _PostgreSQL_ database with the schema initialized by _Liquibase_.
-_DockerCompose_ is the perfect tool for this job:
+_Docker Compose_ is the perfect tool for this job:
 
 {% highlight yaml %}
 services:
@@ -89,7 +89,7 @@ services:
 ...
 {% endhighlight %}
 
-But starting _DockerCompose_ manually before a test is not so easy. We need to start the _DockerCompose_ before the test and stop it after the test.
+But starting _Docker Compose_ manually before a test is not so easy. We need to start the _Docker Compose_ before the test and stop it after the test.
 Moreover, we need to wait for the database to be ready and we need to clean up the environment as well:
 delete volumes, networks, and containers. With _TestContainers_, all this is done automatically. 
 
@@ -132,7 +132,7 @@ public class PersonCrudRepoIntegrationTest extends AbstractIntegrationTest {
 }
 {% endhighlight %}
 
-The central part of tests is in the _AbstractIntegrationTest_ class, that all Integration Tests should extend:
+The central part of tests is in the _AbstractIntegrationTest_ class, which all Integration Tests should extend:
 
 {% highlight java %}
 @ExtendWith(SpringExtension.class)
@@ -160,10 +160,10 @@ public abstract class AbstractIntegrationTest {
 }
 {% endhighlight %}
 
-The _AbstractIntegrationTest_ class starts the _DockerCompose_ before the tests and stops it after the tests.
+The _AbstractIntegrationTest_ class starts the _Docker Compose_ before the tests and stops it after the tests.
 It waits for the Liquibase command to be executed successfully and then it removes the images from the local docker registry.
-The test is very simple, but it's a good starting point to build more complex ones; moreover is a good way 
-for how to test liquibase changelog and the database schema itself!
+The test is very simple, but it's a good starting point for building more complex ones; moreover is a good way 
+for how to test _Liquibase_ changelog and the database schema itself.
 
 
 Thank you for reading this small tutorial, I hope you enjoyed it. 
