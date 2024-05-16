@@ -11,10 +11,16 @@ categories:
 ## Introduction
 
 In the previous article, we talked about how to use TestContainers with Spring Boot 3.1 to simplify [Integration Testing (I&T)](https://en.wikipedia.org/wiki/Integration_testing).
-Going a little bit in depth, we can use TestContainers with Docker Compose to simplify the testing of more complex scenarios.
-In this case we want to test a Spring Boot application that uses a PostgreSQL database initialized with a Liquibase changelog.
+Going a little bit in depth, we can use _TestContainers_ with _DockerCompose_ to simplify the testing of more complex scenarios.
+In this case we want to test a Spring Boot application that uses a _PostgreSQL_ database initialized with a _Liquibase_ changelog.
 
-<b>We don't want to use an embedded database like H2.</b> 
+
+<b>We don't want to use an embedded database like H2.</b>
+
+<div align="center">
+    <img src="/assets/ceiling.png" style="content-visibility:auto" alt="Ceiling" loading="lazy" decoding="async">
+</div>
+<p style="text-align:center">Photo by <a href="https://unsplash.com/photos/white-ceiling-with-gold-frame-SMDX3gLEu_M">Carlo Alberto Burato</a> on Unspash</p>
 
 Why? Well, using different database technologies in tests is a common practice, but it can lead to different behaviors 
 between tests and production; moreover, even if it's a commonly recognized
@@ -27,12 +33,12 @@ YAGNI principle applies here.
 
 
 Maintenance of tests with different database technologies can be a nightmare when using specific database features.
-That's why in this article we'll use TestContainers with Docker Compose to build some solid, reliable and maintainable tests.
+That's why in this article we'll use _TestContainers_ with _DockerCompose_ to build some solid, reliable and maintainable tests.
 The complete code of the application is here [github.com/GaetanoPiazzolla/testcontainers-docker-compose](https://github.com/GaetanoPiazzolla/springboot-testcontainers-docker-compose).
 
 ## The Application
 
-The application is a simple Spring Boot application that uses a PostgresSQL database, 
+The application is a simple _SpringBoot_ application that uses a _PostgreSQL_ database, 
 with a single REST controller that returns a list of users from the database, 
 initialized using [Liquibase changelog](https://github.com/GaetanoPiazzolla/springboot-testcontainers-docker-compose/blob/master/liquibase/changelog/db.changelog.xml).
 
@@ -46,14 +52,14 @@ initialized using [Liquibase changelog](https://github.com/GaetanoPiazzolla/spri
 {% endhighlight %}
 
 
-We are using spring-data-rest to expose the repository as a REST service. It's enough to add the following dependency to the project
+We are using _spring-data-rest_ to expose the repository as a REST service. It's enough to add the following dependency to the project
 [build file](https://github.com/GaetanoPiazzolla/springboot-testcontainers-docker-compose/blob/master/build.gradle.kts):
 
 {% highlight kotlin %}
 implementation("org.springframework.boot:spring-boot-starter-data-rest")
 {% endhighlight %}
 
-Then we can annotate a simple Rest Repository with the [@RepositoryRestResource](https://docs.spring.io/spring-data/rest/docs/current/api/org/springframework/data/rest/core/annotation/RepositoryRestResource.html) 
+Then we can annotate a simple Spring _Repository_ with the [@RepositoryRestResource](https://docs.spring.io/spring-data/rest/docs/current/api/org/springframework/data/rest/core/annotation/RepositoryRestResource.html) 
 annotation as follows:
 
 {% highlight java %}
@@ -65,10 +71,10 @@ public interface PersonRepository extends PagingAndSortingRepository<Person, Int
 
 Then we can expose the repository as a REST service at the following URL: [http://localhost:8080/repository/person](http://localhost:8080/repository/person. 
 
-## Test with TestContainers and Docker Compose
+## Test with TestContainers and DockerCompose
 Now let's get to the spicy part. In order to test the application in the most similar as possible way to the production environment, 
-we need to start a PostgreSQL database with the schema initialized by Liquibase.
-Docker Compose is the perfect tool for this job:
+we need to start a _PostgreSQL_ database with the schema initialized by _Liquibase_.
+_DockerCompose_ is the perfect tool for this job:
 
 {% highlight yaml %}
 services:
@@ -83,9 +89,9 @@ services:
 ...
 {% endhighlight %}
 
-But starting docker-compose manually before a test is not so easy. We need to start the docker-compose before the test and stop it after the test.
+But starting _DockerCompose_ manually before a test is not so easy. We need to start the _DockerCompose_ before the test and stop it after the test.
 Moreover, we need to wait for the database to be ready and we need to clean up the environment as well:
-delete volumes, networks, and containers. With TestContainers, all this is done automatically. 
+delete volumes, networks, and containers. With _TestContainers_, all this is done automatically. 
 
 It's enough to add the following dependency to the project 
 [build file](https://github.com/GaetanoPiazzolla/springboot-testcontainers-docker-compose/blob/master/build.gradle.kts):
@@ -97,7 +103,7 @@ testImplementation("org.testcontainers:testcontainers")
 testImplementation("org.testcontainers:junit-jupiter")
 {% endhighlight %}
 
-And here it is a Basic IntegrationTest using MockMvc that calls the REST service and checks the data in the repository:
+And here it is a basic integration test using _MockMvc_ that calls the REST service and checks the data in the repository:
 
 {% highlight java %}
 
@@ -126,7 +132,7 @@ public class PersonCrudRepoIntegrationTest extends AbstractIntegrationTest {
 }
 {% endhighlight %}
 
-The central part of tests is in the AbstractIntegrationTest class, that all Integration Tests should extend:
+The central part of tests is in the _AbstractIntegrationTest_ class, that all Integration Tests should extend:
 
 {% highlight java %}
 @ExtendWith(SpringExtension.class)
@@ -154,7 +160,7 @@ public abstract class AbstractIntegrationTest {
 }
 {% endhighlight %}
 
-The _AbstractIntegrationTest_ class starts the docker-compose before the tests and stops it after the tests.
+The _AbstractIntegrationTest_ class starts the _DockerCompose_ before the tests and stops it after the tests.
 It waits for the Liquibase command to be executed successfully and then it removes the images from the local docker registry.
 The test is very simple, but it's a good starting point to build more complex ones; moreover is a good way 
 for how to test liquibase changelog and the database schema itself!
