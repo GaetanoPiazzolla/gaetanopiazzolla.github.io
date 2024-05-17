@@ -69,7 +69,7 @@ public interface PersonRepository extends PagingAndSortingRepository<Person, Int
 }
 {% endhighlight %}
 
-Then we can expose the repository as a REST service at the following URL: [http://localhost:8080/repository/person](http://localhost:8080/repository/person. 
+Then we can expose the repository as a REST service at the following URL: [http://localhost:8080/repository/person](http://localhost:8080/repository/person). 
 
 ## Test with TestContainers and Docker Compose
 Now let's get to the spicy part. To test the application in the most similar as possible way to the production environment, 
