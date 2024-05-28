@@ -124,7 +124,7 @@ This parameter is used to keep track of the history of the conversation.
 
 {% highlight javascript %}
 useEffect(() => {
-setChatId(Date.now().toString());
+    setChatId(Date.now().toString());
 }, []);
 {% endhighlight %}
 
@@ -156,7 +156,7 @@ docker:
         lifecycle-management: start-and-stop
 {% endhighlight %}
 
-and this small compose.yaml file in the root folder:
+and this small _compose.yaml_ file in the root folder:
 
 {% highlight yaml %}
 services:
@@ -399,7 +399,7 @@ Also, we should fine-tune the similarity search parameters and the tokenizer to 
 I tried to include here only the pieces of code that I find more interesting for demo purposes,
 but I really encourage you to visit the repository linked at the end of the article to see the full code and experiment a little.
 
-The [repository](https://github.com/GaetanoPiazzolla/smart-document-assistant) is open to pull requests, if you want to:
+The [repository](https://github.com/GaetanoPiazzolla/smart-document-assistant) is open to pull requests if you want to:
 
 - Fix UI/UX issues in the React application
 - Use WebFlux to handle the chat response instead of blocking calls
