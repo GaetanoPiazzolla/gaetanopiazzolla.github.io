@@ -15,7 +15,7 @@ This article discusses the best practices for a standard web application that co
 <div align="center">
     <img src="/assets/icecone.png" style="content-visibility:auto" alt="Icecone" loading="lazy" decoding="async">
 </div>
-<p style="text-align:center">Photo by <a href="https://unsplash.com/@rojekilian?utm_source=medium&utm_medium=referral">Sarah Kilian</a> on Unspash</p>
+<p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/@rojekilian?utm_source=medium&utm_medium=referral">Sarah Kilian</a> on Unspash</p>
 
 ## Try Catch Blocks
 
@@ -37,7 +37,7 @@ upward propagation of an exception so that the default action is not triggered.
 <div align="center">
 <img src="/assets/FaultBarrier.jpg" style="content-visibility:auto" alt="Fault Barrier" loading="lazy" decoding="async" />
 </div>
-<p style="text-align:center"><a href="https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html">Image Source</a></p>
+<p style="text-align:center; font-style: italic;"><a href="https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html">Image Source</a></p>
 
 
 Every web application (or system) consists of critical operations and non-critical operations. The failure of a critical operation is non-recoverable, while the failure of a non-critical operation is. Therefore, you should define a “fault barrier” so that any non-critical operation faliure can be recovered. It’s possible to implement fault barriers using try catch blocks, but you could also implement it using Promises.
@@ -103,7 +103,7 @@ A good way to proceed is to implement an interceptor pattern for every HTTP call
 <div align="center">
 <img src="/assets/interceptor.png" style="content-visibility:auto" alt="Interceptor" loading="lazy" decoding="async" />
 </div>
-<p style="text-align:center"><a href="https://www.wikiwand.com/en/Interceptor_pattern">Image Source</a></p>
+<p style="text-align:center; font-style: italic;"><a href="https://www.wikiwand.com/en/Interceptor_pattern">Image Source</a></p>
 
 
 If you are using React with [Axios](https://axios-http.com/docs/interceptors) or [Angular](https://angular.io/api/common/http/HttpInterceptor), it’s possible to define an interceptor that will process every HTTP call in a pretty straightforward manner.

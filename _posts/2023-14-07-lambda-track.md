@@ -13,7 +13,7 @@ loading="lazy"
 decoding="async">
 </div>
 
-<p style="text-align:center">Photo by <a href="https://unsplash.com/@tabeaschimpf?utm_source=medium&utm_medium=referral">Tabea Schimpf</a> on Unspash</p>
+<p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/@tabeaschimpf?utm_source=medium&utm_medium=referral">Tabea Schimpf</a> on Unspash</p>
 
 ## Introduction
 

@@ -16,7 +16,7 @@ alt="Fault Barrier"
 loading="lazy"
 decoding="async">
 </div>
-<p style="text-align:center">Photo by <a href="https://unsplash.com/@grafik_bock?utm_source=medium&utm_medium=referral">Julian Bock</a> on Unspash</p>
+<p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/@grafik_bock?utm_source=medium&utm_medium=referral">Julian Bock</a> on Unspash</p>
 
 ## 1- Exception Wrapper Pattern
 
@@ -33,7 +33,7 @@ decoding="async">
      alt="Data access exception hierarchy"
      loading="lazy"
      decoding="async">
-<p style="text-align:center"><a href="https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch11s02.html">Image Source</a></p>
+<p style="text-align:center; font-style: italic;"><a href="https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch11s02.html">Image Source</a></p>
 </div>
 
 **Pattern Extensions:**  This pattern works by wrapping any exception in a specific runtime package exception. In this way, any boilerplate “try-catch“ code is removed. This pattern is very useful if no exception to the service package is recoverable (I recommend using checked exceptions only if the client can take some useful recovery action based on information in the exception. Otherwise the right choice is unchecked exceptions). The implementation is very simple and straightforward using [lombok @SneakyThrows](https://projectlombok.org/features/SneakyThrows).
@@ -62,7 +62,7 @@ alt="Fault Barrier"
 loading="lazy"
 decoding="async">
 </div>
-<p style="text-align:center"><a href="https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html">Image Source</a></p>
+<p style="text-align:center; font-style: italic;"><a href="https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html">Image Source</a></p>
 
 **When:** You should follow this pattern in every application that can fail in some way. Practically speaking, you’ll want to use this pattern in every application.
 

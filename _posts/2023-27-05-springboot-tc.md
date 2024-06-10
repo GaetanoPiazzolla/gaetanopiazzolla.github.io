@@ -43,7 +43,7 @@ alt="Containers of People"
 loading="lazy"
 decoding="async">
 </div>
-<p style="text-align:center">Photo by <a href="https://unsplash.com/@twinkynano">Nano Do</a> on Unsplash</p>
+<p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/@twinkynano">Nano Do</a> on Unsplash</p>
 
 ### The Spring Boot App
 

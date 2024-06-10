@@ -20,7 +20,7 @@ In this case we want to test a Spring Boot application that uses a _PostgreSQL_ 
 <div align="center">
     <img src="/assets/ceiling.png" style="content-visibility:auto" alt="Ceiling" loading="lazy" decoding="async">
 </div>
-<p style="text-align:center">Photo by <a href="https://unsplash.com/photos/white-ceiling-with-gold-frame-SMDX3gLEu_M">Carlo Alberto Burato</a> on Unspash</p>
+<p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/photos/white-ceiling-with-gold-frame-SMDX3gLEu_M">Carlo Alberto Burato</a> on Unspash</p>
 
 Why? Well, using different database technologies in tests is a common practice, but it can lead to different behaviors 
 between tests and production; moreover, even if it's a commonly recognized
