@@ -8,14 +8,14 @@ categories:
   - Security
 ---
 
-In this article we will configure a Spring Boot application to authenticate using the Firebase authentication token. 
+In this article, we will configure a Spring Boot application to authenticate using the Firebase authentication token. 
 Disclaimer: This article was originally a response to this [medium article](https://medium.com/comsystoreply/authentication-with-firebase-auth-and-spring-security-fcb2c1dc96d)
 I used some different configurations (e.g. I'm not using Spring oauth-resource-server library) 
 and more updated code (with Spring-Security 6.3.1) Then I realized that the answer was too long and I needed to write a short tutorial about it.
 All the (working) code is available in this [git repository](https://github.com/GaetanoPiazzolla/spring-sec-firebase).
 
 ## Libraries 
-Let's start from the libraries needed: 
+Let's start with the libraries needed: 
 
 {% highlight kotlin %}
 dependencies {
@@ -138,7 +138,7 @@ public class SecurityConfig {
 }
 {% endhighlight %}
 
-In here we have disabled the Cors, Csrf, and added the FirebaseAuthenticationFilter in a specific position in the long
+Here we have disabled the Cors, Csrf, and added the FirebaseAuthenticationFilter in a specific position in the long
 Spring Security Filter Chain. The FirebaseAuthenticationFilter will check the token (only for the *WebConstants.API_BASE_PATH* requests) and provide
 the Authentication object to the SecurityContext. 
 
@@ -182,7 +182,7 @@ public class FirebaseAuthenticationFilter extends OncePerRequestFilter {
 {% endhighlight %}
 
 It's a good practice use a custom Authentication Token, instead of using the old *UsernamePasswordAuthenticationToken*.
-In this case we have the *FirebaseAuthenticationToken*:
+In this case, we have the *FirebaseAuthenticationToken*:
 
 {% highlight java %}
 public class FirebaseAuthenticationToken extends AbstractAuthenticationToken {
@@ -214,7 +214,7 @@ public class FirebaseAuthenticationToken extends AbstractAuthenticationToken {
 {% endhighlight %}
 
 In the *getAuthoritiesFromToken()* method we will convert the [Custom Claims](https://firebase.google.com/docs/auth/admin/custom-claims) of the Firebase Authentication Document, 
-that are transmitted in the JWT token, in a list of GrantedAuthorities.
+that are transmitted in the JWT token, into a list of GrantedAuthorities.
 
 {% highlight java %}
 private static List<GrantedAuthority> getAuthoritiesFromToken(FirebaseToken token) {
@@ -253,13 +253,13 @@ public void addAuthority(@PathVariable String uid, @RequestBody String authority
 {% endhighlight %}
 
 As you can see, the method is protected by the ADMIN authority, which means in practice that 
-if the user does not have in the Authentication table the correct "Claims.authorities", the request will be rejected 
+if the user does not have in the Authentication table the correct "_Claims.authorities_", the request will be rejected 
 with a 403 error.
 
 ## Conclusion
 
-In this short tutorial we have seen some updated configurations to play with Firebase Auth and
+In this short tutorial, we have seen some updated configurations to play with Firebase Auth and
 Spring Security. I want to thank the original author of the article, [Sebastijan Comsysto](https://medium.com/@sebastijan.comsysto) 
-that inspired me to write this one.
+who inspired me to write this one.
 
-Have a good one!
+Have fun!
