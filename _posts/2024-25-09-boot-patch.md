@@ -8,21 +8,18 @@ categories:
   - SpringBoot
 ---
 
-This 
-- straight-to-the-point
-- no-bullshit
-- all-the-other-articles-out-there-are-too-verbose-and-they-dont-get-to-the-point
+This **straight-to-the-point**-**no-bullshit**-**all-the-other-articles-out-there-are-too-verbose-and-they-dont-get-to-the-point** article 
+illustrates this repository [https://github.com/GaetanoPiazzolla/spring-boot-patch](https://github.com/GaetanoPiazzolla/spring-boot-patch) in which
 
-article illustrates this repository [https://github.com/GaetanoPiazzolla/spring-boot-patch](https://github.com/GaetanoPiazzolla/spring-boot-patch) in which 
+[JSON Patch](https://datatracker.ietf.org/doc/html/rfc6902) is applied to JPA entities in a Spring Boot Application. 
 
-[JSON Patch](https://datatracker.ietf.org/doc/html/rfc6902) is applied to JPA entities a Spring Boot Application. 
-
-This approach is designed to be generic, reusable, and optimized, so it should be easy to apply to any **spring-boot** and **jpa** based project.
-If not please drop me a message, I'll send you a PIZZA instead.
+This approach is designed to be generic, reusable, and optimized, so it should be easy to apply to any **Spring-Boot-based** and **JPA-based** based project.
+If not please drop me a message, and I'll send you a PIZZA instead.
 
 ![intro-image](https://repository-images.githubusercontent.com/861001541/e1bacbba-e8e9-4817-8818-e5d5347c8ec4)
 
-## Table of Contents
+## Table of Content
+
 - [Tech Used](#tech-used)
 - [Core Components](#core-components)
 - [How to apply JSON Patch to ANY JPA entity](#how-to-apply-json-patch-to-any-jpa-entity)
@@ -53,8 +50,9 @@ The core components and configurations of the project are as follows:
 - [OpenApiConfiguration.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/config/OpenApiConfiguration.java): A configuration class that generates OpenAPI documentation with the allowed paths specified in the JSON Patch operation.
 
 ## How to apply JSON Patch to ANY JPA entity
-1) You need to define Bean(s) with all the fields that you want to update in the entity, e.g:
+First of all you need to define Bean(s) with all the fields that you want to update in the entity.
 See [faq](#not-so-frequently-asked-questions-nsfaq) for the reasons we need to use Beans instead of applying the patch directly to the entity.
+(In future releases those beans could be auto-generated... stay tuned.)
 
 ```java
 @Builder
@@ -67,9 +65,8 @@ public record AuthorUpdateBean(
         Integer id
 ) { }
 ```
-(in future releases those beans could be auto-generated... stay tuned)
 
-2) Create a service class that extends the [AbstractPatchService.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/service/core/AbstractPatchService.java) class and implements all the abstract methods:
+Then create a service class that extends the [AbstractPatchService.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/service/core/AbstractPatchService.java) class and implements all the abstract methods:
    The First parameter of the Abstract class generic is the JPA entity, the second is the Bean class. 
 So you just need to define the mapping between the entity and the bean in the _updateEntityFields_ and _mapEntityToBean_ methods.
 
@@ -137,7 +134,7 @@ public class BookService {
 }
 ```
 
-The controller class [BookController.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/controller/BookController.java) demonstrates how to use the [BookService.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/service/BookService.java) class.String
+The controller class [BookController.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/controller/BookController.java) demonstrates how to use the [BookService.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/service/BookService.java) class.
 
 ```java
 @RestController
@@ -172,9 +169,7 @@ For OpenAPI YAML documentation:
 The generated documentation example can be found committed in the [api-docs.yaml](api/api-docs.yaml) file.
 
 The [JsonPatchUpdate.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/service/core/JsonPatchUpdate.java) annotation documents the endpoints.
-Using the annotation parameters, we can specify the path allowed in the JSON Patch operation.
-
-E.g:
+Using the annotation parameters, we can specify the path allowed in the JSON Patch operation. E.g.:
 
 ```java
 @JsonPatchUpdate(
@@ -253,7 +248,7 @@ are provided to demonstrate the functionality of the JSON Patch service.
 Otherwise, you can start the application locally:
 
 ```bash
-./gradlew test
+./gradlew bootRun
 ```
 
 And then run the Typescript script in the frontend directory:
@@ -268,15 +263,15 @@ npm start
 
 **Why patching beans instead of using the entity directly?**
 - The entity is a JPA managed object, and it's not a good practice to update it directly.
-- The entity can have fields that should not be updated, e.g: id, created_at, updated_at, etc.
-- The entity can have fields that should be updated only by specific roles, e.g: admin, owner, etc.
+- The entity can have fields that should not be updated, e.g.: id, created_at, updated_at, etc.
+- The entity can have fields that should be updated only by specific roles, e.g.: admin, owner, etc.
 - Serializing the entity to JSON can cause issues with lazy loading and circular references.
 
 **Is it a good practice to use the entity directly in the controller instead of DTO?**
 - No.
 
 **Why not calling the class DTOs instead of Beans for applying json Patch?**
--The DTOs are used to transfer data between the frontend and backend, while the Beans are used to update the entity.
+- The DTOs are used to transfer data between the frontend and backend, while the Beans are used to update the entity.
 
 **Why documenting the allowed paths in the annotation?**
 - To provide a clear and concise documentation of the API endpoints.
