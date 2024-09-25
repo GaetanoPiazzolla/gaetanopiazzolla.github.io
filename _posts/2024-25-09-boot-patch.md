@@ -1,5 +1,5 @@
 ---
-title: Spring Boot JSON Patch
+title: Spring Boot JSON Patch done Right
 layout: post
 date:   2024-09-25 08:00:00 +0100
 categories:
@@ -8,10 +8,16 @@ categories:
   - SpringBoot
 ---
 
-In this **straight-to-the-point - (no bullshit)** article we will illustrate this repository [https://github.com/GaetanoPiazzolla/spring-boot-patch](https://github.com/GaetanoPiazzolla/spring-boot-patch) in which 
-[JSON Patch](https://datatracker.ietf.org/doc/html/rfc6902) is applied to JPA entities a Spring Boot Application. 
-This approach is designed to be generic, reusable, and optimized, so it shoult be easy to apply to any **spring-boot** and **jpa** based project.
+This 
+- straight-to-the-point
+- no-bullshit
+- all-the-other-articles-out-there-are-too-verbose-and-they-dont-get-to-the-point
 
+article illustrates this repository [https://github.com/GaetanoPiazzolla/spring-boot-patch](https://github.com/GaetanoPiazzolla/spring-boot-patch) in which 
+
+[JSON Patch](https://datatracker.ietf.org/doc/html/rfc6902) is applied to JPA entities a Spring Boot Application. 
+
+This approach is designed to be generic, reusable, and optimized, so it should be easy to apply to any **spring-boot** and **jpa** based project.
 If not please drop me a message, I'll send you a PIZZA instead.
 
 ![intro-image](https://repository-images.githubusercontent.com/861001541/e1bacbba-e8e9-4817-8818-e5d5347c8ec4)
