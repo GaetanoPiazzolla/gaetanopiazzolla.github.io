@@ -8,9 +8,11 @@ categories:
   - SpringBoot
 ---
 
-This repository [https://github.com/GaetanoPiazzolla/spring-boot-patch](https://github.com/GaetanoPiazzolla/spring-boot-patch) demonstrates how to apply
-[JSON Patch](https://datatracker.ietf.org/doc/html/rfc6902) to JPA entities in a Spring Boot Application.
-The approach is designed to be generic, reusable, and optimized. I hope.
+In this **straight-to-the-point - (no bullshit)** article we will illustrate this repository [https://github.com/GaetanoPiazzolla/spring-boot-patch](https://github.com/GaetanoPiazzolla/spring-boot-patch) in which 
+[JSON Patch](https://datatracker.ietf.org/doc/html/rfc6902) is applied to JPA entities a Spring Boot Application. 
+This approach is designed to be generic, reusable, and optimized, so it shoult be easy to apply to any **spring-boot** and **jpa** based project.
+
+If not please drop me a message, I'll send you a PIZZA instead.
 
 ![intro-image](https://repository-images.githubusercontent.com/861001541/e1bacbba-e8e9-4817-8818-e5d5347c8ec4)
 
@@ -36,7 +38,9 @@ The project uses the following technologies and libraries:
 - Lombok
 
 ## Core Components
-The core components of the project are:
+
+The core components and configurations of the project are as follows:
+
 - [JsonPatchService.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/service/core/JsonPatchService.java): The service class that applies JSON Patch operations to JPA entities.
 - [JsonPatchUpdate.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/service/core/JsonPatchUpdate.java): An annotation that documents the API endpoints and specifies the allowed paths in the endpoint description.
 - [AbstractPatchService.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/service/core/AbstractPatchService.java): A generic service class that provides the patch functionality for JPA entities.
@@ -44,6 +48,8 @@ The core components of the project are:
 
 ## How to apply JSON Patch to ANY JPA entity
 1) You need to define Bean(s) with all the fields that you want to update in the entity, e.g:
+See [faq](#not-so-frequently-asked-questions-nsfaq) for the reasons we need to use Beans instead of applying the patch directly to the entity.
+
 ```java
 @Builder
 public record BookUpdateBean(
@@ -58,7 +64,8 @@ public record AuthorUpdateBean(
 (in future releases those beans could be auto-generated... stay tuned)
 
 2) Create a service class that extends the [AbstractPatchService.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/service/core/AbstractPatchService.java) class and implements all the abstract methods:
-   The First parameter of the Abstract class generic is the JPA entity, the second is the Bean class.
+   The First parameter of the Abstract class generic is the JPA entity, the second is the Bean class. 
+So you just need to define the mapping between the entity and the bean in the _updateEntityFields_ and _mapEntityToBean_ methods.
 
 ```java
 @Service
@@ -171,6 +178,7 @@ E.g:
         "books/-/title -> update an author's book title",
         "books/-/isbn -> update an author's book isbn"
     })
+public ResponseEntity<BookDTO> updateBook(/*...*/) {}
 ```
 
 Thanks to the custom [OpenApiConfiguration.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/config/OpenApiConfiguration.java) class, the Swagger UI displays the allowed paths in the JSON Patch operation:
@@ -179,6 +187,7 @@ Thanks to the custom [OpenApiConfiguration.java](https://github.com/GaetanoPiazz
 
 ## Concurrency Handling
 Concurrency is managed through [JSON Patch test](https://jsonpatch.com/#test) operations, ensuring that updates are applied only if the current state matches the expected state.
+Any update operation that fails the test operation will return a 409 Conflict status code.
 
 ## Typescript Stubs Generation
 To generate TypeScript stubs for the frontend, update the api-docs.yaml file with the current API version and run the following commands:
@@ -191,7 +200,8 @@ curl http://localhost:8084/openapi/public/yaml > ./api/api-docs.yaml
 
 ## Stubs Usage Example in Frontend
 
-In the [frontend](https://github.com/GaetanoPiazzolla/spring-boot-patch/tree/master/frontend) directory, the generated TypeScript stubs are used to demonstrate how to apply JSON Patch operations to a JPA entity in a frontend application:
+In the [frontend](https://github.com/GaetanoPiazzolla/spring-boot-patch/tree/master/frontend) directory, 
+the generated TypeScript stubs are used to demonstrate how to apply JSON Patch operations to a JPA entity in a frontend application:
 
 ```typescript
 import {JsonPatchItem, JsonPatchOps} from './api';
@@ -268,11 +278,11 @@ npm start
 
 **Is it a good practice to add items to a JPA entity @OneToMany collection using JSON Patch?**
 - I did this for the Author -> N BOOK in this example [AuthorPatchService.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/service/patch/AuthorPatchService.java), but I think it should be way easier to build a separate endpoint to add and remove items to a collection.
-  The mapping to bean and back, the persist and the cascade are not that easy to handle.
+  The mapping to bean and back, the persist and the cascade are not that easy to handle, as you can see yourself.
 
 ----
 
-Read more about SpringBoot in the articles :
+Read more about SpringBoot in the following awesomely written articles:
 
 - [Accelerate Spring Boot APP Start Time - Simply](https://gaetanopiazzolla.github.io/java/springboot/2024/06/22/fast-boot.html)
 - [Tremendous Simplification of SpringBoot Development with TestContainers](https://gaetanopiazzolla.github.io/java/docker/springboot/2023/05/27/springboot-tc.html)
