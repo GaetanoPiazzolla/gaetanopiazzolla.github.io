@@ -4,7 +4,7 @@ layout: post
 date: 2024-12-15 17:00:00 +0100
 categories:
   - Spring
-  - Design Patterns
+  - Design-Patterns
 ---
 
 In This article, we will implement a simple [Event Notification Pattern](https://martinfowler.com/articles/201701-event-driven.html) using Spring Data.
