@@ -135,6 +135,8 @@ Furthermore, oracle’s recommendation against pooling virtual threads makes _Th
 when using lightweight virtual threads. For details, 
 see [Oracle’s documentation on DONT POOL VIRTUAL THREADS](https://docs.oracle.com/en/java/javase/20/core/virtual-threads.html#GUID-9065C2D5-9006-4F1A-93E0-D5153BB40475).
 
+---
+
 ### 3- ThreadLocal Clearing Interceptor
 To prevent event leakage when pooling threads, we clear the _ThreadLocal_ after requests are completed. This can be done using an interceptor:
 
@@ -174,6 +176,8 @@ public class WebConfig implements WebMvcConfigurer {
     }
 }
 ```
+
+---
 
 ### 4- Event Notification with Transaction Synchronization
 
@@ -254,6 +258,8 @@ public class TransactionSynchronizationAspect {
 Since the aspect executes after the transaction commits, it ensures events are only sent if the transaction is successful. 
 In case of a failure, events are not sent, and changes are rolled back.ù
 
+---
+
 ### 5- Event Notification with DTO Response
 
 This enhancement is implemented with a _ResponseBodyAdvice_, which intercepts the response body before it’s sent to the client.
@@ -308,6 +314,8 @@ public class EventNotificationResponseBodyAdvice implements ResponseBodyAdvice<O
 }
 ```
 
+---
+
 ### 6- Consuming Events
 The DataChangeEvent events can be consumed using the @EventListener annotation.
 By adding @Async, the event listener runs asynchronously, avoiding blocking the main thread.
@@ -330,6 +338,8 @@ Once the event is consumed, it can trigger a wide range of actions tailored to t
 Furthermore, Spring Modulith offers a seamless way to externalize events.
 To learn more about externalizing events with Spring Modulith, 
 Check [Simplified Event Externalization with Spring Modulith](https://spring.io/blog/2023/09/22/simplified-event-externalization-with-spring-modulith) for more details.
+
+---
 
 ### 7- Alternatives and Conclusions
 
