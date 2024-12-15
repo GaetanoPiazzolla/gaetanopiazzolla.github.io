@@ -11,11 +11,10 @@ In This article, we will implement a simple [Event Notification Pattern](https:/
 
 When an entity is updated, removed, or persisted, an event is published to notify other systems of the change. 
 
-We will also enhance the notification process by incorporating DTO objects, 
-thereby eliminating the need to fetch updated data. 
+We will also enhance the notification process by incorporating DTO objects, eliminating the need to fetch updated data. 
 This enhancement addresses one of the downsides of the **Event Notification Pattern** compared to **Event Sourcing**.
 
-The full code of the application is available on [GitHub](https://github.com/GaetanoPiazzolla/spring-event-notification).
+The full application code is available on [GitHub](https://github.com/GaetanoPiazzolla/spring-event-notification).
 
 ---
 
@@ -256,7 +255,7 @@ public class TransactionSynchronizationAspect {
 ```
 
 Since the aspect executes after the transaction commits, it ensures events are only sent if the transaction is successful. 
-In case of a failure, events are not sent, and changes are rolled back.ù
+In case of a failure, events are not sent, and changes are rolled back.
 
 ---
 
