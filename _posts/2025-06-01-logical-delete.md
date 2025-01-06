@@ -9,7 +9,8 @@ categories:
 ---
 
 A practical guide to implementing logical delete with Spring Data JPA, designed for clarity and real-world use.
-Full code is available on [GitHub](https://github.com/GaetanoPiazzolla/logical-delete).
+
+**The Full code is available on [GitHub](https://github.com/GaetanoPiazzolla/logical-delete).**
 
 ---
 
@@ -62,7 +63,7 @@ public abstract class AbstractEntity {
 
 ## Basic Implementation
 
-The standard basic implementation is to use an update query to set the deleted columns.
+The standard basic implementation is to use an update query to set the deleted columns:
 
 ```java
 public void deleteAuthorBasic(Integer id, String reason) {
@@ -111,8 +112,8 @@ public class Author extends AbstractEntity {
 As you can see, the delete query is an update with two parameters, the current user and the reason for deletion.
 The _id_ and the _database_version_ are used in the where clause and Hibernate will automatically set the values.
 
-To be able to set replace the placeholder var dynamically, we can use a custom Hibernate 
-[Statement Inspector](https://docs.jboss.org/hibernate/orm/current/javadocs/org/hibernate/resource/jdbc/spi/StatementInspector.html).
+**We can use a custom Hibernate [Statement Inspector](https://docs.jboss.org/hibernate/orm/current/javadocs/org/hibernate/resource/jdbc/spi/StatementInspector.html) to replace the placeholder vars
+(_current_user_ and _deleted_reason_) dynamically.**
 
 First of all, we need to register it in the _application.yaml_ file:
 
@@ -160,9 +161,10 @@ public class CustomStatementInspector implements StatementInspector {
 
 This component has a _ThreadLocal_ variable to store the reason for deletion and a method to set it.
 
-The _inspect_ method is called by Hibernate before executing any query, so we can replace the placeholders of the _@SQLDelete_ with the actual values.
+Hibernate calls the inspect method before executing any query,
+so we can replace the placeholders of the @SQLDelete with the actual values.
 
-Implementing the logical _delete_ in the service layer is now straightforward:
+**Implementing the logical _delete_ in the service layer is now straightforward:**
 
 ```java
 public void deleteAuthorEffective(Integer id, String reason) {
@@ -172,7 +174,7 @@ public void deleteAuthorEffective(Integer id, String reason) {
 }
 ```
 
-With Virtual Threads, there should be no need of manually cleaning up the ThreadLocal variable, but it's always a good practice to do so.
+With Virtual Threads, there should be no need to manually clean up the ThreadLocal variable, but it's always a good practice to do so.
 Check the previous article to set up a custom Spring interceptor to clean up the _ThreadLocal_ variable: 
 [Event Notification Pattern](https://gaetanopiazzolla.github.io/spring/design-patterns/2024/12/15/event-spring.html).
 
@@ -182,6 +184,7 @@ Check the previous article to set up a custom Spring interceptor to clean up the
 
 Implementing logical delete with JPA in Spring Boot can be straightforward and efficient with the right approach.
 By using Hibernate's _@SQLDelete_ and _@SQLRestriction_ annotations, we can achieve logical deletion without the drawbacks of traditional methods.
+
 The Hibernate _StatementInspector_ ensures dynamic parameter replacement, making the process seamless and secure.
 
 The full code is available on [GitHub](https://github.com/GaetanoPiazzolla/logical-delete).
