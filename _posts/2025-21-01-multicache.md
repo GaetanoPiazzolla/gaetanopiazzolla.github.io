@@ -1,19 +1,19 @@
 ---
-title: Multi Layer Cache in Spring Boot
+title: Multi-Layer Cache in Spring Boot
 layout: post
 date: 2025-01-27 16:00:00 +0100
 categories:
   - Java
 ---
 
-In this article, we'll explore the concept of multi layer caching in Spring Boot applications.
+In this article, we'll explore the concept of multi-layer caching in Spring Boot applications.
 
 In particular, we will use a **local first level cache (L1) with a shorter duration** and a 
 **remote and distributed second level cache (L2) with a longer duration**.
 
 The general concept is to use a local cache first, and a second level cache if the data is not found in the first one.
 
-The goal is to improve the performance of the application by reducing the number of round trips to remote hosts.
+The goal is to improve the application's performance by reducing the number of round trips to remote hosts.
 
 ---
 
@@ -23,9 +23,9 @@ The goal is to improve the performance of the application by reducing the number
 
 ---
 
-The first level cache will be provided by [Caffeine](https://github.com/ben-manes/caffeine), a high-performance caching library.
+**The first-level cache** will be provided by [Caffeine](https://github.com/ben-manes/caffeine), a high-performance caching library.
 
-The second level cache will be provided by [Redis](https://docs.spring.io/spring-data/redis/reference/redis/redis-cache.html), a popular in-memory data structure store. 
+**The second-level cache** will be provided by [Redis](https://docs.spring.io/spring-data/redis/reference/redis/redis-cache.html), a popular in-memory data structure store. 
 
 Of course, this implementation is made to be generic and can be easily adapted to other caching libraries.
 
@@ -33,15 +33,15 @@ The code is available [here](https://github.com/GaetanoPiazzolla/spring-boot-mul
 
 ---
 
-## Dumb (and easy) Approach to Double Caching
+## Dumb (and Easy) Approach to Double Caching
 
-With spring boot, we can use the `@Cacheable` annotation to cache the results of a method. 
+With Spring Boot, we can use the `@Cacheable` annotation to cache the results of a method. 
 
-To implement a second level cache then, 
+To implement a second-level cache,
 we can manually check if the data is present in the first level caffeine cache, 
 and if not, check the second level cache.
 
-Here it is an example of a method that uses the `@Cacheable` annotation:
+Here is an example of a method that uses the `@Cacheable` annotation:
 
 ```java
 
@@ -82,7 +82,7 @@ public L1CacheService {
 }
 ```
 
-MEH. This is not a good approach. It's super verbose and error-prone. We basically have to create a new service for each cache level.
+MEH. This is not a good approach. It's super verbose and error-prone. We have to create a new service for each cache level.
 We can do better.
 
 ---
@@ -382,7 +382,6 @@ public class TestContainerConfig {
 Then we can write a test to check the double caching logic:
 
 ```java
-
 @SpringBootTest
 class MultiCacheAppIntegrationTest {
 
@@ -436,10 +435,10 @@ class MultiCacheAppIntegrationTest {
 Here’s a quick comparison of the approaches:
 
 - Dumb approach: Manually manages both caches in the service layer but is error-prone and verbose.
-- CompositeCacheManager: Simplifies management using Spring’s abstraction but lacks flexibility to sync both caches properly.
+- CompositeCacheManager: Simplifies management using Spring’s abstraction but lacks the flexibility to sync both caches properly.
 - Custom CacheManager: Offers full control and seamless integration of both caching layers, providing the best balance of simplicity and flexibility. 
 
-**Plus**: you can plug in any caching technologies you want—Redis, Hazelcast, Ehcache, etc.—to build a cache solution tailored to your needs.
+**Plus**: you can plug in any caching technologies you want — Redis, Hazelcast, Ehcache, etc.—to build a cache solution tailored to your needs.
 
 For complete code examples, check out the GitHub [repository]((https://github.com/GaetanoPiazzolla/spring-boot-multi-layer-cache)). 🚀
 
