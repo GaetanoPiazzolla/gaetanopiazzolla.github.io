@@ -440,7 +440,8 @@ Here’s a quick comparison of the approaches:
 
 **Plus**: you can plug in any caching technologies you want — Redis, Hazelcast, Ehcache, etc.—to build a cache solution tailored to your needs.
 
-For complete code examples, check out the GitHub [repository]((https://github.com/GaetanoPiazzolla/spring-boot-multi-layer-cache)). 🚀
+For complete code examples,
+check out the GitHub [repository](https://github.com/GaetanoPiazzolla/spring-boot-multi-layer-cache) 🚀
 
 Thank you very much for reading. I hope you enjoyed this article. If you have any questions or feedback, please let me know.
 Drop me an email, send me a message on LinkedIn, or whatever you prefer. 
