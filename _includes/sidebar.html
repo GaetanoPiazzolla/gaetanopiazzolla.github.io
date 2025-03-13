@@ -20,11 +20,35 @@
     {% endfor %}
   {% endfor %}
   
-  <!-- Get unique categories -->
+  <!-- Count articles per category and sort by count -->
   {% assign unique_categories = all_categories | uniq | sort %}
+  {% assign category_counts = "" | split: "" %}
+  
+  {% for category in unique_categories %}
+    {% assign count = 0 %}
+    {% for post in site.posts %}
+      {% if post.categories contains category %}
+        {% assign count = count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+    {% for article in site.external_articles %}
+      {% if article.categories contains category %}
+        {% assign count = count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+    
+    <!-- Use padding to ensure proper numeric sorting -->
+    {% assign padded_count = count | plus: 1000 %}
+    {% assign category_with_count = padded_count | append: "," | append: category %}
+    {% assign category_counts = category_counts | push: category_with_count %}
+  {% endfor %}
+  
+  {% assign sorted_categories = category_counts | sort | reverse %}
   
   <ul class="category-list">
-    {% for category in unique_categories %}
+    {% for category_info in sorted_categories %}
+      {% assign category_parts = category_info | split: "," %}
+      {% assign category = category_parts[1] %}
       {% assign category_id = category | downcase | replace: ' ', '-' %}
       <li>
         <details id="cat-{{ category_id }}" {% if page.categories contains category %}open{% endif %}>
