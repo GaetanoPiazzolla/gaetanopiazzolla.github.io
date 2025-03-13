@@ -1,11 +1,5 @@
 {% include search.html %}
 
-<!-- Total Articles Counter -->
-<div class="article-counter">
-  {% assign total_articles = site.posts.size | plus: site.external_articles.size %}
-  <p>Total: {{ total_articles }}</p>
-</div>
-
 <!-- Categories Section -->
 <div id="categories" class="article-section">
   <h3>Articles by Category</h3>
@@ -63,6 +57,12 @@
   </ul>
 </div>
 
+<!-- Total Articles Counter -->
+<div class="article-counter">
+  {% assign total_articles = site.posts.size | plus: site.external_articles.size %}
+  <p>Total: {{ total_articles }}</p>
+</div>
+
 <div id="medium" class="article-section">
   <h3>Best Articles on Medium</h3>
   <ul class="article-list">
@@ -94,6 +94,9 @@
   </ul>
   <a href="https://stackoverflow.com/users/2768318/gaetano-piazzolla" target="_blank" class="view-all">View all (76)→</a>
 </div>
+
+
+
 
 <!-- Script to open categories based on article -->
 <script>

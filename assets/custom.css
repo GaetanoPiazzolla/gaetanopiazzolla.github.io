@@ -5,7 +5,7 @@ a {
     color: #00992c;
 }
 a:hover {
-    color:red
+    color: cadetblue;
 }
 
 /* Fix header overlap */
@@ -14,14 +14,27 @@ a:hover {
     background-color: whitesmoke;
 }
 
+.site-title {
+    color: black !important;
+}
+.site-title:hover {
+    color: cadetblue !important;
+}
+.post-category {
+    color: black !important;
+}
+.nav-item {
+    color: green !important;
+}
+.nav-item:hover {
+    color: cadetblue !important;
+}
+
 img {
     max-width: 100%;
     height: auto;
 }
 
-.page-content {
-    padding-top: 100px;
-}
 
 body{
     background-color: whitesmoke;
