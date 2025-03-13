@@ -10,7 +10,8 @@ a:hover {
 
 /* Fix header overlap */
 .site-header {
-    z-index: 1000; 
+    z-index: 1000;
+    background-color: whitesmoke;
 }
 
 img {
@@ -22,6 +23,6 @@ img {
     padding-top: 100px;
 }
 
-body, header{
-    background-color: #605c26;
+body{
+    background-color: whitesmoke;
 }
