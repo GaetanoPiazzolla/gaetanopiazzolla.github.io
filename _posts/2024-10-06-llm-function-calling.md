@@ -3,6 +3,7 @@ title: How to Configure AI Chat To Query APIs
 subtitle: With SpringAI and Approximately 50 lines of Code.
 layout: post
 date: 2024-06-10 16:00:00 +0200
+excerpt: In this article, we will implement Function-Calling, another way to customize LLM models to a specific need.
 categories:
   - Java
   - RAG

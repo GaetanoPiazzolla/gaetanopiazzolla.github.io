@@ -1,5 +1,5 @@
-title: Gaetano Piazzolla
-description: GitHub Page Website - Made with Jekyll and Minima Theme.
+title: Gaetano Piazzolla - Java, Spring And More
+description: Technical Articles About Java, Spring, Web App Development and More
 baseurl: "" # the subpath of your site, e.g. /blog
 url: http://gaetanopiazzolla.github.io # the base hostname & protocol for your site, e.g. http://example.com
 github_username: GaetanoPiazzolla
@@ -12,8 +12,16 @@ remote_theme: jekyll/minima
 
 minima:
   skin: classic
-  social_links:
-    - { platform: github,  user_url: "https://github.com/GaetanoPiazzolla" }
-    - { platform: stackoverflow, user_url: "https://stackoverflow.com/users/2768318/gaetano-piazzolla" }
+
+# Define which pages should appear in the navigation
+header_pages:
+  - pages/about.markdown
+
+show_excerpts: true
 
 google_analytics: G-PPMZFEW9CK
+
+# Collection for external articles
+collections:
+  external_articles:
+    output: false

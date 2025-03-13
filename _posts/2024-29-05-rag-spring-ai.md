@@ -2,6 +2,7 @@
 title: Retrieval Augmented Generation (RAG) with Spring, ReactJS, and PGVector
 layout: post
 date: 2024-05-29 07:00:00 +0100
+excerpt: We’ll build a Retrieval Augmented Generation (RAG) Tool using Spring Boot, ReactJS, and PGVector.
 categories:
   - Java
   - RAG

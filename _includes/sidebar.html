@@ -1,0 +1,208 @@
+{% include search.html %}
+
+<!-- Categories Section -->
+<div id="categories" class="article-section">
+  <h3>Articles by Category</h3>
+  
+  {% assign all_categories = "" | split: "" %}
+  
+  <!-- Collect categories from regular posts -->
+  {% for post in site.posts %}
+    {% for category in post.categories %}
+      {% assign all_categories = all_categories | push: category %}
+    {% endfor %}
+  {% endfor %}
+  
+  <!-- Collect categories from external articles -->
+  {% for article in site.external_articles %}
+    {% for category in article.categories %}
+      {% assign all_categories = all_categories | push: category %}
+    {% endfor %}
+  {% endfor %}
+  
+  <!-- Get unique categories -->
+  {% assign unique_categories = all_categories | uniq | sort %}
+  
+  <ul class="category-list">
+    {% for category in unique_categories %}
+      {% assign category_id = category | downcase | replace: ' ', '-' %}
+      <li>
+        <details id="cat-{{ category_id }}" {% if page.categories contains category %}open{% endif %}>
+          <summary>{{ category }}</summary>
+          <ul class="article-list">
+            {% for post in site.posts %}
+              {% if post.categories contains category %}
+                <li>
+                  <a href="{{ post.url | relative_url }}" {% if page.url == post.url %}class="current-article"{% endif %}>
+                    {{ post.title }}
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+            
+            {% for article in site.external_articles %}
+              {% if article.categories contains category %}
+                <li>
+                  <a href="{{ article.external_url }}" target="_blank">
+                    {{ article.title }} <span class="external-icon">↗</span>
+                  </a>
+                  <span class="source-tag">{{ article.source }}</span>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </details>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div id="medium" class="article-section">
+  <h3>Articles on Medium</h3>
+  <ul class="article-list">
+    <li><a href="https://medium.com/javarevisited/how-to-clone-a-java-object-9edcf8d91362" target="_blank">How to Clone a Java Object</a></li>
+    <li><a href="https://medium.com/@gae-piaz/10-common-mistakes-using-spring-data-jpa-2bdb7eaa3ce7" target="_blank">Common Mistakes Using Spring Data JPA</a></li>
+    <li><a href="https://medium.com/javarevisited/5-spring-boot-features-that-every-developer-should-know-4af6e0344c50" target="_blank">Spring Boot Features Every Developer Should Know</a></li>
+  </ul>
+  <a href="https://gae-piaz.medium.com/" target="_blank" class="view-all">View all (67)→</a>
+</div>
+
+<div id="baeldung" class="article-section">
+  <h3>Baeldung Contributions</h3>
+  <ul class="article-list">
+    <li><a href="https://www.baeldung.com/spring-retry-recover-logic" target="_blank">Spring Retry Recovery Logic</a></li>
+    <li><a href="https://www.baeldung.com/spring-boot-admin" target="_blank">Spring Boot Admin</a></li>
+    <li><a href="https://www.baeldung.com/spring-scheduled-tasks" target="_blank">Spring Task Scheduler</a></li>
+    <li><a href="https://www.baeldung.com/spring-boot-custom-starter" target="_blank">Custom Starter With Spring Boot</a></li>
+  </ul>
+  <a href="https://www.baeldung.com/author/gaetanopiazzolla" target="_blank" class="view-all">View all (13)→</a>
+</div>
+
+<div id="stack-overflow" class="article-section">
+  <h3>StackOverflow Q/A</h3>
+  <ul class="article-list">
+    <li><a href="https://www.baeldung.com/spring-retry-recover-logic" target="_blank">Spring Retry Recovery Logic</a></li>
+    <li><a href="https://www.baeldung.com/spring-boot-admin" target="_blank">Spring Boot Admin</a></li>
+    <li><a href="https://www.baeldung.com/spring-scheduled-tasks" target="_blank">Spring Task Scheduler</a></li>
+    <li><a href="https://www.baeldung.com/spring-boot-custom-starter" target="_blank">Custom Starter With Spring Boot</a></li>
+  </ul>
+  <a href="https://stackoverflow.com/users/2768318/gaetano-piazzolla" target="_blank" class="view-all">View all (76)→</a>
+</div>
+
+<!-- Script to open categories based on article -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the categories from meta tags if available
+    var metaTags = document.querySelectorAll('meta[property="article:tag"]');
+    if (metaTags.length > 0) {
+      metaTags.forEach(function(tag) {
+        var category = tag.getAttribute('content');
+        var categoryId = 'cat-' + category.toLowerCase().replace(/\s+/g, '-');
+        var detailsElement = document.getElementById(categoryId);
+        if (detailsElement) {
+          detailsElement.setAttribute('open', '');
+        }
+      });
+    }
+    
+    // Alternative approach: if the page has a category class
+    var bodyClasses = document.body.classList;
+    for (var i = 0; i < bodyClasses.length; i++) {
+      var className = bodyClasses[i];
+      if (className.startsWith('category-')) {
+        var category = className.replace('category-', '');
+        var detailsElement = document.getElementById('cat-' + category);
+        if (detailsElement) {
+          detailsElement.setAttribute('open', '');
+        }
+      }
+    }
+  });
+</script>
+
+<style>
+  .sidebar {
+    width: 320px;
+    margin-top: 0px;
+  }
+  
+  .sidebar-section {
+    padding: 15px;
+    border-right: 1px solid #e8e8e8;
+    padding-right: 25px;
+  }
+  
+  .article-section {
+    margin-bottom: 30px;
+  }
+  
+  .article-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+  }
+  
+  .article-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 10px;
+  }
+  
+  .article-list li {
+    margin-bottom: 12px;
+    font-size: 0.95em;
+    line-height: 1.4;
+  }
+  
+  .view-all {
+    font-size: 0.9em;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    color: #2a7ae2;
+  }
+  
+  /* Category-specific styles */
+  .category-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .category-list details {
+    margin-bottom: 10px;
+  }
+  
+  .category-list summary {
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .category-list .article-list {
+    padding-left: 15px;
+  }
+  
+  .external-icon {
+    font-size: 0.8em;
+    vertical-align: super;
+  }
+  
+  .source-tag {
+    font-size: 0.8em;
+    color: #666;
+    margin-left: 5px;
+  }
+  
+  .current-article {
+    font-weight: bold;
+    color: #2a7ae2;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      order: 2;
+    }
+    
+  }
+</style>

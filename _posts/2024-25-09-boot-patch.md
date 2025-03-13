@@ -1,5 +1,6 @@
 ---
 title: Spring Boot JSON Patch done Right
+excerpt: This approach is designed to be generic, reusable, and optimized, so it should be easy to apply to any Spring-Boot-based and JPA-based based project.
 layout: post
 date:   2024-09-25 08:00:00 +0100
 categories:

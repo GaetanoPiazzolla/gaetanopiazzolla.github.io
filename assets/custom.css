@@ -7,3 +7,17 @@ a {
 a:hover {
     color:red
 }
+
+/* Fix header overlap */
+.site-header {
+    z-index: 1000; 
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.page-content {
+    padding-top: 100px;
+}

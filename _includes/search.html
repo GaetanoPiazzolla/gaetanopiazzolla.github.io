@@ -1,0 +1,64 @@
+<div class="search-container">
+  <input type="text" id="search-input" placeholder="Search Posts...">
+  <div id="search-wrapper" style="display: none;">
+    <div id="search-results"></div>
+  </div>
+</div> 
+
+
+<!-- Include search JavaScript -->
+<script src="{{ '/assets/js/search.js' | relative_url }}"></script>
+
+<!-- Sidebar styles -->
+<style>
+  .search-container {
+    margin-bottom: 30px;
+    position: relative;
+  }
+  
+  #search-input {
+    width: 90%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  #search-wrapper {
+    position: absolute;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  #search-results {
+    padding: 10px;
+  }
+  
+  .search-results-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .search-results-list li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .search-results-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .search-results-list li a {
+    display: block;
+    color: #2a7ae2;
+    text-decoration: none;
+    font-weight: 500;
+  }
+</style> 

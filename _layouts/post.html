@@ -1,0 +1,93 @@
+---
+layout: base
+---
+
+{% if page.categories %}
+  <!-- Add category meta tags for JavaScript detection -->
+  {% for category in page.categories %}
+    <meta property="article:tag" content="{{ category }}">
+  {% endfor %}
+{% endif %}
+
+<div class="home-container">
+  <div class="sidebar">
+    <div class="sidebar-section">
+      {% include sidebar.html %}
+    </div>
+  </div>
+  
+  <div class="home-content">
+    <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+      <header class="post-header">
+        <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+        <p class="post-meta">
+          <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            {{ page.date | date: date_format }}
+          </time>
+          {%- if page.author -%}
+            • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+          {%- endif -%}
+          {%- if page.categories -%}
+            • 
+            {% for category in page.categories %}
+              <span class="post-category">{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+          {%- endif -%}
+        </p>
+      </header>
+
+      <div class="post-content e-content" itemprop="articleBody">
+        {{ content }}
+      </div>
+
+      <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+    </article>
+  </div>
+</div>
+
+<style>
+  /* Override Minima's max-width constraints */
+  .wrapper {
+    max-width: 94% !important;
+    width: 94% !important;
+  }
+
+  .home-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }
+  
+  .home-content {
+    flex: 1;
+  }
+  
+  .post-category {
+    font-weight: 500;
+    color: #2a7ae2;
+  }
+  
+  @media (max-width: 768px) {
+    .home-container {
+      flex-direction: column;
+    }
+    
+    .sidebar {
+      width: 100%;
+      order: 2;
+    }
+    
+    .home-content {
+      order: 1;
+    }
+    
+    .sidebar-section {
+      border-right: none;
+      border-top: 1px solid #e8e8e8;
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+  }
+</style> 
