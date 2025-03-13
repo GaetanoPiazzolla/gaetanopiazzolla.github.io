@@ -4,7 +4,7 @@ date: 2023-11-15
 external_url: "https://www.baeldung.com/java-kafka-partition-count-topic"
 source: "Baeldung"
 excerpt: "Explore how to retrieve the total number of partitions of a specific Kafka Topic using Java and CLI."
-categories: Data
+categories: Kafka
 ---
 
 This article is available on Baeldung. Click the link to read it. 

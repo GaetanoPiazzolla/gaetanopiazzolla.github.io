@@ -1,5 +1,11 @@
 {% include search.html %}
 
+<!-- Total Articles Counter -->
+<div class="article-counter">
+  {% assign total_articles = site.posts.size | plus: site.external_articles.size %}
+  <p>Total: {{ total_articles }}</p>
+</div>
+
 <!-- Categories Section -->
 <div id="categories" class="article-section">
   <h3>Articles by Category</h3>
@@ -198,11 +204,24 @@
     color: #2a7ae2;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1250px) {
     .sidebar {
-      width: 100%;
-      order: 2;
+      display:none;
     }
-    
+  }
+
+  /* Add this to your existing styles */
+  .article-counter {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .article-counter p {
+    margin: 0;
+    color: #555;
   }
 </style>

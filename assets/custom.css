@@ -21,3 +21,7 @@ img {
 .page-content {
     padding-top: 100px;
 }
+
+body, header{
+    background-color: #605c26;
+}

@@ -1,7 +1,16 @@
 ---
 layout: page
-title: Who's behind this?
+title: Who's Behind This? 🥷
 permalink: /about/
+---
+
+<div align="center">
+<img src="/assets/About.jpg" style="content-visibility:auto"
+alt="Thats me"
+loading="lazy" width="300px"
+decoding="async">
+</div>
+
 ---
 
 Hello!
@@ -27,14 +36,5 @@ My honest purpose is to help!
 
 Here you can find my [Curriculum Vitae](/assets/CV_2025.pdf) with my personal contact information in case you are interested.
 
----
 
-<div align="center">
-<img src="/assets/About.jpg" style="content-visibility:auto"
-alt="Thats me"
-loading="lazy" width="300px"
-decoding="async">
-</div>
-
----
 

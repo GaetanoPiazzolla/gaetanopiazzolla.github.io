@@ -4,7 +4,7 @@ layout: null
 [
   {% for post in site.posts %}
     {
-      "title"    : "{{ post.title | escape }}",
+      "title"    : {{ post.title | jsonify }},
       "url"      : "{{ site.baseurl }}{{ post.url }}",
       "date"     : "{{ post.date | date: "%b %-d, %Y" }}",
       "content"  : {{ post.content | strip_html | jsonify }}
@@ -14,12 +14,12 @@ layout: null
     {% if site.posts.size > 0 %},{% endif %}
     {% for article in site.external_articles %}
       {
-        "title"    : "{{ article.title | escape }}",
+        "title"    : {{ article.title | jsonify }},
         "url"      : "{{ article.external_url }}",
         "date"     : "{{ article.date | date: "%b %-d, %Y" }}",
-        "content"  : "{{ article.excerpt | strip_html }}",
+        "content"  : {{ article.excerpt | strip_html | jsonify }},
         "external" : true,
-        "source"   : "{{ article.source }}"
+        "source"   : {{ article.source | jsonify }}
       }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   {% endif %}
