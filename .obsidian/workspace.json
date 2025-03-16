@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "canvas",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -165,8 +165,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "793dac64dbf027da",
+  "active": "794016472744dfab",
   "lastOpenFiles": [
+    "_layouts/post.html",
+    "_layouts/post-with-donation.html",
+    "_includes/donation-form.html",
     "_site/spring/design-patterns/2024/12/15/event-spring.html",
     "_site/spring/design-patterns/2024/12/15",
     "_site/spring/design-patterns/2024/12",
@@ -175,9 +178,6 @@
     "_site/spring",
     "_site/javascript/2023/03/15/javascript-error.html",
     "_site/javascript/2023/03/15",
-    "_site/javascript/2023/03",
-    "_site/javascript/2023",
-    "_site/javascript",
     "_site/assets/tunnel.jpg",
     "_site/assets/testcontainers/splash.jpg",
     "_site/assets/testcontainers/dockercont.png",
