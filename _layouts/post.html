@@ -10,11 +10,6 @@ layout: base
 {% endif %}
 
 <div class="home-container">
-  <div class="sidebar">
-    <div class="sidebar-section">
-      {% include sidebar.html %}
-    </div>
-  </div>
   
   <div class="home-content">
     <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
@@ -52,18 +47,7 @@ layout: base
 </div>
 
 <style>
-  /* Override Minima's max-width constraints */
-  .wrapper {
-    max-width: 94% !important;
-    width: 94% !important;
-  }
 
-  .home-container {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-  }
-  
   .home-content {
     flex: 1;
   }
