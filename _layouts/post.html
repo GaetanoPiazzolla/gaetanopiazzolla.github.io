@@ -9,9 +9,9 @@ layout: base
   {% endfor %}
 {% endif %}
 
-<div class="home-container">
+<div>
   
-  <div class="home-content">
+  <div>
     <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
       <header class="post-header">
@@ -47,35 +47,23 @@ layout: base
 </div>
 
 <style>
-
-  .home-content {
-    flex: 1;
+  .post-image {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 4px;
+    margin-bottom: 20px;
   }
-  
-  .post-category {
-    font-weight: 500;
-    color: #2a7ae2;
+  .post-image-container {
+    text-align: center;
+    margin: 30px 0;
   }
-  
-  @media (max-width: 768px) {
-    .home-container {
-      flex-direction: column;
-    }
-    
-    .sidebar {
-      width: 100%;
-      order: 2;
-    }
-    
-    .home-content {
-      order: 1;
-    }
-    
-    .sidebar-section {
-      border-right: none;
-      border-top: 1px solid #e8e8e8;
-      padding-top: 20px;
-      margin-top: 20px;
-    }
+  .post-image-subtitle {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    font-style: italic;
   }
 </style> 
