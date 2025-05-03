@@ -7,11 +7,12 @@ categories: Resilience
 
 ## 1. Introduction
 
-The vast majority of applications need to interact to an API, in order to send emails, print powerpoints, 
-create documents, or (just to stay in today's trends), send messages to LLMs. In this tutorial, 
-we’ll present some best practices for resilience when dealing with External APIs.
-Most of the methodologies presented here are well known and familiar, as the "reply" or "health checks"; 
-some of them are not as the _fuse-breaker_ + feature toggle. Let's start from the easy ones.
+The vast majority of applications need to interact with an API, in order to send emails, 
+print PowerPoint, create documents, or (just to stay in today's trends), send messages to LLMs.
+
+In this tutorial, we'll present some best practices for resilience when dealing with External APIs.
+Most of the methodologies presented here are well known and familiar, such as the "reply" or "health checks," 
+but some of them are not, such as the fuse-breaker + feature toggle. Let's start with the easy ones.
 
 <div align="center">
     <img src="/assets/fuse-breaker.png" style="content-visibility:auto" alt="Fuse breaker" loading="lazy" decoding="async">
@@ -21,15 +22,15 @@ some of them are not as the _fuse-breaker_ + feature toggle. Let's start from th
 ## 2. Replay and Circuit Breaker
 
 **Replay is nothing more than a fancy for-loop that retries an API call until the response is successful.
-Circuit Breaker is a way of avoiding continue calls to an external service that is not responding correctly.**
+Circuit Breaker is a way of avoiding continuous calls to an external service that is not responding correctly.**
 
-Both are fundamental to build resilient API connection with external services.
+Both are fundamental to build a resilient API connection with external services.
 
-Implementation in a Spring Boot App is straight forward. In most of my projects 
-I usually choose to rely on the simple Spring-Provided annotation, but it's possible for more advanced 
-configurations, to use [Resilience4J](https://resilience4j.readme.io/docs/getting-started). 
+Implementation in a Spring Boot App is straightforward. In most of my projects,
+I usually choose to rely on the simple Spring-provided annotation, but it's possible for more advanced 
+configurations to use [Resilience4J](https://resilience4j.readme.io/docs/getting-started). 
 Most of the projects do not require that level of sophistication. 
-Usually the [spring-retry](https://docs.spring.io/spring-batch/docs/4.3.10/reference/html/retry.html) library 
+Usually, the [spring-retry](https://docs.spring.io/spring-batch/docs/4.3.10/reference/html/retry.html) library 
 is more than enough:
 
 ```groovy
@@ -77,10 +78,10 @@ public List<StockPriceDTO> recover(Exception ex, String symbol) {
 
 ## 3. Health Checks
 
-Checking the status of the external API connection when the application starts and at regular intervals,
+Checking the status of the external API connection when the application starts and at regular intervals
 can help us great time in improving resiliency. 
 We'll be notified as soon as the external connection is not responding. 
-With spring-boot actuator library, it's possible to define custom actuators:
+With the Spring Boot actuator library, it's possible to define custom actuators:
 
 ```java
 @Component
@@ -112,16 +113,16 @@ public class ExternalServiceHealthIndicator implements HealthIndicator {
 
 This is especially useful if the service is relying on the external API for core functionality, 
 and it's tightly coupled with it. 
-The _health()_ method will typically be executed by a kubernetes probe regularly, that will notify the caller if
+The _health()_ method will typically be executed by a Kubernetes probe regularly, which will notify the caller if
 the external service is not reachable by returning a 5xx HTTP response code.
 
-Frequently it is enough to check if something is wrong in the configuration of the API stubs
+Frequently, it is enough to check if something is wrong in the configuration of the API stubs
 (e.g., someone updated the ENV-var with the wrong URL). In that case, we can replace the health probe with a simple
 _CommandLineRunner_ executed at application startup.
 
 ## 4. Timeouts and Connection Pooling
 
-When configuring REST calls inside a spring boot application,
+When configuring REST calls inside a Spring Boot application,
 we need to configure timeouts and connection pooling as well.
 There are various ways of calling a REST method. 
 In this example, let's add to the Spring context a _RestTemplate_ bean configured properly:
@@ -162,19 +163,21 @@ waiting for a response.**
 
 A fuse is a device (present in Car electrical circuits) that protects the vehicle from over current.
 **Once the fuse is broken, the feature related to it does not work anymore, 
-and a manual intervention is needed to replace it.**
+and manual intervention is needed to replace it.**
 
 We can apply the same concept to our application.
 If an external service, notwithstanding the _Retries_ and the _Circuit_ opening several times, 
-continues to have problems and respond with errors, we can disable the functionality until a manual intervention.
+continues to have problems and respond with errors, we can disable the functionality until manual intervention.
 It's different from the CircuitBreaker because it never reset: the circuit remains in a broken state.
 
 The point behind this is: **do we really want the users to experience thousands of errors? 
-Isn't it better to completely disable the feature and wait for a manual intervention?**
+Isn't it better to completely disable the feature?**
 
-Let's think of a real case scenarios. We have an application that is building powerpoints calling an external APIs.
-The external APIs are broken. Maybe a mis-configuration by the caller, or a permanent outage. We can disable the feature flag
-and entirely hide the button in the application, showing a message to notify users that the feature is currently not working.
+Let's think of a real case scenario. 
+We have an application that is building a PowerPoint, 
+calling an external API. The external APIs are broken. 
+Maybe a misconfiguration by the caller, or a permanent outage. We can disable the feature flag and entirely 
+hide the button in the application, showing a message to notify users that the feature is currently not working.
 
 Let's create a simple annotation that will be used to implement this behavior:
 
@@ -285,7 +288,7 @@ if our application is running on multiple PODs, we need to use an external stora
 
 ## 6. Conclusion and Code
 
-As always, the code is available for you to read, criticize, blame or copy-paste at: 
+As always, the code is available for you to read, criticize, blame, or copy-paste at: 
 
 [https://github.com/GaetanoPiazzolla/reslient-fuse-breaker](https://github.com/GaetanoPiazzolla/reslient-fuse-breaker)
 
