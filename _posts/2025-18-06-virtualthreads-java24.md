@@ -52,7 +52,7 @@ but also in a visual form thanks to an ad-hoc built grafana dashboard:
 
 We tested different combinations of:
 - **Java versions**: 19 and 24
-- **Spring Boot versions**: 3.3.12 and 4.0.0
+- **Spring Boot versions**: 3.3.12 and 3.5.0
 - **Thread types**: Platform threads vs Virtual threads
 
 We used K6 for load testing with three distinct scenarios:
@@ -73,8 +73,8 @@ Our [comprehensive testing](https://docs.google.com/spreadsheets/d/10hZbWEWX9gv0
 | Java Version | Spring Boot Version | Platform Threads (req/s) | Virtual Threads (req/s) | Difference |
 |--------------|---------------------|---------------------------|-------------------------|------------|
 | 19           | 3.3.12              | 125.81                   | 123.83                  | -1.6%      |
-| 19           | 4.0.0               | 124.83                   | 125.32                  | +0.4%      |
-| 24           | 4.0.0               | 125.45                   | 125.38                  | -0.1%      |
+| 19           | 3.5.0               | 124.83                   | 125.32                  | +0.4%      |
+| 24           | 3.5.0               | 125.45                   | 125.38                  | -0.1%      |
 
 **Key Finding**: At low concurrency levels, performance is virtually identical across all version combinations and thread types.
 
@@ -83,8 +83,8 @@ Our [comprehensive testing](https://docs.google.com/spreadsheets/d/10hZbWEWX9gv0
 | Java Version | Spring Boot Version | Platform Threads (req/s) | Virtual Threads (req/s) | Error Rate (Virtual) |
 |--------------|---------------------|---------------------------|-------------------------|---------------------|
 | 19           | 3.3.12              | 71.59                    | 71.52                   | 0.55%               |
-| 19           | 4.0.0               | 61.79                    | 62.94                   | 0.68%               |
-| 24           | 4.0.0               | 61.43                    | 64.32                   | 0.65%               |
+| 19           | 3.5.0               | 61.79                    | 62.94                   | 0.68%               |
+| 24           | 3.5.0               | 61.43                    | 64.32                   | 0.65%               |
 
 **Key Finding**: Even under moderate load, version differences are minimal. Virtual threads show slight performance variations but no clear version-based pattern.
 
@@ -93,8 +93,8 @@ Our [comprehensive testing](https://docs.google.com/spreadsheets/d/10hZbWEWX9gv0
 | Java Version | Spring Boot Version | Platform Threads (req/s) | Virtual Threads (req/s) | Virtual Thread Error Rate |
 |--------------|---------------------|---------------------------|-------------------------|---------------------------|
 | 19           | 3.3.12              | 61.07                    | 88.04                   | 23.93%                    |
-| 19           | 4.0.0               | 49.92                    | 85.19                   | 29.94%                    |
-| 24           | 4.0.0               | 49.01                    | 87.11                   | 28.76%                    |
+| 19           | 3.5.0               | 49.92                    | 85.19                   | 29.94%                    |
+| 24           | 3.5.0               | 49.01                    | 87.11                   | 28.76%                    |
 
 **Key Finding**: Under extreme concurrency, we have a significantly higher error rates (23-30%) with Virtual Threads regardless of Java or Spring Boot version.
 
@@ -186,7 +186,7 @@ Our testing revealed that virtual threads are neither the silver bullet they're 
 
 **Key takeaways from our version testing:**
 - Java version (19 vs 24) has minimal impact on virtual thread performance
-- Spring Boot version (3.3.12 vs 4.0.0) shows no significant performance differences
+- Spring Boot version (3.3.12 vs 3.5.0) shows no significant performance differences
 - JEP 491 in Java 24 doesn't resolve the fundamental connection pooling issues
 
 For most Spring Boot applications handling typical web traffic, the performance difference is negligible. The decision to adopt virtual threads should be based on specific scalability requirements, not general performance assumptions or version considerations.
@@ -206,4 +206,4 @@ In the next articles:
 
 ---
 
-*This analysis was conducted using Spring Boot 3.3.12 and 4.0.0 with Java 19 and 24, using K6 for load testing and PostgreSQL for database operations. The complete testing framework and application code are available on [GitHub](https://github.com/GaetanoPiazzolla/spring-boot-virtual-threads-test).*
+*This analysis was conducted using Spring Boot 3.3.1 and 3.5.0 with Java 19 and 24, using K6 for load testing and PostgreSQL for database operations. The complete testing framework and application code are available on [GitHub](https://github.com/GaetanoPiazzolla/spring-boot-virtual-threads-test).*
