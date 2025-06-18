@@ -199,6 +199,7 @@ The future of Java concurrency is bright, but it requires thoughtful adoption, n
 
 In the next articles:
 
+- we'll try to FORK hikariCP to provide a different implementation of the ConcurrentBag
 - we'll set up the connection parameters of Hikari CP as the connection timeout in order to achieve the maximum performance with a prefixed number of connection pool
 - we'll use and test an HikariCP alternative, built by the Red Hat / Quarkus team, which is Loom-friendly (designed with support for virtual threads in mind): [Agroal](https://github.com/agroal/agroal).
 - we'll test a new workload that involves also different scenarios than database queries, as calls to external services
