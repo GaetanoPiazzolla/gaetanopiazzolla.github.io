@@ -1,0 +1,50 @@
+<div id="subscribe" class="article-section">
+  <h3>Subscribe to Updates</h3>
+  <p class="subscribe-description">Get notified when I publish new articles about Java, Spring, and web development.</p>
+  
+  <div class="subscribe-options">
+    <ul class="subscribe-links">
+      <li><a href="{{ '/feed.xml' | relative_url }}" target="_blank">📡 RSS Feed</a></li>
+      <li><a href="https://github.com/{{ site.github_username }}/{{ site.github_username }}.github.io" target="_blank">⭐ Watch Repository</a></li>
+    </ul>
+  </div>
+</div>
+
+<style>
+.subscribe-description {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.subscribe-options {
+  margin-top: 10px;
+}
+
+.subscribe-links {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.subscribe-links li {
+  margin-bottom: 8px;
+}
+
+.subscribe-links a {
+  color: #2a7ae2;
+  text-decoration: none;
+  font-size: 0.95em;
+  display: block;
+  padding: 8px 12px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.subscribe-links a:hover {
+  background-color: #f8f9fa;
+  text-decoration: none;
+}
+</style> 

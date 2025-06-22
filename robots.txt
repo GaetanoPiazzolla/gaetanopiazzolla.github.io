@@ -1,0 +1,10 @@
+# Allow all crawlers to access all content
+User-agent: *
+Allow: /
+
+# Disallow crawling of the vendor directory
+User-agent: *
+Disallow: /vendor/
+
+# Point to the sitemap
+Sitemap: {{ "/sitemap.xml" | absolute_url }} 

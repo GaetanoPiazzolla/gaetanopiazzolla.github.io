@@ -33,11 +33,11 @@ layout: base
         </p>
       </header>
 
+      {% include post-subscribe.html %}
+
       <div class="post-content e-content" itemprop="articleBody">
         {{ content }}
-        <div>
-          {% include donation-form.html %}
-        </div>
+        {% include post-subscribe.html %}
       </div>
 
       <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
