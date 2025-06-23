@@ -2,6 +2,7 @@
 title: Understanding Spring's Proxy Pattern - How @Transactional, @Cacheable, and @Secured Actually Work
 layout: post
 date: 2025-06-23 18:00:00 +0100
+excerpt: The Proxy Pattern applied in spring, and why @Transactional does not work on private or final methods. 
 categories:
   - Java
 ---
@@ -38,7 +39,8 @@ decoding="async">
 
 ## The Discovery That Changes Everything
 
-Here's what I discovered: Every time you use annotations like `@Transactional`, `@Cacheable`, or `@Secured`, you're not just adding metadata to your classes. You're triggering Spring to perform what I now call "The Great Substitution"—a sleight of hand so seamless that most developers never realize it's happening.
+Here's what I discovered: Every time you use annotations like `@Transactional`, `@Cacheable`, or `@Secured`, you're not just adding metadata to your classes.
+You're triggering Spring to perform what I now call "The Great Substitution"—a sleight of hand so seamless that most developers never realize it's happening.
 
 Let me show you exactly what I mean. When you write this seemingly innocent code:
 
