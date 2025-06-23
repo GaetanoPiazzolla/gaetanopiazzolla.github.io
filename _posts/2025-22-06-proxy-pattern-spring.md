@@ -253,7 +253,6 @@ I could inject the service into itself, forcing Spring to inject the proxy:
 
 ```java
 @Service
-@Transactional
 public class UserService {
     
     @Autowired
