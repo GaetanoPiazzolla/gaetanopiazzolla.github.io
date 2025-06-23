@@ -7,10 +7,6 @@ categories:
   - Java
 ---
 
-_Disclaimer: This article was written with a small aid of LLMs (Claude and ChatGPT)_
-
----
-
 Last week, I was debugging a production issue that had me stumped for hours. 
 A critical transaction wasn't rolling back when it should have, 
 even though the method was clearly annotated with `@Transactional`. 
@@ -325,3 +321,7 @@ The next time you encounter mysterious Spring behavior—transactions that don't
 caches that don't clear, security that doesn't enforce—you'll know exactly where to look. 
 You'll understand that behind every Spring annotation is a proxy, 
 silently working to make your code more powerful than you ever wrote it to be.
+
+___
+
+_Disclaimer: This article was written with a small aid of LLMs (Claude and ChatGPT)_
