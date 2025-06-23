@@ -1,5 +1,6 @@
 ---
 title: Firebase Auth With Spring Security
+image: /assets/favicon/android-chrome-512x512.png
 layout: post
 date:   2024-06-27 10:55:00 +0100
 categories:
@@ -7,6 +8,7 @@ categories:
   - Firebase
   - Security
 ---
+
 
 In this article, we will configure a Spring Boot application to authenticate using the Firebase authentication token. 
 Disclaimer: This article was originally a response to this [medium article](https://medium.com/comsystoreply/authentication-with-firebase-auth-and-spring-security-fcb2c1dc96d)

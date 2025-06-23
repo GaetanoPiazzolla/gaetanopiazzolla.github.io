@@ -1,5 +1,6 @@
 ---
 title: How to Configure AI Chat To Query APIs
+image: /assets/rag-spring-ai/cover.png
 subtitle: With SpringAI and Approximately 50 lines of Code.
 layout: post
 date: 2024-06-10 16:00:00 +0200
@@ -8,6 +9,7 @@ categories:
   - Java
   - RAG
 ---
+
 #### _With SpringAI and Approximately 50 lines of Code._
 
 In the previous article, we built a [Smart Document Assistant](https://gaetanopiazzolla.github.io/java/rag/2024/05/23/rag-spring-ai.html): 

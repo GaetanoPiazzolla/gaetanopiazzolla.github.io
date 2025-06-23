@@ -1,10 +1,12 @@
 ---
 title: Virtual Threads With Java 24 - Will it Scale?
+image: /assets/threads.png
 layout: post
 date: 2025-06-18 17:00:00 +0100
 categories:
   - Java
 ---
+
 
 A deep dive into Java's virtual threads performance characteristics
 and the hidden infrastructure challenges they expose.

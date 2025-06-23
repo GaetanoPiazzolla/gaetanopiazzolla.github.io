@@ -1,5 +1,6 @@
 ---
 title: Tremendous Simplification of SpringBoot Development with TestContainers
+image: /assets/testcontainers/splash.jpg
 layout: post
 date:   2023-05-27 08:00:00 +0100
 categories:
@@ -7,6 +8,7 @@ categories:
   - Docker
   - SpringBoot
 ---
+
 
 A couple of weeks ago, [Spring Boot 3.1.0](https://spring.io/blog/2023/05/18/spring-boot-3-1-0-available-now) has been released, and it contains _some tasty features_.
 In this article, we'll focus on the brand-new built-in integration with [TestContainers](https://docs.spring.io/spring-boot/docs/3.1.0/reference/html/features.html#features.testing.testcontainers). 

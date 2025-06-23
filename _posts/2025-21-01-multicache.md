@@ -1,10 +1,12 @@
 ---
 title: Multi-Layer Cache in Spring Boot
+image: /assets/cache.jpg
 layout: post
 date: 2025-01-27 16:00:00 +0100
 categories:
   - Java
 ---
+
 
 In this article, we'll explore the concept of multi-layer caching in Spring Boot applications.
 

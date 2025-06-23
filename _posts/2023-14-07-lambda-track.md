@@ -1,11 +1,13 @@
 ---
 title: "AWS Lambda with Java: Build, Deploy, Expose, Trace and Monitor"
+image: /assets/lambda/map.png
 layout: post
 date:   2023-07-13 00:00:00 +0200
 excerpt: "In this article, we’ll implement a component of a distributed system in the AWS Cloud Environment: a Lambda serverless function."
 categories:
   - Java
 ---
+
 
 <div align="center">
 <img src="/assets/lambda/map.png" style="content-visibility:auto"

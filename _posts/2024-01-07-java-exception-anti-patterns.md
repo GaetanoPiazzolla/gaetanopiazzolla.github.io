@@ -1,5 +1,6 @@
 ---
 title: Java Exception Anti-Patterns
+image: /assets/favicon/android-chrome-512x512.png
 layout: post
 date:   2024-07-01 17:00:00 +0100
 categories:
@@ -7,6 +8,7 @@ categories:
   - Exception
   - Patterns
 ---
+
 
 Achieve Efficient Maintainable and Simple Java Exception handling killing those anti-patterns.
 

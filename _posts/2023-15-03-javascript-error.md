@@ -1,10 +1,12 @@
 ---
 title: Efficient Error Handling Tips for Javascript Web Clients
+image: /assets/icecone.png
 layout: post
 date:   2023-03-15 20:15:00 +0100
 categories: 
   - JavaScript
 ---
+
 
 Error handling in Javascript-based web clients is a fundamental constituting part of a web application.
 Poor error handling can sink your system before it even learns to float.

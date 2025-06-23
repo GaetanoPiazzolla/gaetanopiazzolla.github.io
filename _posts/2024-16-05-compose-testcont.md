@@ -1,5 +1,6 @@
 ---
 title: TestContainers with Docker Compose in SpringBoot 3  
+image: /assets/ceiling.png
 layout: post
 date:   2024-05-16 08:00:00 +0100
 excerpt: "TestContainers + Docker Compose to simplify the testing of complex scenarios."
@@ -8,6 +9,7 @@ categories:
   - Docker
   - SpringBoot
 ---
+
 
 ## Introduction
 

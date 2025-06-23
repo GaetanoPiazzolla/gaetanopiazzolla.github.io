@@ -1,11 +1,13 @@
 ---
 title: Understanding Spring's Proxy Pattern - How @Transactional, @Cacheable, and @Secured Actually Work
+image: /assets/proxy-pattern.png
 layout: post
 date: 2025-06-23 18:00:00 +0100
 excerpt: The Proxy Pattern applied in spring, and why @Transactional does not work on private or final methods. 
 categories:
   - Java
 ---
+
 
 Last week, I was debugging a production issue that had me stumped for hours. 
 A critical transaction wasn't rolling back when it should have, 

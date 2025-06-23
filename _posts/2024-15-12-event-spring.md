@@ -1,11 +1,13 @@
 ---
 title: Event Notification Pattern with Spring Data
+image: https://cdn-images-1.medium.com/v2/0*ZW7xuJSrQ9h-g9lT
 layout: post
 date: 2024-12-15 17:00:00 +0100
 categories:
   - Spring
   - Design-Patterns
 ---
+
 
 In This article, we will implement a simple [Event Notification Pattern](https://martinfowler.com/articles/201701-event-driven.html) using Spring Data.
 

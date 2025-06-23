@@ -1,9 +1,11 @@
 ---
 title: "Don't Let a Broken API Take Down Your Spring Boot App"
+image: /assets/fuse-breaker.png
 date:   2025-05-03 17:00:00 +0100
 excerpt: "In this tutorial, we’ll present some best practices for resilience when dealing with External APIs."
 categories: Resilience
 ---
+
 
 ## 1. Introduction
 

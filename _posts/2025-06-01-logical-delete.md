@@ -1,5 +1,6 @@
 ---
 title: Mastering Logical Deletion in Spring Boot with JPA - Enhancing @SQLDelete with Custom Parameters
+image: https://cdn-images-1.medium.com/v2/resize:fit:1600/0*VJbObkWNfbwyYDRq
 layout: post
 date: 2025-01-06 18:00:00 +0100
 categories:
@@ -7,6 +8,7 @@ categories:
   - JPA
   - SpringBoot
 ---
+
 
 A practical guide to implementing logical delete with Spring Data JPA, designed for clarity and real-world use.
 
