@@ -323,6 +323,10 @@ caches that don't clear, security that doesn't enforce—you'll know exactly whe
 You'll understand that behind every Spring annotation is a proxy, 
 silently working to make your code more powerful than you ever wrote it to be.
 
+## Further reading
+
+A related intriguing story: [how Spring applies the Chain Of Responsibility Design Pattern](https://gaetanopiazzolla.github.io/java/2025/06/24/spring-filter-chain-article.html)
+
 ___
 
 _Disclaimer: This article was written with a small aid of LLMs (Claude and ChatGPT)_
