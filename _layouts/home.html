@@ -22,6 +22,9 @@ layout: base
 
       {{ content }}
 
+      <!-- Home page top ad (subtle placement) -->
+      {% include google-ads.html slot=site.google_adsense_slots.home_top class="top-ad" format="auto" %}
+
       {% if site.paginate %}
         {% assign posts = paginator.posts %}
       {% else %}

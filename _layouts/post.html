@@ -35,10 +35,22 @@ layout: base
 
       {% include post-subscribe.html %}
 
+      <!-- Top of article ad (non-invasive) -->
+      {% include google-ads.html slot=site.google_adsense_slots.top_article class="top-ad" format="auto" %}
+
       <div class="post-content e-content" itemprop="articleBody">
         {{ content }}
+        
+        <!-- In-article ad (appears in middle of long articles) -->
+        {% if content.size > 2000 %}
+          {% include in-article-ad.html slot=site.google_adsense_slots.in_article %}
+        {% endif %}
+        
         {% include post-subscribe.html %}
       </div>
+
+      <!-- Bottom of article ad -->
+      {% include google-ads.html slot=site.google_adsense_slots.bottom_article class="bottom-ad" format="auto" %}
 
       <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
     </article>

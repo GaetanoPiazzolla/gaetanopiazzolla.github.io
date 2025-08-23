@@ -23,6 +23,16 @@ show_excerpts: true
 
 google_analytics: G-PPMZFEW9CK
 
+google_adsense: ca-pub-4407573159416265
+
+# Ad slot IDs (you'll get these from Google AdSense after approval)
+# google_adsense_slots:
+#   top_article: "XXXXXXXXXX"
+#   bottom_article: "XXXXXXXXXX" 
+#   in_article: "XXXXXXXXXX"
+#   sidebar: "XXXXXXXXXX"
+#   home_top: "XXXXXXXXXX"
+
 # Collection for external articles
 collections:
   external_articles:
