@@ -87,3 +87,24 @@ body{
         max-width: 100%;
     }
 }
+
+/* Simple Footer Styling */
+.footer-content {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-links {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.footer-links a {
+    color: #666;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #00992c;
+    text-decoration: underline;
+}

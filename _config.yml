@@ -15,10 +15,6 @@ remote_theme: jekyll/minima
 minima:
   skin: classic
 
-# Define which pages should appear in the navigation
-header_pages:
-  - pages/about.markdown
-
 show_excerpts: true
 
 google_analytics: G-PPMZFEW9CK
