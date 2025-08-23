@@ -36,18 +36,35 @@ layout: base
           <h2 class="post-list-heading">{{ page.list_title }}</h2>
         {%- endif -%}
         
-        {% assign combined_posts = '' | split: '' %}
-        {% for post in posts %}
-          {% assign combined_posts = combined_posts | push: post %}
-        {% endfor %}
-        {% for article in site.external_articles %}
-          {% assign combined_posts = combined_posts | push: article %}
-        {% endfor %}
-        {% assign sorted_posts = combined_posts | sort: 'date' | reverse %}
+        {% if site.paginate %}
+          <!-- For paginated view, show only paginated posts -->
+          {% assign combined_posts = paginator.posts %}
+          <!-- Add external articles only on first page -->
+          {% if paginator.page == 1 %}
+            {% assign temp_posts = '' | split: '' %}
+            {% for post in paginator.posts %}
+              {% assign temp_posts = temp_posts | push: post %}
+            {% endfor %}
+            {% for article in site.external_articles %}
+              {% assign temp_posts = temp_posts | push: article %}
+            {% endfor %}
+            {% assign combined_posts = temp_posts | sort: 'date' | reverse %}
+          {% endif %}
+        {% else %}
+          <!-- For non-paginated view, show all posts -->
+          {% assign combined_posts = '' | split: '' %}
+          {% for post in posts %}
+            {% assign combined_posts = combined_posts | push: post %}
+          {% endfor %}
+          {% for article in site.external_articles %}
+            {% assign combined_posts = combined_posts | push: article %}
+          {% endfor %}
+          {% assign combined_posts = combined_posts | sort: 'date' | reverse %}
+        {% endif %}
 
         <ul class="post-list">
           {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-          {%- for post in sorted_posts -%}
+          {%- for post in combined_posts -%}
           <li {% if post.external_url %}class="external-article"{% endif %}>
             <span class="post-meta">{{ post.date | date: date_format }}{% if post.source %} • {{ post.source }}{% endif %}</span>
             <h3>
@@ -72,17 +89,31 @@ layout: base
           <div class="pager">
             <ul class="pagination">
             {%- if paginator.previous_page %}
-              <li><a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page">{{ paginator.previous_page }}</a></li>
-            {%- else %}
-              <li><div class="pager-edge">•</div></li>
+              <li><a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page">&laquo; Previous</a></li>
             {%- endif %}
-              <li><div class="current-page">{{ paginator.page }}</div></li>
+            
+            {%- for page in (1..paginator.total_pages) -%}
+              {%- if page == paginator.page -%}
+                <li><span class="current-page">{{ page }}</span></li>
+              {%- elsif page == 1 -%}
+                <li><a href="{{ '/' | relative_url }}">{{ page }}</a></li>
+              {%- else -%}
+                <li><a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a></li>
+              {%- endif -%}
+            {%- endfor -%}
+            
             {%- if paginator.next_page %}
-              <li><a href="{{ paginator.next_page_path | relative_url }}" class="next-page">{{ paginator.next_page }}</a></li>
-            {%- else %}
-              <li><div class="pager-edge">•</div></li>
+              <li><a href="{{ paginator.next_page_path | relative_url }}" class="next-page">Next &raquo;</a></li>
             {%- endif %}
             </ul>
+            
+            <div class="pagination-info">
+              <p>
+                Showing posts {{ paginator.per_page | times: paginator.page | minus: paginator.per_page | plus: 1 }}-{{ paginator.per_page | times: paginator.page | at_most: paginator.total_posts }} 
+                of {{ paginator.total_posts }} total posts
+                (Page {{ paginator.page }} of {{ paginator.total_pages }})
+              </p>
+            </div>
           </div>
         {%- endif %}
       {%- endif -%}
@@ -116,6 +147,60 @@ layout: base
   .external-article {
     border-left: 3px solid #2a7ae2;
     padding-left: 15px;
+  }
+  
+  /* Pagination styles */
+  .pager {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .pagination {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 10px 0;
+    border-radius: 4px;
+  }
+  
+  .pagination li {
+    margin: 0 2px;
+  }
+  
+  .pagination a, .pagination span {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    color: #2a7ae2;
+    background-color: #fff;
+    transition: all 0.2s ease;
+  }
+  
+  .pagination a:hover {
+    background-color: #f5f5f5;
+    border-color: #2a7ae2;
+  }
+  
+  .pagination .current-page {
+    background-color: #2a7ae2;
+    border-color: #2a7ae2;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .pagination .previous-page, .pagination .next-page {
+    font-weight: bold;
+  }
+  
+  .pagination-info {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10px;
+  }
+  
+  .pagination-info p {
+    margin: 0;
   }
   
 </style>

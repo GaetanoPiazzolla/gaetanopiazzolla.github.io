@@ -260,6 +260,7 @@ DEPENDENCIES
   github-pages (~> 228)
   http_parser.rb (~> 0.6.0)
   jekyll-feed (~> 0.12)
+  jekyll-paginate (~> 1.1)
   jekyll-remote-theme
   jekyll-seo-tag
   jekyll-sitemap
