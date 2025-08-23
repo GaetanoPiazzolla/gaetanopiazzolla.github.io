@@ -1,165 +1,45 @@
 <div class="post-subscribe">
-  <div class="subscribe-grid">
-    <div class="subscribe-section">
-      <h4 class="subscribe-title">📬 Stay Updated</h4>
-      <div class="subscribe-buttons">
-        <a href="{{ '/feed.xml' | relative_url }}" target="_blank" class="subscribe-btn rss-btn">
-          <span class="btn-icon">📡</span>
-          <span class="btn-text">RSS Feed</span>
-        </a>
-        <a href="https://github.com/{{ site.github_username }}/{{ site.github_username }}.github.io" target="_blank" class="subscribe-btn github-btn">
-          <span class="btn-icon">⭐</span>
-          <span class="btn-text">Watch Repository</span>
-        </a>
-        <a href="https://medium.com/@gae-piaz" target="_blank" class="subscribe-btn medium-btn">
-          <span class="btn-icon">📝</span>
-          <span class="btn-text">Follow on Medium</span>
-        </a>
-      </div>
-    </div>
-    
-    <div class="donate-section">
-      <h4 class="donate-title">☕ Support My Work</h4>
-      <p class="donate-text">Enjoyed this article? Your support helps me create more quality content. Thanks!</p>
-      <form action="https://www.paypal.com/donate" method="post" target="_top" style="margin: 0;">
-        <input type="hidden" name="business" value="PECDH38VFPUDC" />
-        <input type="hidden" name="no_recurring" value="0" />
-        <input type="hidden" name="item_name" value="Your support means a lot to me. Thank you for appreciating my work!" />
-        <input type="hidden" name="currency_code" value="EUR" />
-        <button type="submit" class="paypal-btn">
-          <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal Logo" class="paypal-logo">
-          <span class="paypal-text">Donate</span>
-        </button>
-        <img alt="" src="https://www.paypal.com/en_IT/i/scr/pixel.gif" width="1" height="1" />
-      </form>
-    </div>
+  <div class="subscribe-links-simple">
+    <a href="{{ '/feed.xml' | relative_url }}" target="_blank" class="simple-link">
+      📡 RSS Feed
+    </a>
+    <a href="https://github.com/{{ site.github_username }}/{{ site.github_username }}.github.io" target="_blank" class="simple-link">
+      ⭐ Site Repository
+    </a>
+    <a href="https://medium.com/@gae-piaz" target="_blank" class="simple-link">
+      📝 Follow on Medium
+    </a>
   </div>
 </div>
 
 <style>
 .post-subscribe {
-  background: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 25px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  margin: 20px 0;
 }
 
-.subscribe-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
-  align-items: start;
-}
-
-.subscribe-title, .donate-title {
-  margin: 0 0 12px 0;
-  font-size: 1.0em;
-  font-weight: 600;
-  color: #495057;
-  text-align: left;
-}
-
-.subscribe-buttons {
+.subscribe-links-simple {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.subscribe-btn {
-  display: flex;
-  align-items: center;
-  padding: 10px 14px;
-  background: white;
-  border: 1px solid #e9ecef;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #495057;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.subscribe-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
-  text-decoration: none;
-}
-
-.rss-btn:hover {
-  border-color: #ff6b35;
-  background-color: #fff5f2;
-}
-
-.github-btn:hover {
-  border-color: #2a7ae2;
-  background-color: #f0f7ff;
-}
-
-.medium-btn:hover {
-  border-color: #000;
-  background-color: #fff;
-}
-
-.btn-icon {
-  font-size: 1.1em;
-  margin-right: 10px;
-  min-width: 22px;
-}
-
-.btn-text {
-  font-size: 0.9em;
-}
-
-.donate-text {
-  font-size: 0.85em;
-  color: #6c757d;
-  text-align: left;
-  margin: 0 0 12px 0;
-  line-height: 1.4;
-}
-
-.paypal-btn {
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  background-color: #FFC439;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 18px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.paypal-btn:hover {
-  background-color: #f4b830;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-}
-
-.paypal-logo {
-  height: 18px;
-  margin-right: 8px;
-}
-
-.paypal-text {
-  font-weight: bold;
-  color: #253B80;
+.simple-link {
+  color: #2a7ae2;
+  text-decoration: none;
   font-size: 0.9em;
+  transition: color 0.2s ease;
+}
+
+.simple-link:hover {
+  color: #1e5a96;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
-  .subscribe-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .subscribe-title, .donate-title, .donate-text {
-    text-align: center;
-  }
-  .donate-section {
-    text-align: center;
+  .subscribe-links-simple {
+    gap: 15px;
   }
 }
 </style> 

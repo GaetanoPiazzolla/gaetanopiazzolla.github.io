@@ -14,11 +14,19 @@ a:hover {
     background-color: whitesmoke;
 }
 
+.site-header .wrapper {
+    max-width: calc(800px - (20px * 2));
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
 .site-title {
-    color: black !important;
+    color: #00992c !important;
 }
 .site-title:hover {
-    color: cadetblue !important;
+    color: #007a23 !important;
 }
 .post-category {
     color: black !important;
@@ -100,11 +108,11 @@ body{
 }
 
 .footer-links a {
-    color: #666;
+    color: #00992c;
     text-decoration: none;
 }
 
 .footer-links a:hover {
-    color: #00992c;
+    color: #007a23;
     text-decoration: underline;
 }
