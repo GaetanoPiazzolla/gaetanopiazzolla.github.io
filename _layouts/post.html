@@ -41,11 +41,6 @@ layout: base
       <div class="post-content e-content" itemprop="articleBody">
         {{ content }}
         
-        <!-- In-article ad (appears in middle of long articles) -->
-        {% if content.size > 2000 %}
-          {% include in-article-ad.html slot=site.google_adsense_slots.in_article %}
-        {% endif %}
-        
         {% include post-subscribe.html %}
       </div>
 
