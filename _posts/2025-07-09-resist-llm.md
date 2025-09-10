@@ -151,6 +151,21 @@ Then you see the “copilot review” button next to it—click it, right? What�
 
 ---
 
+#### 9) LLMs don't work with new/old technologies and frameworks
+
+This belief stems from the misconception that LLMs are limited to their training data cutoff. 
+**The reality is that you can provide extensive context—entire documentation pages, API references, legacy codebases, or cutting-edge framework docs.** 
+Modern LLMs excel at understanding patterns and applying them to new contexts when given sufficient information.
+
+For obscure syntax or very peculiar legacy systems, yes, they might struggle initially. But here's the key: 
+you can feed them the specific documentation, examples, or even existing code snippets from your project. 
+**The LLM becomes a powerful pattern matcher and code translator**, helping you navigate unfamiliar territories faster than traditional trial-and-error approaches.
+
+Whether you're working with a brand-new framework that came out last week or maintaining a COBOL system from the 80s, 
+the combination of LLM reasoning capabilities plus the right context often beats starting from scratch with just Google and StackOverflow.
+
+---
+
 > Those who ride the wave stay afloat, those who fear it sink.
 
 ---
