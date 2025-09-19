@@ -8,9 +8,9 @@ categories:
 - Java
 ---
 
-In this article we'll build on the latest annotations introduced by Spring in the latest release making the implementation ready for distributed applications. 
+In this article, we'll build on the latest annotations introduced by Spring in the latest release, making the implementation ready for distributed applications.
 
-Full code of this implementation is available [here](https://github.com/GaetanoPiazzolla/distributed-concurrency-limit).
+The full code of this implementation is available [here](https://github.com/GaetanoPiazzolla/distributed-concurrency-limit).
 
 
 <div class="post-image-container">
@@ -21,7 +21,7 @@ Full code of this implementation is available [here](https://github.com/GaetanoP
 ### 1. Introduction: Spring 7.0's New Resilience Features
 [Spring 7.0](https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-7.0-Release-Notes) 
 introduced new resilience features for common tasks. 
-One of these simplify concurrency throttling in spring with the new [@ConcurrencyLimit](https://docs.spring.io/spring-framework/docs/7.0.0-M7/javadoc-api/org/springframework/resilience/annotation/ConcurrencyLimit.html)
+One of these simplifies concurrency throttling in Spring with the new [@ConcurrencyLimit](https://docs.spring.io/spring-framework/docs/7.0.0-M7/javadoc-api/org/springframework/resilience/annotation/ConcurrencyLimit.html)
 annotation.  This allows us to easily restrict the number of concurrent accesses to a specific resource:
 
 ```java  
@@ -35,6 +35,7 @@ In a vanilla Java implementation, the equivalent idea would be using a **`Semaph
 
 ```java
 private final Semaphore semaphore = new Semaphore(10);
+
 public String sendMessage(String message) {
     try {
         semaphore.acquire(); 
@@ -45,7 +46,7 @@ public String sendMessage(String message) {
 ```
 
 ### 2. The Problem: Pod-Scoped Concurrency Limits
-When scaling horizontally increasing the number of pods this limit does not work anymore 
+When scaling horizontally, increasing the number of pods, this limit does not work anymore 
 (with **N** pods = **N x 10** concurrent requests). 
 This can overload the downstream, increase costs, and risk cascading failures if not managed at the system level.
 
@@ -55,7 +56,7 @@ This can overload the downstream, increase costs, and risk cascading failures if
 </div>
 
 ### 3. The Solution: Distributed Concurrency Control
-To solve this problem, several architectural solutions are possible. 
+Several architectural solutions are possible to solve this problem.
 In this case, we will build on Spring’s `@ConcurrencyLimit`, using a distributed semaphore 
 that stores its internal state in Redis.
 
@@ -64,7 +65,10 @@ that stores its internal state in Redis.
     <p class="post-image-subtitle">Distributed Concurrency Limit</p>
 </div>
 
-We’ll create a new annotation, `@DistributedConcurrencyLimit`, which enforces a maximum number of accesses to the external resource across multiple pods or even different applications—without requiring an additional load balancer or proxy layer in between.
+We’ll create a new annotation, `@DistributedConcurrencyLimit`, 
+which enforces a maximum number of accesses to the external resource across multiple 
+pods or even different applications, without requiring an additional load balancer or 
+proxy layer in between.
 
 ```java  
 @DistributedConcurrencyLimit(value = 10, identifier = "open-api-chat", timeout = 4000)
@@ -78,7 +82,8 @@ public String sendMessage(String message) {
 #### Dependencies & Why Redisson
 
 We use Redisson because it provides ready-made distributed data structures, 
-including [RSemaphore](https://www.javadoc.io/doc/org.redisson/redisson/3.5.6/org/redisson/api/RSemaphore.html) - a distributed semaphore that handles the complexity of coordinating permits across multiple Redis clients.
+including [RSemaphore](https://www.javadoc.io/doc/org.redisson/redisson/3.5.6/org/redisson/api/RSemaphore.html), which handles the complexity of 
+coordinating permits across multiple Redis clients.
 
 ```gradle
 dependencies {
@@ -258,7 +263,7 @@ However, consider alternative patterns when:
 - **Single pod scenarios**: Where local semaphores are adequate
 - **Ultra-low latency requirements**: The Redis round-trip adds some overhead per operation
 
-As next steps we could consider:
+As next steps, we could consider:
 - **Dynamic permit adjustment**: Allow runtime modification of semaphore limits
 - **Metrics integration**: Add Micrometer metrics for permit usage and wait times
 - **Circuit breaker integration**: Combine with resilience patterns for robust failure handling
