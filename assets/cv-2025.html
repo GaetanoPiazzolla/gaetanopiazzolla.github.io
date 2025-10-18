@@ -185,10 +185,11 @@
         }
 
         .task-item:before {
-            content: "•";
+            content: "▸";
             position: absolute;
             left: 0;
             color: #d85178;
+            font-size: 8pt;
         }
 
         .tech-stack {
@@ -272,6 +273,29 @@
             .photo-space {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .header-content {
+                flex: none;
+                width: 100%;
+            }
+
+            .photo-space {
+                margin-top: 10px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 8px;
             }
         }
 
