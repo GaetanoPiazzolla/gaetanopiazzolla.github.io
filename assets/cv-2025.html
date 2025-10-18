@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaetano Piazzolla - Tech Lead CV</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.5;
+            color: #2d3748;
+            font-size: 9.5pt;
+            background: white;
+            padding: 0;
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+        }
+
+        .container {
+            padding: 15mm 15mm;
+        }
+
+        .header {
+            display: flex;
+            gap: 20px;
+            border-bottom: 1px solid #d85178;
+            padding-bottom: 12px;
+            margin-bottom: 14px;
+            align-items: flex-start;
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .photo-space {
+            width: 90px;
+            height: 150px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            font-size: 9pt;
+            flex-shrink: 0;
+        }
+
+        h1 {
+            font-size: 20pt;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+
+        .tagline {
+            color: #d85178;
+            font-size: 12pt;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px 20px;
+            font-size: 9pt;
+            color: #4b5563;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        /* Summary */
+        .summary {
+            font-size: 9pt;
+            color: #374151;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            text-align: justify;
+            padding: 5px;
+            background: #f9fafb;
+            border-radius: 6px;
+        }
+
+        /* Two Column Layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 20px;
+        }
+
+        /* Left Column - Experience */
+        .left-column {
+            padding-right: 10px;
+        }
+
+        /* Right Column - Skills, Education, Certs */
+        .right-column {
+            padding-left: 10px;
+            border-left: 1px solid #e5e7eb;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #111827;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            padding-bottom: 3px;
+            border-bottom: 1.5px solid #d85178;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px dotted #e5e7eb;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-header {
+            margin-bottom: 4px;
+        }
+
+        .job-title {
+            font-weight: 600;
+            color: #111827;
+            font-size: 10pt;
+        }
+
+        .company {
+            color: #d85178;
+            font-weight: 500;
+        }
+
+        .date {
+            color: #6b7280;
+            font-size: 8.5pt;
+            font-style: italic;
+            margin-top: 2px;
+        }
+
+        .job-details {
+            font-size: 9pt;
+            color: #4b5563;
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+
+        .job-tasks {
+            font-size: 9pt;
+            color: #374151;
+            margin-left: 12px;
+            line-height: 1.4;
+        }
+
+        .task-item {
+            position: relative;
+            padding-left: 12px;
+            margin-bottom: 2px;
+        }
+
+        .task-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #d85178;
+        }
+
+        .tech-stack {
+            font-size: 8.5pt;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 3px;
+        }
+
+        /* Skills Section */
+        .skill-category {
+            margin-bottom: 8px;
+            background: #f9fafb;
+            padding: 6px 8px;
+            border-radius: 4px;
+        }
+
+        .skill-title {
+            font-weight: 600;
+            color: #111827;
+            font-size: 9pt;
+            margin-bottom: 2px;
+        }
+
+        .skill-list {
+            font-size: 8.5pt;
+            color: #4b5563;
+            line-height: 1.3;
+        }
+
+        /* Education & Certifications */
+        .cert-item {
+            font-size: 9pt;
+            color: #4b5563;
+            margin-bottom: 3px;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        .cert-item:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #d85178;
+            font-size: 8pt;
+        }
+
+        .cert-item strong {
+            color: #111827;
+            font-weight: 600;
+        }
+
+        .education-item {
+            font-size: 9pt;
+            color: #4b5563;
+            line-height: 1.4;
+            background: #f9fafb;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .education-item strong {
+            color: #111827;
+            font-weight: 600;
+        }
+
+        /* Print optimization */
+        @media print {
+            body {
+                padding: 0;
+            }
+
+            .container {
+                padding: 10mm 12mm;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            .photo-space {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Header with Photo on Right -->
+    <div class="header">
+        <div class="header-content">
+            <h1>GAETANO PIAZZOLLA</h1>
+            <div class="tagline">Tech Lead</div>
+            <div class="contact-info">
+                <span>📧 gae.piaz@gmail.com</span>
+                <span>📱 +39 328 662 5975</span>
+                <span>📍 Trani BT, Italia</span>
+                <span>📅 03/12/1987 (37 anni)</span>
+                <span>💼 linkedin.com/in/gaetano-piazzolla-0387a19b</span>
+                <span>💻 github.com/gaetanopiazzolla</span>
+            </div>
+        </div>
+        <div>
+            <img class="photo-space" src="cv_photo_2025.jpg" alt="Gaetano"/>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary">
+        Tech Lead con solida esperienza nella definizione di architetture software enterprise. Specializzato in Java, Spring,
+        e infrastrutture Cloud. Certificato CKAD e SAFe. Estesa esperienza in technical interviews. Appassionato di mentoring ed innovazione.
+    </div>
+
+    <!-- Two Column Layout -->
+    <div class="content-grid">
+        <!-- Left Column - Experience -->
+        <div class="left-column">
+            <div class="section">
+                <h2>Esperienza Professionale</h2>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="job-title">Tech Lead</span> @ <span class="company">Strategy In Action</span>
+                        <div class="date">Feb 2024 - Presente</div>
+                    </div>
+                    <div class="job-details">
+                        Piattaforma strategica per CEO e Leader aziendali.
+                    </div>
+                    <div class="job-tasks">
+                        <div class="task-item">Partecipazione alle decisioni architetturali</div>
+                        <div class="task-item">Definizione Way Of Working e Planning</div>
+                        <div class="task-item">Conduzione colloqui tecnici e valutazione candidati</div>
+                        <div class="task-item">Introduzione Spec Driven Development</div>
+                    </div>
+                    <div class="tech-stack">Stack: Java 24, Spring Modulith, Kubernetes, GCP, PostgreSQL, Firebase, GitHub Actions</div>
+                </div>
+
+                <div class="experience-item">
+                    <span class="experience-header">
+                        <span class="job-title">Senior Developer & Technical Interviewer</span> @ <span class="company">EPAM Systems</span>
+                        <div class="date">Feb 2022 - Feb 2024</div>
+                    </span>
+                    <div class="job-details">
+                        Cliente: SoFi - Fintech con 12 milioni di utenti.
+                    </div>
+                    <div class="job-tasks">
+                        <div class="task-item">Technical Interviewer: ~200 colloqui tecnici condotti in 2 anni</div>
+                        <div class="task-item">Skill Advisor e Talent Manager: ~100 sessioni di skill advisory</div>
+                        <div class="task-item">Definizione SLOs e SLAs per sistemi mission-critical</div>
+                        <div class="task-item">Ristrutturazione Pipeline CI/CD</div>
+                    </div>
+                    <div class="tech-stack">Stack: Java 17, Kotlin, Kubernetes, Docker, Kafka, PostgreSQL, Snowflake, Datadog, AWS</div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="job-title">Senior Dev II - Technical & Team Leader</span> @ <span class="company">DXC Italy</span>
+                        <div class="date">Gen 2020 - Feb 2022</div>
+                    </div>
+                    <div class="job-details">
+                        Portale vaccinazioni COVID-19 Regione Campania.
+                    </div>
+                    <div class="job-tasks">
+                        <div class="task-item">Technical e project management del team</div>
+                        <div class="task-item">Organizzazione processo Agile</div>
+                    </div>
+                    <div class="tech-stack">Stack: Spring Boot, Angular, PostgreSQL, Kubernetes, Kong, Elastic Stack, Grafana</div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="job-title">Software Developer</span> @ <span class="company">Dedalus SPA</span>
+                        <div class="date">Mag 2014 - Gen 2020</div>
+                    </div>
+                    <div class="job-details">
+                        Electronic Health Record (EHR) - Sistema sanitario nazionale.
+                    </div>
+                    <div class="job-tasks">
+                        <div class="task-item">Senior Analyst Programmer per software healthcare</div>
+                        <div class="task-item">Mentoring sviluppatori junior e knowledge transfer</div>
+                        <div class="task-item">Ottimizzazione processi e performance testing</div>
+                    </div>
+                    <div class="tech-stack">Stack: Java EE, AngularJS, Docker, Oracle, Wildfly</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column - Skills, Education, Certifications -->
+        <div class="right-column">
+            <div class="section">
+                <h2>Competenze Tecniche</h2>
+
+                <div class="skill-category">
+                    <div class="skill-title">Leadership & Management</div>
+                    <div class="skill-list">Team Building, Agile/Scrum, SAFe, Technical Interviewing, Mentoring, Talent Management</div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-title">Backend & Architecture</div>
+                    <div class="skill-list">Java (7-25), Spring, Microservices, API Design, System Architecture</div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-title">Cloud & DevOps</div>
+                    <div class="skill-list">Kubernetes, Docker, GCP, AWS, CI/CD (GitLab/GitHub)</div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-title">Database & Messaging</div>
+                    <div class="skill-list">PostgreSQL, Oracle, Kafka, Redis, Elasticsearch, Snowflake</div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-title">Frontend & Testing</div>
+                    <div class="skill-list">Angular, React, TypeScript, JUnit, JMeter, K6</div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-title">AI & Agents</div>
+                    <div class="skill-list">GitHub Copilot, Cursor, Windsurf, CodeRabbit, Spec-Driven Development</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Certificazioni</h2>
+                <div class="cert-item"><strong>CKAD</strong> (2021)</div>
+                <div class="cert-item"><strong>SAFe5 Agilist</strong> (2022)</div>
+                <div class="cert-item"><strong>AWS Cloud Practitioner</strong> (2022)</div>
+                <div class="cert-item"><strong>CompTIA Security+</strong> (2010)</div>
+            </div>
+
+            <div class="section">
+                <h2>Formazione</h2>
+                <div class="education-item">
+                    <strong>Laurea Magistrale - Ing. Informatica</strong><br>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Attività Extra</h2>
+                <div class="cert-item">Technical Blogger</div>
+                <div class="cert-item">Contributor Open Source</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
