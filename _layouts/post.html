@@ -35,17 +35,11 @@ layout: base
 
       {% include post-subscribe.html %}
 
-      <!-- Top of article ad (non-invasive) -->
-      {% include google-ads.html slot=site.google_adsense_slots.top_article class="top-ad" format="auto" %}
-
       <div class="post-content e-content" itemprop="articleBody">
         {{ content }}
         
         {% include post-subscribe.html %}
       </div>
-
-      <!-- Bottom of article ad -->
-      {% include google-ads.html slot=site.google_adsense_slots.bottom_article class="bottom-ad" format="auto" %}
 
       <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
     </article>

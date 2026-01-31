@@ -64,8 +64,6 @@ Before diving into workflows, you'll need the right tools. The `gh` CLI is proba
 
 Once installed, authenticate with `gh auth login` or `glab auth login` respectively.
 
-{% include in-article-ad.html %}
-
 ### Creating Your AGENTS.md File
 
 Here's how to transform your git workflow with a simple file in your project root:
