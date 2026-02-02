@@ -22,7 +22,7 @@ based on the documents we provide.
 We will build a simple interface to interact with the tool, feed it with documents and questions, and see the answers it provides.
 
 <div align="center">
-    <img src="/assets/rag-spring-ai/arch.png" style="content-visibility:auto" alt="RAG Spring AI" loading="lazy" decoding="async">
+    {% include image.html src="/assets/rag-spring-ai/arch.png" alt="RAG Spring AI" %}
 </div>
 <p style="text-align:center; font-style: italic;">Basic Architecture diagram, made with <a href="https://www.drawio.com/">Drawio</a></p>
 
@@ -63,7 +63,7 @@ We can also build standard SQL tables in this database in the same exact way.
 This is how it looks like browsing the table **vector_store** that contains our parsed documents from a Database Manager: 
 
 <div align="center">
-    <img src="/assets/rag-spring-ai/vector-db.png" style="content-visibility:auto" alt="Vector store table" loading="lazy" decoding="async">
+    {% include image.html src="/assets/rag-spring-ai/vector-db.png" alt="Vector store table" %}
 </div>
 <p style="text-align:center; font-style: italic;">The vector_store table as seen from <a href="https://dbeaver.io/">Dbeaver</a></p>
 
@@ -102,7 +102,7 @@ that we have uploaded to the database, with a button to upload more.
 ---
 
 <div align="center">
-    <img src="/assets/rag-spring-ai/client_screenshot.png" style="content-visibility:auto" alt="client screenshot" loading="lazy" decoding="async">
+    {% include image.html src="/assets/rag-spring-ai/client_screenshot.png" alt="client screenshot" %}
 </div>
 <p style="text-align:center; font-style: italic;">A screenshot of the Assistant</p>
 
@@ -389,7 +389,7 @@ To conclude this tutorial, let's try to put the Smart Document Assistant to the 
 Let's feed all the content of this article (to this point) as a document and let's see the output it prints out.
 
 <div align="center">
-    <img src="/assets/rag-spring-ai/conclusion.png" style="content-visibility:auto" alt="Final test" loading="lazy" decoding="async">
+    {% include image.html src="/assets/rag-spring-ai/conclusion.png" alt="Final test" %}
 </div>
 <p style="text-align:center; font-style: italic;">Final Testing Screenshot.</p>
 

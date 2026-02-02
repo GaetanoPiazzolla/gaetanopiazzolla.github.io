@@ -1,5 +1,6 @@
 <div class="post-image-container">
-    <img src="{{ include.src }}" class="post-image" alt="{{ include.alt }}" loading="lazy" decoding="async">
+    <img src="{{ include.src }}" class="post-image lightbox-trigger" alt="{{ include.alt }}" loading="lazy"
+        decoding="async">
     {% if include.caption %}
     <p class="post-image-subtitle">{{ include.caption }}</p>
     {% endif %}

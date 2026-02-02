@@ -20,7 +20,7 @@ The goal is to improve the application's performance by reducing the number of r
 ---
 
 <div align="center">
-    <img src="/assets/cache.jpg" style="content-visibility:auto" alt="Meme" loading="lazy" decoding="async">
+    {% include image.html src="/assets/cache.jpg" alt="Meme" %}
 </div>
 
 ---
@@ -337,7 +337,7 @@ The complete flow of operations is shown in the following Mermaid diagram:
 ---
 
 <div align="center">
-    <img src="/assets/mermaid-cache.png" style="content-visibility:auto" alt="mermaid cache" loading="lazy" decoding="async">
+    {% include image.html src="/assets/mermaid-cache.png" alt="mermaid cache" %}
 </div>
 
 ---

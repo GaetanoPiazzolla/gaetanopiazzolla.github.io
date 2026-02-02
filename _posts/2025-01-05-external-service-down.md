@@ -17,7 +17,7 @@ Most of the methodologies presented here are well known and familiar, such as th
 but some of them are not, such as the fuse-breaker + feature toggle. Let's start with the easy ones.
 
 <div align="center">
-    <img src="/assets/fuse-breaker.png" style="content-visibility:auto" alt="Fuse breaker" loading="lazy" decoding="async">
+    {% include image.html src="/assets/fuse-breaker.png" alt="Fuse breaker" %}
 </div>
 <p style="text-align:center; font-style: italic;">A fuse inside a circuit.</p>
 

@@ -4,9 +4,11 @@
 a:visited {
     color: #00992c;
 }
+
 a {
     color: #00992c;
 }
+
 a:hover {
     color: cadetblue;
 }
@@ -28,15 +30,19 @@ a:hover {
 .site-title {
     color: #00992c !important;
 }
+
 .site-title:hover {
     color: #007a23 !important;
 }
+
 .post-category {
     color: black !important;
 }
+
 .nav-item {
     color: green !important;
 }
+
 .nav-item:hover {
     color: cadetblue !important;
 }
@@ -48,31 +54,34 @@ a:hover {
         align-items: center;
         gap: 10px;
     }
-    
+
     .site-nav .nav-item {
         padding: 8px 16px !important;
         border-radius: 6px !important;
         transition: all 0.2s ease;
         font-weight: 500;
     }
-    
-    .site-nav .nav-item:hover {
-        background-color: #f0f8f0 !important;
-        transform: translateY(-1px);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    
+
+
     .site-nav .paypal-nav-btn {
         margin-left: 10px !important;
         padding: 8px 16px !important;
         border-radius: 6px !important;
-        transition: all 0.2s ease;
+        transition: none;
+        /* Removed transition */
     }
-    
-    .site-nav .paypal-nav-btn:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    /* Moved from nav-items.html and scoped */
+    .site-nav .paypal-nav-btn {
+        background: #FFC439;
+        border: none;
+        color: #253B80;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: inherit;
+        font-family: inherit;
     }
+
 }
 
 /* Mobile Navigation Menu Improvements */
@@ -86,7 +95,7 @@ a:hover {
         border-radius: 0 !important;
         box-shadow: none !important;
     }
-    
+
     /* Fix the label positioning */
     .site-nav label[for="nav-trigger"] {
         display: block !important;
@@ -100,7 +109,7 @@ a:hover {
         padding: 0 !important;
         z-index: 1000 !important;
     }
-    
+
     /* Menu icon styling - Simple hamburger menu */
     .site-nav .menu-icon {
         background-color: #00992c !important;
@@ -121,13 +130,13 @@ a:hover {
         line-height: 1 !important;
         z-index: 1001 !important;
     }
-    
+
     /* Hide any default content and Font Awesome icons */
     .site-nav .menu-icon::before,
-    .site-nav .menu-icon > svg {
+    .site-nav .menu-icon>svg {
         display: none !important;
     }
-    
+
     /* Create custom hamburger lines */
     .site-nav .menu-icon::after {
         content: "☰" !important;
@@ -138,20 +147,20 @@ a:hover {
         margin: 0 !important;
         padding: 0 !important;
     }
-    
+
     /* Change to hamburger when menu is open */
-    .site-nav #nav-trigger:checked ~ label[for="nav-trigger"] .menu-icon::after {
+    .site-nav #nav-trigger:checked~label[for="nav-trigger"] .menu-icon::after {
         content: "✕" !important;
         font-size: 16px !important;
     }
-    
+
     .site-nav label[for="nav-trigger"]:hover .menu-icon {
         background-color: #007a23 !important;
         transform: scale(1.05) !important;
     }
-    
+
     /* Menu container - only show border when menu is open */
-    .site-nav #nav-trigger:checked ~ .nav-items {
+    .site-nav #nav-trigger:checked~.nav-items {
         display: block !important;
         background-color: whitesmoke !important;
         border: 2px solid #00992c !important;
@@ -164,19 +173,19 @@ a:hover {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
         z-index: 999 !important;
     }
-    
-    .site-nav #nav-trigger ~ .nav-items {
+
+    .site-nav #nav-trigger~.nav-items {
         clear: both;
         display: none;
         position: absolute;
     }
-    
+
     .site-nav .nav-items {
         background-color: whitesmoke;
         padding: 15px 0;
         text-align: center;
     }
-    
+
     .site-nav .nav-item {
         display: block !important;
         padding: 12px 20px !important;
@@ -188,17 +197,17 @@ a:hover {
         transition: all 0.2s ease;
         text-decoration: none !important;
     }
-    
+
     .site-nav .nav-item:last-child {
         border-bottom: none;
     }
-    
+
     .site-nav .nav-item:hover {
-        background-color: #f0f8f0 !important;
+        background-color: transparent !important;
         color: #007a23 !important;
         text-decoration: none !important;
     }
-    
+
     /* PayPal button in mobile menu */
     .site-nav .paypal-nav-btn {
         display: block !important;
@@ -212,26 +221,27 @@ a:hover {
         border-radius: 6px !important;
         font-weight: bold !important;
         font-size: 14px !important;
-        transition: all 0.2s ease;
+        transition: none;
         text-decoration: none !important;
     }
-    
+
     .site-nav .paypal-nav-btn:hover {
-        background: #f4b830 !important;
-        transform: translateY(-1px);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background: #FFC439 !important;
+        transform: none;
+        box-shadow: none;
     }
-    
+
     /* Animation for menu opening */
-    .site-nav #nav-trigger:checked ~ .nav-items {
+    .site-nav #nav-trigger:checked~.nav-items {
         animation: slideDown 0.3s ease-out;
     }
-    
+
     @keyframes slideDown {
         from {
             opacity: 0;
             transform: translateY(-10px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
@@ -244,7 +254,7 @@ img {
     height: auto;
 }
 
-body{
+body {
     background-color: whitesmoke;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 17px;
@@ -275,4 +285,62 @@ p {
 .footer-links a:hover {
     color: #007a23;
     text-decoration: underline;
+}
+
+/* Lightbox Styles */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    /* Dark semi-transparent background */
+    z-index: 10000;
+    /* Ensure on top of everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-image {
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 1;
+    transition: color 0.2s;
+    user-select: none;
+}
+
+.lightbox-close:hover {
+    color: #ccc;
+}
+
+/* Cursor indication for clickable images */
+.post-image {
+    cursor: zoom-in;
+}
+
+.lightbox-trigger {
+    cursor: zoom-in;
 }

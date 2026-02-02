@@ -16,7 +16,7 @@ The best way of accessing logical deleted entities without writing weird queries
 ---
 
 <div align="center">
-    <img src="/assets/trani-inverno-2024.jpg" style="content-visibility:auto" alt="Trani" loading="lazy" decoding="async">
+    {% include image.html src="/assets/trani-inverno-2024.jpg" alt="Trani" %}
 </div>
 <p style="text-align:center; font-style: italic;">Trani, Cold winter Evening - 2024 </p>
 

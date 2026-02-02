@@ -15,7 +15,7 @@ On the other hand, good error handling practices make things go swimmingly.
 This article discusses the best practices for a standard web application that communicates with a web server through standard HTTP calls.
 
 <div align="center">
-    <img src="/assets/icecone.png" style="content-visibility:auto" alt="Icecone" loading="lazy" decoding="async">
+    {% include image.html src="/assets/icecone.png" alt="Icecone" %}
 </div>
 <p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/@rojekilian?utm_source=medium&utm_medium=referral">Sarah Kilian</a> on Unspash</p>
 
@@ -37,7 +37,7 @@ The concept of a fault barrier is very simple. It's an abstract layer that resid
 upward propagation of an exception so that the default action is not triggered.
 
 <div align="center">
-<img src="/assets/FaultBarrier.jpg" style="content-visibility:auto" alt="Fault Barrier" loading="lazy" decoding="async" />
+{% include image.html src="/assets/FaultBarrier.jpg" alt="Fault Barrier" %}
 </div>
 <p style="text-align:center; font-style: italic;"><a href="https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html">Image Source</a></p>
 
@@ -103,7 +103,7 @@ The web application will usually communicate with a web server, which may respon
 A good way to proceed is to implement an interceptor pattern for every HTTP call and process the errors thrown by the web server in a centralized place.
 
 <div align="center">
-<img src="/assets/interceptor.png" style="content-visibility:auto" alt="Interceptor" loading="lazy" decoding="async" />
+{% include image.html src="/assets/interceptor.png" alt="Interceptor" %}
 </div>
 <p style="text-align:center; font-style: italic;"><a href="https://www.wikiwand.com/en/Interceptor_pattern">Image Source</a></p>
 

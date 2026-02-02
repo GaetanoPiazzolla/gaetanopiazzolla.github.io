@@ -14,7 +14,7 @@ The full code of this implementation is available [here](https://github.com/Gaet
 
 
 <div class="post-image-container">
-    <img src="/assets/foresta-umbra.jpg" class="post-image" alt="Foresta Umbra - Gargano" loading="lazy" decoding="async">
+    {% include image.html src="/assets/foresta-umbra.jpg" alt="Foresta Umbra - Gargano" %}
     <p class="post-image-subtitle">Foresta Umbra - April 2024</p>
 </div>
 
@@ -51,7 +51,7 @@ When scaling horizontally, increasing the number of pods, this limit does not wo
 This can overload the downstream, increase costs, and risk cascading failures if not managed at the system level.
 
 <div class="post-image-container">
-    <img src="/assets/concurrency-limit.png" class="post-image" alt="Concurrency Limit on Multiple Instances" loading="lazy" decoding="async">
+    {% include image.html src="/assets/concurrency-limit.png" alt="Concurrency Limit on Multiple Instances" %}
     <p class="post-image-subtitle">Concurrency Limit on Multiple Instances</p>
 </div>
 
@@ -61,7 +61,7 @@ In this case, we will build on Spring’s `@ConcurrencyLimit`, using a distribut
 that stores its internal state in Redis.
 
 <div class="post-image-container">
-    <img src="/assets/distributed-concurrency-limit.png" class="post-image" alt="Distributed Concurrency Limit" loading="lazy" decoding="async">
+    {% include image.html src="/assets/distributed-concurrency-limit.png" alt="Distributed Concurrency Limit" %}
     <p class="post-image-subtitle">Distributed Concurrency Limit</p>
 </div>
 

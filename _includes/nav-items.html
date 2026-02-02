@@ -5,7 +5,7 @@
   <a class="nav-item" href="{{ hyperpage.url | relative_url }}">{{ hyperpage.title | escape }}</a>
   {%- endif -%}
   {%- endfor %}
-  
+
   <!-- PayPal Donation Button -->
   <form action="https://www.paypal.com/donate" method="post" target="_top" style="display: inline-block; margin: 0;">
     <input type="hidden" name="business" value="PECDH38VFPUDC" />
@@ -17,21 +17,3 @@
     </button>
   </form>
 </div>
-
-<style>
-.paypal-nav-btn {
-  background: #FFC439;
-  border: none;
-  color: #253B80;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: inherit;
-  font-family: inherit;
-}
-
-.paypal-nav-btn:hover {
-  background: #f4b830;
-  text-decoration: none;
-}
-</style>

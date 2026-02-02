@@ -13,7 +13,7 @@ Welcome to the age of AI-powered development workflows.
 Natural language replaces memorizing dozens of Git commands, and your coding assistant handles everything from branch creation to PR descriptions.
 
 <div align="center">
-    <img src="/assets/git-workflow-llm.png" style="content-visibility:auto" alt="AI-powered Git workflows" loading="lazy" decoding="async">
+    {% include image.html src="/assets/git-workflow-llm.png" alt="AI-powered Git workflows" %}
 </div>
 
 ## The Old Way vs. The AI Way
@@ -117,7 +117,7 @@ The end goal is to just write "follow the workflow to publish my changes" to avo
 Here you can see one of the latest iteractions I had with copilot, while publishing my code:
 
 <div align="center">
-    <img src="/assets/workflow-example.png" style="content-visibility:auto" alt="AI-powered Git workflows example" loading="lazy" decoding="async">
+    {% include image.html src="/assets/workflow-example.png" alt="AI-powered Git workflows example" %}
 </div>
 
 

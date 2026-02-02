@@ -17,7 +17,7 @@ A practical guide to implementing logical delete with Spring Data JPA, designed 
 ---
 
 <div align="center">
-    <img src="https://cdn-images-1.medium.com/v2/resize:fit:1600/0*VJbObkWNfbwyYDRq" style="content-visibility:auto" alt="Fire" loading="lazy" decoding="async">
+    {% include image.html src="https://cdn-images-1.medium.com/v2/resize:fit:1600/0*VJbObkWNfbwyYDRq" alt="Fire" %}
 </div>
 <p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/@varmamanyu?utm_source=medium&utm_medium=referral">Manyu Varma</a> on Unspash</p>
 
