@@ -8,3 +8,7 @@
 <script src="/assets/js/lightbox.js" defer></script>
 
 {% seo %}
+
+{% if site.google_analytics and jekyll.environment == 'production' %}
+{% include cookie-consent.html %}
+{% endif %}

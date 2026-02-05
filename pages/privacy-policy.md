@@ -27,26 +27,20 @@ Google Analytics collects only the IP address assigned to you on the date you vi
 
 For more information about Google Analytics' privacy practices, please visit: [https://policies.google.com/privacy](https://policies.google.com/privacy)
 
-### Google AdSense
-We use Google AdSense to display advertisements on our website. Google AdSense uses cookies and similar technologies to:
-- Show you personalized ads based on your interests
-- Measure ad performance
-- Prevent you from seeing the same ads repeatedly
 
-Google AdSense may collect and use information about your visits to this and other websites to provide advertisements about goods and services of interest to you. If you would like more information about this practice and to know your choices about not having this information used by these companies, visit: [https://policies.google.com/technologies/ads](https://policies.google.com/technologies/ads)
 
 ## Cookies and Similar Technologies
 
 Our website uses cookies and similar tracking technologies to:
 - Remember your preferences
 - Understand how you use our website
-- Show you relevant advertisements
+
 - Improve our services
 
 ### Types of Cookies We Use:
 - **Essential Cookies**: Required for the website to function properly
 - **Analytics Cookies**: Help us understand how visitors interact with our website
-- **Advertising Cookies**: Used to show you relevant ads and measure their effectiveness
+
 
 ### Managing Cookies
 You can control cookies through your browser settings. However, disabling cookies may affect the functionality of our website.
@@ -57,7 +51,6 @@ Our website may contain links to third-party websites or services. We are not re
 
 ### Third-Party Services We Use:
 - **Google Analytics**: Website analytics
-- **Google AdSense**: Advertisement serving
 - **GitHub Pages**: Website hosting
 
 ## Data Retention
@@ -79,7 +72,7 @@ We may update this Privacy Policy from time to time. We will notify you of any c
 ## Contact Us
 
 If you have any questions about this Privacy Policy, please contact us:
-- **Email**: [Your contact email]
+- **Email**: gae.piaz@gmail.com
 - **GitHub**: [{{ site.github_username }}](https://github.com/{{ site.github_username }})
 
 ## Your Rights

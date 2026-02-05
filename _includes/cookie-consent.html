@@ -1,0 +1,107 @@
+<script>
+(function() {
+  const CONSENT_KEY = 'cookie_consent';
+  const consent = localStorage.getItem(CONSENT_KEY);
+  
+  if (consent === 'accepted') {
+    loadGA();
+  } else if (consent !== 'declined') {
+    showBanner();
+  }
+  
+  function loadGA() {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}';
+    document.head.appendChild(script);
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  }
+  
+  function showBanner() {
+    document.addEventListener('DOMContentLoaded', function() {
+      const banner = document.createElement('div');
+      banner.id = 'cookie-consent-banner';
+      banner.innerHTML = `
+        <div class="cookie-consent-content">
+          <p>We use cookies to analyze site traffic. 
+             <a href="/privacy-policy/">Privacy Policy</a></p>
+          <div class="cookie-consent-buttons">
+            <button id="cookie-accept">Accept</button>
+            <button id="cookie-decline">Decline</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(banner);
+      
+      document.getElementById('cookie-accept').onclick = function() {
+        localStorage.setItem(CONSENT_KEY, 'accepted');
+        banner.remove();
+        loadGA();
+      };
+      
+      document.getElementById('cookie-decline').onclick = function() {
+        localStorage.setItem(CONSENT_KEY, 'declined');
+        banner.remove();
+      };
+    });
+  }
+})();
+</script>
+
+<style>
+#cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1a1a2e;
+  color: #fff;
+  padding: 16px 20px;
+  z-index: 9999;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+}
+.cookie-consent-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.cookie-consent-content p {
+  margin: 0;
+  font-size: 14px;
+}
+.cookie-consent-content a {
+  color: #6dd5ed;
+}
+.cookie-consent-buttons {
+  display: flex;
+  gap: 10px;
+}
+.cookie-consent-buttons button {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+#cookie-accept {
+  background: #00992c;
+  color: #fff;
+}
+#cookie-decline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+}
+.cookie-consent-buttons button:hover {
+  opacity: 0.85;
+}
+</style>
