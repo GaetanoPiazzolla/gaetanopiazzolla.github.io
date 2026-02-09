@@ -7,4 +7,4 @@ User-agent: *
 Disallow: /vendor/
 
 # Point to the sitemap
-Sitemap: {{ "/sitemap.xml" | absolute_url }} 
+Sitemap: https://gaetanopiazzolla.github.io/sitemap.xml 

@@ -1,7 +1,7 @@
 title: Java && More
 description: Technical Articles About Java, Spring, Web App Development and More
 baseurl: "" # the subpath of your site, e.g. /blog
-url: http://gaetanopiazzolla.github.io # the base hostname & protocol for your site, e.g. http://example.com
+url: https://gaetanopiazzolla.github.io # the base hostname & protocol for your site, e.g. http://example.com
 github_username: GaetanoPiazzolla
 
 plugins:
