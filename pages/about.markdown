@@ -28,7 +28,7 @@ decoding="async">
 
 ---
 
-Here you can find my [Curriculum Vitae](/assets/cv-2025.html) with my personal contact information.
+Here you can find my Curriculum Vitae in [English](/assets/cv-2025-en.html) or [Italian](/assets/cv-2025.html) with my personal contact information.
 
 
 
