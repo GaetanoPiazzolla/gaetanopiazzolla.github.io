@@ -15,141 +15,128 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.5;
             color: #2d3748;
-            font-size: 9.5pt;
+            font-size: 9pt;
+            line-height: 1.45;
             background: white;
-            padding: 0;
-            max-width: 210mm;
-            min-height: 297mm;
+            margin: 0;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
             margin: 0 auto;
+            padding: 12mm 14mm;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
-        .container {
-            padding: 15mm 15mm;
-        }
-
+        /* ── Header ── */
         .header {
             display: flex;
-            gap: 20px;
-            border-bottom: 1px solid #d85178;
-            padding-bottom: 12px;
-            margin-bottom: 14px;
-            align-items: flex-start;
+            gap: 18px;
+            border-bottom: 2px solid #d85178;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            align-items: center;
         }
 
-        .header-content {
-            flex: 1;
-        }
+        .header-content { flex: 1; }
 
         .photo-space {
-            width: 90px;
-            height: 150px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            background: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #9ca3af;
-            font-size: 9pt;
+            width: 100px;
+            height: 100px;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            object-fit: cover;
             flex-shrink: 0;
         }
 
         h1 {
-            font-size: 20pt;
+            font-size: 22pt;
             font-weight: 700;
-            color: #111827;
             letter-spacing: -0.5px;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
+            color: #111827;
         }
 
         .tagline {
             color: #d85178;
-            font-size: 12pt;
+            font-size: 11pt;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .contact-info {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 4px 20px;
-            font-size: 9pt;
+            gap: 3px 18px;
+            font-size: 8.5pt;
             color: #4b5563;
         }
 
-        .contact-info span {
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-        }
-
-        /* Summary */
+        /* ── Summary ── */
         .summary {
             font-size: 9pt;
             color: #374151;
-            margin-bottom: 16px;
             line-height: 1.5;
             text-align: justify;
-            padding: 5px;
-            background: #f9fafb;
-            border-radius: 6px;
+            padding: 8px 10px;
+            margin-bottom: 10px;
+            background: linear-gradient(145deg, #f9fafb 0%, #f3f4f6 100%);
+            border-left: 4px solid #d85178;
+            border-radius: 4px 6px 6px 4px;
         }
 
-        /* Two Column Layout */
+        /* ── Two Column Layout (fills remaining space) ── */
         .content-grid {
+            flex: 1;
             display: grid;
             grid-template-columns: 1.4fr 1fr;
-            gap: 20px;
+            gap: 18px;
         }
 
-        /* Left Column - Experience */
-        .left-column {
-            padding-right: 10px;
-        }
+        .left-column { padding-right: 8px; }
 
-        /* Right Column - Skills, Education, Certs */
         .right-column {
-            padding-left: 10px;
+            padding-left: 12px;
             border-left: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        /* Sections */
-        .section {
-            margin-bottom: 16px;
-        }
+        /* ── Sections ── */
+        .section { margin-bottom: auto; }
 
         h2 {
-            font-size: 11pt;
+            font-size: 10pt;
             font-weight: 700;
             color: #111827;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 8px;
             padding-bottom: 3px;
-            border-bottom: 1.5px solid #d85178;
+            border-bottom: 2px solid #d85178;
         }
 
-        /* Experience */
+        /* ── Experience ── */
         .experience-item {
-            margin-bottom: 14px;
-            padding-bottom: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
             border-bottom: 1px dotted #e5e7eb;
         }
 
-        .experience-item:last-child {
-            border-bottom: none;
-        }
+        .experience-item:last-child { border-bottom: none; }
 
-        .experience-header {
-            margin-bottom: 4px;
-        }
+        .experience-header { margin-bottom: 3px; }
 
         .job-title {
             font-weight: 600;
             color: #111827;
-            font-size: 10pt;
+            font-size: 9.5pt;
         }
 
         .company {
@@ -159,82 +146,97 @@
 
         .date {
             color: #6b7280;
-            font-size: 8.5pt;
+            font-size: 8pt;
             font-style: italic;
-            margin-top: 2px;
+            margin-top: 1px;
         }
 
         .job-details {
-            font-size: 9pt;
+            font-size: 8.5pt;
             color: #4b5563;
-            line-height: 1.4;
-            margin-bottom: 4px;
+            line-height: 1.35;
+            margin-bottom: 3px;
         }
 
         .job-tasks {
-            font-size: 9pt;
+            font-size: 8.5pt;
             color: #374151;
-            margin-left: 12px;
-            line-height: 1.4;
+            margin-left: 10px;
+            line-height: 1.35;
         }
 
         .task-item {
             position: relative;
-            padding-left: 12px;
-            margin-bottom: 2px;
+            padding-left: 11px;
+            margin-bottom: 1px;
         }
 
-        .task-item:before {
-            content: "▸";
+        .task-item::before {
+            content: "✦";
             position: absolute;
             left: 0;
             color: #d85178;
-            font-size: 8pt;
+            font-size: 6pt;
+            top: 2px;
         }
 
         .tech-stack {
-            font-size: 8.5pt;
+            font-size: 8pt;
             color: #6b7280;
             font-style: italic;
             margin-top: 3px;
         }
 
-        /* Skills Section */
+        /* ── Skills ── */
         .skill-category {
-            margin-bottom: 8px;
-            background: #f9fafb;
-            padding: 6px 8px;
-            border-radius: 4px;
+            margin-bottom: 7px;
+            background: #fff;
+            border: 1px solid #f0f0f0;
+            padding: 5px 8px;
+            border-radius: 5px;
         }
 
         .skill-title {
             font-weight: 600;
             color: #111827;
-            font-size: 9pt;
+            font-size: 8.5pt;
             margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-title::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background-color: #d85178;
+            border-radius: 50%;
+            margin-right: 6px;
         }
 
         .skill-list {
-            font-size: 8.5pt;
+            font-size: 8pt;
             color: #4b5563;
-            line-height: 1.3;
+            line-height: 1.35;
         }
 
-        /* Education & Certifications */
+        /* ── Certs / Education ── */
         .cert-item {
-            font-size: 9pt;
+            font-size: 8.5pt;
             color: #4b5563;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
             padding-left: 10px;
             position: relative;
         }
 
-        .cert-item:before {
-            content: "▸";
+        .cert-item::before {
+            content: "✦";
             position: absolute;
             left: 0;
             color: #d85178;
-            font-size: 8pt;
+            font-size: 6pt;
+            top: 2px;
         }
 
         .cert-item strong {
@@ -243,11 +245,10 @@
         }
 
         .education-item {
-            font-size: 9pt;
+            font-size: 8.5pt;
             color: #4b5563;
-            line-height: 1.4;
             background: #f9fafb;
-            padding: 8px;
+            padding: 6px;
             border-radius: 4px;
         }
 
@@ -256,52 +257,27 @@
             font-weight: 600;
         }
 
-        /* Print optimization */
+        /* ── Print ── */
         @media print {
-            body {
-                padding: 0;
-            }
-
-            .container {
-                padding: 10mm 12mm;
-            }
-
-            .section {
-                page-break-inside: avoid;
-            }
-
+            body { margin: 0; }
+            .page { padding: 10mm 12mm; }
             .photo-space {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
+            .save-pdf { display: none; }
         }
 
         @media screen and (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 10px;
+            .page {
+                width: auto;
+                height: auto;
+                padding: 10px;
             }
-
-            .header-content {
-                flex: none;
-                width: 100%;
-            }
-
-            .photo-space {
-                margin-top: 10px;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-
-            .container {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
+            .header { flex-direction: column; align-items: center; text-align: center; }
+            .contact-info { grid-template-columns: 1fr; }
+            .content-grid { grid-template-columns: 1fr; }
+            .right-column { border-left: none; padding-left: 0; }
         }
 
         @page {
@@ -311,8 +287,8 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <!-- Header with Photo on Right -->
+<button class="save-pdf" onclick="window.print()" style="position:fixed;top:16px;right:16px;padding:8px 18px;background:#d85178;color:#fff;border:none;border-radius:6px;font-family:Inter,sans-serif;font-size:9pt;font-weight:600;cursor:pointer;z-index:999;box-shadow:0 2px 8px rgba(0,0,0,0.15)">Save PDF</button>
+<div class="page">
     <div class="header">
         <div class="header-content">
             <h1>GAETANO PIAZZOLLA</h1>
@@ -327,19 +303,16 @@
             </div>
         </div>
         <div>
-            <img class="photo-space" src="cv_photo_2025.jpg" alt="Gaetano"/>
+            <img class="photo-space" src="cv-2026.jpg" alt="Gaetano"/>
         </div>
     </div>
 
-    <!-- Summary -->
     <div class="summary">
         Tech Lead with solid experience in designing enterprise software architectures. Specialized in Java, Spring,
-        and Cloud infrastructures. Certified CKAD and SAFe. Extensive experience in technical interviews. Passionate about mentoring and innovation.
+        and Cloud infrastructures, with a strong focus on AI agent orchestration and RAG implementations. Extensive experience in technical interviews. Technical writer and Open Source contributor.
     </div>
 
-    <!-- Two Column Layout -->
     <div class="content-grid">
-        <!-- Left Column - Experience -->
         <div class="left-column">
             <div class="section">
                 <h2>Professional Experience</h2>
@@ -350,26 +323,23 @@
                         <div class="date">Feb 2024 - Present</div>
                     </div>
                     <div class="job-details">
-                        Strategic platform for CEOs and business leaders.
+                        <i>Strategic platform for CEOs and business leaders.</i>
                     </div>
                     <div class="job-tasks">
-                        <div class="task-item">"Strategy Copilot" development by supporting the team with AI agent orchestration patterns and KG RAG</div>
-                        <div class="task-item">Hands-on experimentation and integration of cutting-edge AI tools to optimize development and orchestration</div>
-                        <div class="task-item">Participation in architectural decisions</div>
-                        <div class="task-item">Definition of Way of Working and Planning</div>
-                        <div class="task-item">Conducting technical interviews and evaluating candidates</div>
-                        <div class="task-item">Introduction of Spec-Driven Development</div>
+                        <div class="task-item">"Strategy Copilot" development, driving the technical direction on AI agent orchestration and RAG patterns</div>
+                        <div class="task-item">Adopted AI-assisted development workflows (Claude Code, Cursor, Copilot), accelerating feature delivery ~2x</div>
+                        <div class="task-item">Technical hiring and candidate evaluation</div>
                     </div>
-                    <div class="tech-stack">Stack: Java 24, Spring Modulith, Kubernetes, GCP, PostgreSQL, Firebase, GitHub Actions</div>
+                    <div class="tech-stack">Stack: Java 24, Spring Modulith, Kubernetes, GCP, PostgreSQL, Neo4j, Firebase, GitHub Actions</div>
                 </div>
 
                 <div class="experience-item">
-                    <span class="experience-header">
+                    <div class="experience-header">
                         <span class="job-title">Senior Developer & Technical Interviewer</span> @ <span class="company">EPAM Systems</span>
                         <div class="date">Feb 2022 - Feb 2024</div>
-                    </span>
+                    </div>
                     <div class="job-details">
-                        Client: SoFi - Fintech with 12 million users.
+                        <i>Client: SoFi - Fintech with 12 million users.</i>
                     </div>
                     <div class="job-tasks">
                         <div class="task-item">Technical Interviewer: ~200 technical interviews conducted in 2 years</div>
@@ -386,7 +356,7 @@
                         <div class="date">Jan 2020 - Feb 2022</div>
                     </div>
                     <div class="job-details">
-                        COVID-19 vaccination portal for Campania Region (Italy).
+                        <i>COVID-19 vaccination portal for Campania Region (Italy).</i>
                     </div>
                     <div class="job-tasks">
                         <div class="task-item">Technical and project management of the team</div>
@@ -401,7 +371,7 @@
                         <div class="date">May 2014 - Jan 2020</div>
                     </div>
                     <div class="job-details">
-                        Electronic Health Record (EHR) - National Health System.
+                        <i>Electronic Health Record (EHR) - National Health System.</i>
                     </div>
                     <div class="job-tasks">
                         <div class="task-item">Senior Analyst Programmer for healthcare software</div>
@@ -413,7 +383,6 @@
             </div>
         </div>
 
-        <!-- Right Column - Skills, Education, Certifications -->
         <div class="right-column">
             <div class="section">
                 <h2>Technical Skills</h2>
@@ -425,7 +394,7 @@
 
                 <div class="skill-category">
                     <div class="skill-title">Backend & Architecture</div>
-                    <div class="skill-list">Java (7-25), Spring, Microservices, API Design, System Architecture</div>
+                    <div class="skill-list">Java (7-25), Spring, Microservices, API Design, System Architecture, RAG, GraphRAG</div>
                 </div>
 
                 <div class="skill-category">
@@ -435,7 +404,7 @@
 
                 <div class="skill-category">
                     <div class="skill-title">Database & Messaging</div>
-                    <div class="skill-list">PostgreSQL, Oracle, Kafka, Redis, Elasticsearch, Snowflake</div>
+                    <div class="skill-list">PostgreSQL, Oracle, Neo4j, Kafka, Redis, Elasticsearch, Snowflake</div>
                 </div>
 
                 <div class="skill-category">
@@ -444,13 +413,14 @@
                 </div>
 
                 <div class="skill-category">
-                    <div class="skill-title">AI & Agents</div>
-                    <div class="skill-list">GitHub Copilot, Cursor, Windsurf, CodeRabbit, Spec-Driven Development</div>
+                    <div class="skill-title">AI & Data</div>
+                    <div class="skill-list">LLMs orchestration, GitHub Copilot, Claude Code, Cursor, Windsurf, CodeRabbit</div>
                 </div>
             </div>
 
             <div class="section">
                 <h2>Certifications</h2>
+                <div class="cert-item"><strong>Neo4j Certified Professional</strong> (2026)</div>
                 <div class="cert-item"><strong>CKAD</strong> (2021)</div>
                 <div class="cert-item"><strong>SAFe5 Agilist</strong> (2022)</div>
                 <div class="cert-item"><strong>AWS Cloud Practitioner</strong> (2022)</div>
@@ -459,16 +429,11 @@
 
             <div class="section">
                 <h2>Education</h2>
-                <div class="education-item">
-                    <strong>Master's Degree - Computer Engineering</strong><br>
-                </div>
+                <div class="cert-item"><strong>Master's Degree</strong> - Computer Engineering, Politecnico di Bari</div>
+                <div class="cert-item"><strong>Bachelor's Degree</strong> - Computer Engineering, Politecnico di Bari</div>
+                <div class="cert-item"><strong>Liceo Scientifico</strong> - Valdemaro Vecchi, Trani</div>
             </div>
 
-            <div class="section">
-                <h2>Extra Activities</h2>
-                <div class="cert-item">Technical Blogger</div>
-                <div class="cert-item">Open Source Contributor</div>
-            </div>
         </div>
     </div>
 </div>
