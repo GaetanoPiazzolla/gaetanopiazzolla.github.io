@@ -2,7 +2,7 @@
 title: "Externalizing Domain Events to GCP Pub/Sub with Spring Modulith"
 layout: post
 date: 2026-07-30 13:00:00 +0100
-image: /assets/claude-code-agents.png
+image: /assets/trapani-sicily.jpg
 excerpt: A beach read - How to leverage the power of Spring Modulith events management with GCP pub-sub
 categories:
 - Spring
