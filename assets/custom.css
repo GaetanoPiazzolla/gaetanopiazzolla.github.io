@@ -336,9 +336,31 @@ p {
     color: #ccc;
 }
 
-/* Cursor indication for clickable images */
+/* Images rendered by _includes/image.html — global so every layout gets them,
+   not just posts */
+.post-image-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
 .post-image {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 4px;
+    /* minima sets `figure > img { display: block }`, so text-align on the
+       container cannot centre it — auto side margins do */
+    margin: 0 auto 20px;
     cursor: zoom-in;
+}
+
+.post-image-subtitle {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    font-style: italic;
 }
 
 .lightbox-trigger {

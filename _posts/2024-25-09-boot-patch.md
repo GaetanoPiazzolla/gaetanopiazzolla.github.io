@@ -19,7 +19,7 @@ illustrates this repository [https://github.com/GaetanoPiazzolla/spring-boot-pat
 This approach is designed to be generic, reusable, and optimized, so it should be easy to apply to any **Spring-Boot-based** and **JPA-based** based project.
 If not please drop me a message, and I'll send you a PIZZA instead.
 
-{% include image.html src="https://repository-images.githubusercontent.com/861001541/e1bacbba-e8e9-4817-8818-e5d5347c8ec4" alt="intro-image" %}
+{% include image.html src="https://repository-images.githubusercontent.com/861001541/e1bacbba-e8e9-4817-8818-e5d5347c8ec4" alt="spring-boot-patch cover" %}
 
 ## Table of Content
 
@@ -187,7 +187,7 @@ public ResponseEntity<BookDTO> updateBook(/*...*/) {}
 
 Thanks to the custom [OpenApiConfiguration.java](https://github.com/GaetanoPiazzolla/spring-boot-patch/blob/master/src/main/java/gae/piaz/jsonpatch/config/OpenApiConfiguration.java) class, the Swagger UI displays the allowed paths in the JSON Patch operation:
 
-{% include image.html src="/assets/swagger-example.png" alt="swagger-example.png" %}
+{% include image.html src="/assets/swagger-example.png" alt="The generated Swagger UI" %}
 
 ## Concurrency Handling
 Concurrency is managed through [JSON Patch test](https://jsonpatch.com/#test) operations, ensuring that updates are applied only if the current state matches the expected state.

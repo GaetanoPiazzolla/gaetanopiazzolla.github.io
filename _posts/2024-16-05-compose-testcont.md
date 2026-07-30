@@ -20,10 +20,7 @@ In this case we want to test a Spring Boot application that uses a _PostgreSQL_ 
 
 <b>We don't want to use an embedded database like H2.</b>
 
-<div align="center">
-    {% include image.html src="/assets/ceiling.png" alt="Ceiling" %}
-</div>
-<p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/photos/white-ceiling-with-gold-frame-SMDX3gLEu_M">Carlo Alberto Burato</a> on Unspash</p>
+{% include image.html src="/assets/ceiling.png" alt="Ceiling" caption="Photo by <a href='https://unsplash.com/photos/white-ceiling-with-gold-frame-SMDX3gLEu_M'>Carlo Alberto Burato</a> on Unsplash" %}
 
 Why? Well, using different database technologies in tests is a common practice, but it can lead to different behaviors 
 between tests and production; moreover, even if it's a commonly recognized

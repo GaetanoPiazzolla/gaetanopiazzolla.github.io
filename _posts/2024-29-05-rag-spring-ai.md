@@ -21,10 +21,7 @@ based on the documents we provide.
 
 We will build a simple interface to interact with the tool, feed it with documents and questions, and see the answers it provides.
 
-<div align="center">
-    {% include image.html src="/assets/rag-spring-ai/arch.png" alt="RAG Spring AI" %}
-</div>
-<p style="text-align:center; font-style: italic;">Basic Architecture diagram, made with <a href="https://www.drawio.com/">Drawio</a></p>
+{% include image.html src="/assets/rag-spring-ai/arch.png" alt="RAG Spring AI" caption="Basic Architecture diagram, made with <a href='https://www.drawio.com/'>Drawio</a>" %}
 
 ## 2. RAG and Vector Databases
 Simply put, the Retrieval Augmented Generation is a way in which we can specialize Large Language Models to our needs, without 
@@ -62,10 +59,7 @@ We can also build standard SQL tables in this database in the same exact way.
 
 This is how it looks like browsing the table **vector_store** that contains our parsed documents from a Database Manager: 
 
-<div align="center">
-    {% include image.html src="/assets/rag-spring-ai/vector-db.png" alt="Vector store table" %}
-</div>
-<p style="text-align:center; font-style: italic;">The vector_store table as seen from <a href="https://dbeaver.io/">Dbeaver</a></p>
+{% include image.html src="/assets/rag-spring-ai/vector-db.png" alt="Vector store table" caption="The vector_store table as seen from <a href='https://dbeaver.io/'>Dbeaver</a>" %}
 
 That "embedding" column is the one that contains the vector representation of the document.
 We can use it to filter the documents that are more similar to the question we are asking.
@@ -101,10 +95,7 @@ that we have uploaded to the database, with a button to upload more.
 
 ---
 
-<div align="center">
-    {% include image.html src="/assets/rag-spring-ai/client_screenshot.png" alt="client screenshot" %}
-</div>
-<p style="text-align:center; font-style: italic;">A screenshot of the Assistant</p>
+{% include image.html src="/assets/rag-spring-ai/client_screenshot.png" alt="client screenshot" caption="A screenshot of the Assistant" %}
 
 ### 4.1. The Chat Component
 It's Just a small component with some juicy tricks in order to make It scroll automatically when a message arrives.
@@ -388,10 +379,7 @@ documentRepository.save(documentEntity);
 To conclude this tutorial, let's try to put the Smart Document Assistant to the test.
 Let's feed all the content of this article (to this point) as a document and let's see the output it prints out.
 
-<div align="center">
-    {% include image.html src="/assets/rag-spring-ai/conclusion.png" alt="Final test" %}
-</div>
-<p style="text-align:center; font-style: italic;">Final Testing Screenshot.</p>
+{% include image.html src="/assets/rag-spring-ai/conclusion.png" alt="Final test" caption="Final Testing Screenshot." %}
 
 The output is quite good, and it's able to answer the questions in a more specific way than a standard LLM.
 Of course, the more documents we feed regarding our specific use case, the more accurate the answers will be.

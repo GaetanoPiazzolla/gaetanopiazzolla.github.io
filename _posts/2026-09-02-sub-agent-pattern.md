@@ -25,7 +25,7 @@ Why this wins:
 - **Context Isolation**: Sub-agents don't inherit bloated conversation history
 - **Flexibility**: Easy to add, modify, or swap agents
 
-{% include image.html src="https://raw.githubusercontent.com/spring-io/spring-io-static/refs/heads/main/blog/tzolov/20260127/sub-agents-architecture.png" alt="spring subagent architecture" caption="Image from spring.io blog"%}
+{% include image.html src="https://raw.githubusercontent.com/spring-io/spring-io-static/refs/heads/main/blog/tzolov/20260127/sub-agents-architecture.png" alt="spring subagent architecture" caption="Image from spring.io blog" %}
 
 In this article we'll implement sub-agent orchestration using [spring-ai-agent-utils](https://spring.io/blog/2026/01/27/spring-ai-agentic-patterns-4-task-subagents#getting-started), with the **Architect-Builder** pattern as our example.
 

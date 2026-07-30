@@ -39,13 +39,7 @@ In the [first part](#the-spring-boot-app), we'll build a heavily-integrated Spri
 
 As always, all code is available in this [public GitHub repository](https://github.com/GaetanoPiazzolla/springboot-testcontainers).
 
-<div align="center">
-<img src="/assets/testcontainers/splash.jpg" style="content-visibility:auto"
-alt="Containers of People"
-loading="lazy"
-decoding="async">
-</div>
-<p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/@twinkynano">Nano Do</a> on Unsplash</p>
+{% include image.html src="/assets/testcontainers/splash.jpg" alt="Containers of People" caption="Photo by <a href='https://unsplash.com/@twinkynano'>Nano Do</a> on Unsplash" %}
 
 ### The Spring Boot App
 
@@ -422,12 +416,7 @@ we will see all docker containers started and ready, and the application ready t
 
 **Awesome!**
 
-<div align="center">
-<img src="/assets/testcontainers/dockercont.png" style="content-visibility:auto"
-alt="Docker Containers Live!"
-loading="lazy"
-decoding="async">
-</div>
+{% include image.html src="/assets/testcontainers/dockercont.png" alt="Docker Containers Live!" %}
 
 ### Additional Configurations
 

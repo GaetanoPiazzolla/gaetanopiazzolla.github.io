@@ -14,10 +14,7 @@ Poor error handling can sink your system before it even learns to float.
 On the other hand, good error handling practices make things go swimmingly.
 This article discusses the best practices for a standard web application that communicates with a web server through standard HTTP calls.
 
-<div align="center">
-    {% include image.html src="/assets/icecone.png" alt="Icecone" %}
-</div>
-<p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/@rojekilian?utm_source=medium&utm_medium=referral">Sarah Kilian</a> on Unspash</p>
+{% include image.html src="/assets/icecone.png" alt="Icecone" caption="Photo by <a href='https://unsplash.com/@rojekilian?utm_source=medium&utm_medium=referral'>Sarah Kilian</a> on Unsplash" %}
 
 ## Try Catch Blocks
 
@@ -36,10 +33,7 @@ Javascript on this subject is really similar to Java. It has the same syntactic 
 The concept of a fault barrier is very simple. It's an abstract layer that resides logically toward the top of the call stack, where it stops the 
 upward propagation of an exception so that the default action is not triggered.
 
-<div align="center">
-{% include image.html src="/assets/FaultBarrier.jpg" alt="Fault Barrier" %}
-</div>
-<p style="text-align:center; font-style: italic;"><a href="https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html">Image Source</a></p>
+{% include image.html src="/assets/FaultBarrier.jpg" alt="Fault Barrier" caption="<a href='https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html'>Image Source</a>" %}
 
 
 Every web application (or system) consists of critical operations and non-critical operations. The failure of a critical operation is non-recoverable, while the failure of a non-critical operation is. Therefore, you should define a “fault barrier” so that any non-critical operation faliure can be recovered. It’s possible to implement fault barriers using try catch blocks, but you could also implement it using Promises.
@@ -102,10 +96,7 @@ The web application will usually communicate with a web server, which may respon
 
 A good way to proceed is to implement an interceptor pattern for every HTTP call and process the errors thrown by the web server in a centralized place.
 
-<div align="center">
-{% include image.html src="/assets/interceptor.png" alt="Interceptor" %}
-</div>
-<p style="text-align:center; font-style: italic;"><a href="https://www.wikiwand.com/en/Interceptor_pattern">Image Source</a></p>
+{% include image.html src="/assets/interceptor.png" alt="Interceptor" caption="<a href='https://www.wikiwand.com/en/Interceptor_pattern'>Image Source</a>" %}
 
 
 If you are using React with [Axios](https://axios-http.com/docs/interceptors) or [Angular](https://angular.io/api/common/http/HttpInterceptor), it’s possible to define an interceptor that will process every HTTP call in a pretty straightforward manner.

@@ -15,10 +15,7 @@ When I have to work on any task these days, my first thought is: how do I ask AI
 Can it handle it the way I would, but in less time? 
 My second thought is: damn, am I becoming dependent? My third thought is: well, let’s give it a try and see what comes out.
 
-<div class="post-image-container">
-    {% include image.html src="/assets/trani-novembre-2024.jpg" alt="Trani" caption="Trani, Warm november evening - 2024" %}
-    <p class="post-image-subtitle">Trani, Cold winter Evening - 2024 </p>
-</div>
+{% include image.html src="/assets/trani-novembre-2024.jpg" alt="Trani" caption="Trani, Warm november evening - 2024" %}
 
 At this point, unless it’s a really complicated task that affects a lot of files, it usually manages to get pretty close to the solution, 
 and with a couple more prompts I can wrap it up. 
@@ -36,7 +33,7 @@ I can even skip boring commands like “git add .” – “git commit -m” and
 
 And yet the responses I got to that article were baffling:
 
-{% include image.html src="/assets/reddit-rant.png" alt="reddit-rant.png" %}
+{% include image.html src="/assets/reddit-rant.png" alt="A rant on Reddit" %}
 
 Which got me thinking about why there’s still a hardcore of “old school” 
 programmers who insist on shoeing horses when we’re all driving cars.

@@ -19,9 +19,7 @@ The goal is to improve the application's performance by reducing the number of r
 
 ---
 
-<div align="center">
-    {% include image.html src="/assets/cache.jpg" alt="Meme" %}
-</div>
+{% include image.html src="/assets/cache.jpg" alt="A cache meme" %}
 
 ---
 
@@ -336,9 +334,7 @@ The complete flow of operations is shown in the following Mermaid diagram:
 
 ---
 
-<div align="center">
-    {% include image.html src="/assets/mermaid-cache.png" alt="mermaid cache" %}
-</div>
+{% include image.html src="/assets/mermaid-cache.png" alt="Multi-level cache lookup flow" %}
 
 ---
 

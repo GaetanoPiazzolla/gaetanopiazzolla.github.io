@@ -6,6 +6,9 @@ POSTS_DIR = Path('_posts')
 DEFAULT_IMAGE = '/assets/favicon/android-chrome-512x512.png'
 
 def find_first_image(content):
+    include_img = re.search(r'\{%\s*include\s+image\.html\s+src="([^"]+)"', content)
+    if include_img:
+        return include_img.group(1)
     md_img = re.search(r'!\[.*?\]\((.*?)\)', content)
     if md_img:
         return md_img.group(1)

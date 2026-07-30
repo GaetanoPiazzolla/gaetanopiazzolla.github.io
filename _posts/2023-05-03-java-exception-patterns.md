@@ -12,13 +12,7 @@ Error handling is one of the most crucial parts of any application.
 In this article, which results from a lot of research and insights (and some experience in the field), 
 we will see 4 peculiar patterns/best practices for handling errors or exceptions in Java.
 
-<div align="center">
-<img src="/assets/Parachute.png" style="content-visibility:auto"
-alt="Fault Barrier"
-loading="lazy"
-decoding="async">
-</div>
-<p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/@grafik_bock?utm_source=medium&utm_medium=referral">Julian Bock</a> on Unspash</p>
+{% include image.html src="/assets/Parachute.png" alt="A parachute" caption="Photo by <a href='https://unsplash.com/@grafik_bock?utm_source=medium&utm_medium=referral'>Julian Bock</a> on Unsplash" %}
 
 ## 1- Exception Wrapper Pattern
 
@@ -30,13 +24,7 @@ decoding="async">
 
 **Example**: For their DAO support, Spring defines a consistent exception hierarchy hiding and wrapping low-level exceptions as Hibernate-specific exceptions, SQL Exceptions, etc.
 
-<div align="center">
-<img src="/assets/DataAccessException.gif" style="content-visibility:auto"
-     alt="Data access exception hierarchy"
-     loading="lazy"
-     decoding="async">
-<p style="text-align:center; font-style: italic;"><a href="https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch11s02.html">Image Source</a></p>
-</div>
+{% include image.html src="/assets/DataAccessException.gif" alt="Data access exception hierarchy" caption="<a href='https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch11s02.html'>Image Source</a>" %}
 
 **Pattern Extensions:**  This pattern works by wrapping any exception in a specific runtime package exception. In this way, any boilerplate “try-catch“ code is removed. This pattern is very useful if no exception to the service package is recoverable (I recommend using checked exceptions only if the client can take some useful recovery action based on information in the exception. Otherwise the right choice is unchecked exceptions). The implementation is very simple and straightforward using [lombok @SneakyThrows](https://projectlombok.org/features/SneakyThrows).
 
@@ -58,13 +46,7 @@ The fault barrier pattern is a pattern that handles faults.
 
 **How**: “In the fault barrier pattern, any application component can throw a fault exception, but only the component acting as the ‘fault barrier’ catches them.”  [Source](https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html). The fault barrier component should record the information contained in the fault exception for future action (logging) and close out the operation in a controlled manner.
 
-<div align="center">
-<img src="/assets/FaultBarrier.jpg" style="content-visibility:auto"
-alt="Fault Barrier"
-loading="lazy"
-decoding="async">
-</div>
-<p style="text-align:center; font-style: italic;"><a href="https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html">Image Source</a></p>
+{% include image.html src="/assets/FaultBarrier.jpg" alt="Fault Barrier" caption="<a href='https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part2.html'>Image Source</a>" %}
 
 **When:** You should follow this pattern in every application that can fail in some way. Practically speaking, you’ll want to use this pattern in every application.
 

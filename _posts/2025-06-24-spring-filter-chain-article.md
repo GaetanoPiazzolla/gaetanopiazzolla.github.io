@@ -12,9 +12,7 @@ Three months ago, I was tasked with implementing logging, authentication, and CO
 
 The breakthrough came when I realized that Spring's filter mechanism is a masterful implementation of the [Chain of Responsibility pattern](https://refactoring.guru/design-patterns/chain-of-responsibility) — a behavioral design pattern where a request passes through a chain of handlers, each having the opportunity to process the request or pass it to the next handler. In Spring's web layer, this pattern enables multiple filters to collaborate seamlessly without knowing about each other.
 
-<div class="post-image-container">
-    {% include image.html src="/assets/chain-of-resp.png" alt="Some guys passing stuff around" caption="Some guys passing stuff around" %}
-</div>
+{% include image.html src="/assets/chain-of-resp.png" alt="Some guys passing stuff around" %}
 
 ## The Mystery of the Missing Request Headers
 

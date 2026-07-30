@@ -20,10 +20,7 @@ The full application code is available on [GitHub](https://github.com/GaetanoPia
 
 ---
 
-<div align="center">
-    {% include image.html src="https://cdn-images-1.medium.com/v2/0*ZW7xuJSrQ9h-g9lT" alt="Ceiling" %}
-</div>
-<p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/@maxlarochelle?utm_source=medium&utm_medium=referral">Max LaRochelle</a> on Unspash</p>
+{% include image.html src="https://cdn-images-1.medium.com/v2/0*ZW7xuJSrQ9h-g9lT" alt="Ceiling" caption="Photo by <a href='https://unsplash.com/@maxlarochelle?utm_source=medium&utm_medium=referral'>Max LaRochelle</a> on Unsplash" %}
 
 ---
 

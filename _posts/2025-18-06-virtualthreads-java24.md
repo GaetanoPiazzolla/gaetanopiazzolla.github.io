@@ -27,9 +27,7 @@ the performance of virtual threads had a huge dump due to [synchronized code blo
 
 In this article we will see if the promises of [Java 24 JEP 491](https://openjdk.org/jeps/491), which prevents virtual thread pinning, are really up to the expectations.
 
-<div align="center">
-    {% include image.html src="/assets/threads.png" alt="Threads of wool" %}
-</div>
+{% include image.html src="/assets/threads.png" alt="Threads of wool" %}
 
 ## Test Setup
 
@@ -46,9 +44,7 @@ We made it simple enough: you just need to edit [this docker-compose file](https
 Test results will be available in the output of the K6 script nicely formatted, 
 but also in a visual form thanks to an ad-hoc built grafana dashboard:
 
-<div align="center">
-    {% include image.html src="/assets/grafana_24.png" alt="grafana Dashboard" %}
-</div>
+{% include image.html src="/assets/grafana_24.png" alt="grafana Dashboard" %}
 
 ### Test Configuration
 

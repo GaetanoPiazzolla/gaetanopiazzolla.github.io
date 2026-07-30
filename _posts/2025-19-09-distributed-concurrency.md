@@ -13,10 +13,7 @@ In this article, we'll build on the latest annotations introduced by Spring in t
 The full code of this implementation is available [here](https://github.com/GaetanoPiazzolla/distributed-concurrency-limit).
 
 
-<div class="post-image-container">
-    {% include image.html src="/assets/foresta-umbra.jpg" alt="Foresta Umbra - Gargano" %}
-    <p class="post-image-subtitle">Foresta Umbra - April 2024</p>
-</div>
+{% include image.html src="/assets/foresta-umbra.jpg" alt="Foresta Umbra - Gargano" caption="Foresta Umbra - April 2024" %}
 
 ### 1. Introduction: Spring 7.0's New Resilience Features
 [Spring 7.0](https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-7.0-Release-Notes) 
@@ -50,20 +47,14 @@ When scaling horizontally, increasing the number of pods, this limit does not wo
 (with **N** pods = **N x 10** concurrent requests). 
 This can overload the downstream, increase costs, and risk cascading failures if not managed at the system level.
 
-<div class="post-image-container">
-    {% include image.html src="/assets/concurrency-limit.png" alt="Concurrency Limit on Multiple Instances" %}
-    <p class="post-image-subtitle">Concurrency Limit on Multiple Instances</p>
-</div>
+{% include image.html src="/assets/concurrency-limit.png" alt="Concurrency Limit on Multiple Instances" %}
 
 ### 3. The Solution: Distributed Concurrency Control
 Several architectural solutions are possible to solve this problem.
 In this case, we will build on Spring’s `@ConcurrencyLimit`, using a distributed semaphore 
 that stores its internal state in Redis.
 
-<div class="post-image-container">
-    {% include image.html src="/assets/distributed-concurrency-limit.png" alt="Distributed Concurrency Limit" %}
-    <p class="post-image-subtitle">Distributed Concurrency Limit</p>
-</div>
+{% include image.html src="/assets/distributed-concurrency-limit.png" alt="Distributed Concurrency Limit" %}
 
 We’ll create a new annotation, `@DistributedConcurrencyLimit`, 
 which enforces a maximum number of accesses to the external resource across multiple 

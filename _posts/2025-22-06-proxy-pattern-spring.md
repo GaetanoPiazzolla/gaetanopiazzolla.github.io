@@ -28,12 +28,7 @@ delegating to your actual business logic.
 This proxy appears identical to your original object from the outside, 
 but internally it's a sophisticated interceptor that enables Spring's declarative programming model.
 
-<div align="center">
-<img src="/assets/proxy-pattern.png" style="content-visibility:auto"
-alt="Proxy Pattern glass door"
-loading="lazy"
-decoding="async">
-</div>
+{% include image.html src="/assets/proxy-pattern.png" alt="Proxy Pattern glass door" %}
 
 ## The Discovery That Changes Everything
 

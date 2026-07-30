@@ -16,10 +16,7 @@ In this tutorial, we'll present some best practices for resilience when dealing 
 Most of the methodologies presented here are well known and familiar, such as the "reply" or "health checks," 
 but some of them are not, such as the fuse-breaker + feature toggle. Let's start with the easy ones.
 
-<div align="center">
-    {% include image.html src="/assets/fuse-breaker.png" alt="Fuse breaker" %}
-</div>
-<p style="text-align:center; font-style: italic;">A fuse inside a circuit.</p>
+{% include image.html src="/assets/fuse-breaker.png" alt="Fuse breaker" caption="A fuse inside a circuit." %}
 
 ## 2. Replay and Circuit Breaker
 

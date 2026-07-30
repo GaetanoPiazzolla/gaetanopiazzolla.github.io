@@ -19,13 +19,7 @@ the LLM with our documents and the knowledge they provide, using a Vector Databa
 In this article, we will implement [Function-Calling](https://platform.openai.com/docs/guides/function-calling),
 another way to customize LLM models to a specific need.
 
-<div align="center">
-<img src="/assets/rag-spring-ai/cover.png" style="content-visibility:auto"
-alt="Nice cloud"
-loading="lazy"
-decoding="async">
-</div>
-<p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/@czarotg?utm_source=gae.piaz">Cezary Kukowka</a> on Unsplash</p>
+{% include image.html src="/assets/rag-spring-ai/cover.png" alt="A cloud at sunset" caption="Photo by <a href='https://unsplash.com/@czarotg?utm_source=gae.piaz'>Cezary Kukowka</a> on Unsplash" %}
 
 ## How It Works
 
@@ -36,13 +30,7 @@ The caller then uses this additional Data to call the Function and enriches the 
 
 The following diagram illustrates the flow of operations happening during the process.
 
-<div align="center">
-<img src="/assets/rag-spring-ai/llm-function-calling-diagram.png" style="content-visibility:auto"
-alt="Stupid Diagram"
-loading="lazy"
-decoding="async">
-</div>
-<p style="text-align:center; font-style: italic;">LLM Function Calling Diagram</p>
+{% include image.html src="/assets/rag-spring-ai/llm-function-calling-diagram.png" alt="LLM function-calling flow" caption="LLM Function Calling Diagram" %}
 
 Let’s see an example related to the Smart Document Assistant.
 
@@ -183,45 +171,21 @@ spring:
 ## Demo
 Let’s see the AI LLM function-calling working. Let’s try to send to the chat the following text:
 
-<div align="center">
-<img src="/assets/rag-spring-ai/function-start.png" style="content-visibility:auto"
-alt="Start query"
-loading="lazy"
-decoding="async">
-</div>
-<p style="text-align:center; font-style: italic;">Asking the chat for searching a specific document</p>
+{% include image.html src="/assets/rag-spring-ai/function-start.png" alt="Start query" caption="Asking the chat for searching a specific document" %}
 
 
 As we have discussed already, the prompt will contain the registered FunctionCallback:
 
 
-<div align="center">
-<img src="/assets/rag-spring-ai/prompt-options.png" style="content-visibility:auto"
-alt="Prompt debug"
-loading="lazy"
-decoding="async">
-</div>
-<p style="text-align:center; font-style: italic;">Debugging the prompt options</p>
+{% include image.html src="/assets/rag-spring-ai/prompt-options.png" alt="Prompt debug" caption="Debugging the prompt options" %}
 
 Once the LLM model elaborates the request, we will receive the deserialized object ready to use to query our database:
 
-<div align="center">
-<img src="/assets/rag-spring-ai/correct-request.png" style="content-visibility:auto"
-alt="Correct request"
-loading="lazy"
-decoding="async">
-</div>
-<p style="text-align:center; font-style: italic;">Request contains the right parameters</p>
+{% include image.html src="/assets/rag-spring-ai/correct-request.png" alt="Correct request" caption="Request contains the right parameters" %}
 
 Once the size of the document list is retrieved, the app will return this value to the LLM which will build the final response for us:
 
-<div align="center">
-<img src="/assets/rag-spring-ai/function-end.png" style="content-visibility:auto"
-alt="End query"
-loading="lazy"
-decoding="async">
-</div>
-<p style="text-align:center; font-style: italic;">The final response</p>
+{% include image.html src="/assets/rag-spring-ai/function-end.png" alt="End query" caption="The final response" %}
 
 ## Conclusion
 

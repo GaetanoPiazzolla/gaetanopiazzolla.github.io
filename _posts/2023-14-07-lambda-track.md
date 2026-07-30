@@ -9,14 +9,7 @@ categories:
 ---
 
 
-<div align="center">
-<img src="/assets/lambda/map.png" style="content-visibility:auto"
-alt="Tracking Map"
-loading="lazy"
-decoding="async">
-</div>
-
-<p style="text-align:center; font-style: italic;">Photo by <a href="https://unsplash.com/@tabeaschimpf?utm_source=medium&utm_medium=referral">Tabea Schimpf</a> on Unspash</p>
+{% include image.html src="/assets/lambda/map.png" alt="Tracking Map" caption="Photo by <a href='https://unsplash.com/@tabeaschimpf?utm_source=medium&utm_medium=referral'>Tabea Schimpf</a> on Unsplash" %}
 
 ## Introduction
 
@@ -180,12 +173,7 @@ You can use the 14-day free trial with up to 150K Traces to test out its feature
 To begin with, you need to visit their website and [create an account](https://platform.lumigo.io/auth/login). 
 After registering, the first thing to do is to grant Lumigo the permits to install with CloudFormation the needed components in our cluster following the Quickstart easy guide:
 
-<div align="center">
-<img src="/assets/lambda/quickstart.png" style="content-visibility:auto"
-alt="quickstart"
-loading="lazy"
-decoding="async">
-</div>
+{% include image.html src="/assets/lambda/quickstart.png" alt="Lumigo quickstart guide" %}
 
 &nbsp;
  
@@ -194,12 +182,7 @@ Then we will already see all our function invocation and failures:
  
 &nbsp;
 
-<div align="center">
-<img src="/assets/lambda/faliures.png" style="content-visibility:auto"
-alt="faliures Map"
-loading="lazy"
-decoding="async">
-</div>
+{% include image.html src="/assets/lambda/faliures.png" alt="Function invocations and failures" %}
 &nbsp;
  
 If we click on "functions", 
@@ -208,12 +191,7 @@ in a convenient dashboard which includes the costs, last modification,
 and cold-starts tracking of our Lambdas:
  
 &nbsp;
-<div align="center">
-<img src="/assets/lambda/cold-start.png" style="content-visibility:auto"
-alt="cold starts"
-loading="lazy"
-decoding="async">
-</div>
+{% include image.html src="/assets/lambda/cold-start.png" alt="Cold-start tracking dashboard" %}
 &nbsp;
  
 If we try to hit our endpoint without passing 
@@ -221,35 +199,20 @@ the temperature value, we will have an error.
 If we click on the error invocation present in the dashboard, Lumigo will tell us the issue:
 &nbsp;
  
-<div align="center">
-<img src="/assets/lambda/lumigo-issue.png" style="content-visibility:auto"
-alt="lumigo issue"
-loading="lazy"
-decoding="async">
-</div>
+{% include image.html src="/assets/lambda/lumigo-issue.png" alt="Lumigo reporting the failed invocation" %}
 &nbsp;
  
 We will also automatically and immediately receive an email with an alert reported for this failed invocation without any further configurations:
 &nbsp;
  
 
-<div align="center">
-<img src="/assets/lambda/alert.png" style="content-visibility:auto"
-alt="alert"
-loading="lazy"
-decoding="async">
-</div>
+{% include image.html src="/assets/lambda/alert.png" alt="Email alert for a failed invocation" %}
 
 ## Trace
 
 All the functions added are not signed as "traced" automatically by Lumigo. That's because Java11 is not a supported runtime for auto-tracing:
 
-<div align="center">
-<img src="/assets/lambda/supported-runtimes.png" style="content-visibility:auto"
-alt="supported runtimes"
-loading="lazy"
-decoding="async">
-</div>
+{% include image.html src="/assets/lambda/supported-runtimes.png" alt="Lumigo supported runtimes for auto-tracing" %}
 
 As suggested in this case, we have to do some simple manual instrumentation. 
 First of all, we need to add the Limingo library repository to the Gradle repository list together with the [lumigo.io/java-tracer](https://github.com/lumigo-io/java-tracer) library:
@@ -294,21 +257,11 @@ aws lambda update-function-configuration --function-name FUNCTION \
 
 This will add the following environment variables to our function:
 
-<div align="center">
-<img src="/assets/lambda/environment.png" style="content-visibility:auto"
-alt="environment"
-loading="lazy"
-decoding="async">
-</div>
+{% include image.html src="/assets/lambda/environment.png" alt="Environment variables added to the function" %}
 
 It will give us the ability to see a lot of additional information for a single execution:
 
-<div align="center">
-<img src="/assets/lambda/additional-info.png" style="content-visibility:auto"
-alt="additional information"
-loading="lazy"
-decoding="async">
-</div>
+{% include image.html src="/assets/lambda/additional-info.png" alt="Additional information for a single execution" %}
 
 ## Conclusion
 In this short tutorial, we have implemented and deployed a modern component of a distributed system in a 

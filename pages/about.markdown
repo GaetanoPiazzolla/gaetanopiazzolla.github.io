@@ -17,12 +17,7 @@ With my writings, I hope I can help people find a good solution to technical pro
 <a href="https://github.com/GaetanoPiazzolla/">GitHub</a>
 </div>
 
-<div align="center">
-<img src="/assets/About.jpg" style="content-visibility:auto"
-alt="Thats me"
-loading="lazy" width="300px"
-decoding="async">
-</div>
+{% include image.html src="/assets/About.jpg" alt="Gaetano Piazzolla" caption="That's me" width="300" %}
 
 
 
