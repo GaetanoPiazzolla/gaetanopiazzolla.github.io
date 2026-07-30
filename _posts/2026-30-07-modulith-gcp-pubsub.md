@@ -13,11 +13,13 @@ Spring Modulith is Spring's toolkit for the modular monolith: one deployable app
 
 But what if your infrastructure runs entirely on Google Cloud, and you need to externalize these events to GCP Pub/Sub? There is no Pub/Sub externalizer, so you have to wire it up yourself.
 
+{% include image.html src="/assets/trapani-sicily.jpg" alt="Trapani - Sicily - I'm pretty sure she is not reading about Spring or GCP." %}
+
 In this article we will walk through a complete, production-ready implementation journey. We'll start by establishing a solid architectural foundation, move on to safely producing and consuming events, and finally harden the system with advanced Pub/Sub features like dead-letter queues, message ordering, and local emulator testing.
 
 *(Note: This guide uses Spring Boot 4.1, Spring Modulith 2.1, and Spring Cloud GCP 8.1. Every example is from a working repository, and almost all of it runs against the local Pub/Sub emulator—no real GCP project required.)*
 
-{% include image.html src="/assets/trapani-sicily.jpg" alt="Trapani - Sicily" %}
+Repository with full code is here: https://github.com/GaetanoPiazzolla/modulith-gcp-pubsub
 
 ## Part 1: The Foundation
 
@@ -771,3 +773,5 @@ Deliberate gaps, so you know where the guide stops:
 - Externalizing a versioned contract, rather than internal domain events, decouples refactoring from consumers.
 - Consumer correctness is mostly about separating permanent from transient failures and giving each consumer its own bounded deduplication store to enforce idempotency.
 - Most advanced features (ordering, filtering, dead-lettering, schemas) are testable locally using the Pub/Sub emulator.
+
+Repository with full code is here: https://github.com/GaetanoPiazzolla/modulith-gcp-pubsub
