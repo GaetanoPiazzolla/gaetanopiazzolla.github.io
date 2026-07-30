@@ -19,7 +19,7 @@ In this article we will walk through a complete, production-ready implementation
 
 *(Note: This guide uses Spring Boot 4.1, Spring Modulith 2.1, and Spring Cloud GCP 8.1. Every example is from a working repository, and almost all of it runs against the local Pub/Sub emulator—no real GCP project required.)*
 
-Repository with full code is here: https://github.com/GaetanoPiazzolla/modulith-gcp-pubsub
+Repository with full code is here: [https://github.com/GaetanoPiazzolla/modulith-gcp-pubsub](https://github.com/GaetanoPiazzolla/modulith-gcp-pubsub)
 
 ## Part 1: The Foundation
 
@@ -774,4 +774,4 @@ Deliberate gaps, so you know where the guide stops:
 - Consumer correctness is mostly about separating permanent from transient failures and giving each consumer its own bounded deduplication store to enforce idempotency.
 - Most advanced features (ordering, filtering, dead-lettering, schemas) are testable locally using the Pub/Sub emulator.
 
-Repository with full code is here: https://github.com/GaetanoPiazzolla/modulith-gcp-pubsub
+Repository with full code is here: [https://github.com/GaetanoPiazzolla/modulith-gcp-pubsub](https://github.com/GaetanoPiazzolla/modulith-gcp-pubsub)
