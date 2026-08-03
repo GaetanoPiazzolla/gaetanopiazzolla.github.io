@@ -14,11 +14,9 @@ A practical guide to implementing logical delete with Spring Data JPA, designed 
 
 **The Full code is available on [GitHub](https://github.com/GaetanoPiazzolla/logical-delete).**
 
----
 
 {% include image.html src="https://cdn-images-1.medium.com/v2/resize:fit:1600/0*VJbObkWNfbwyYDRq" alt="Fire" caption="Photo by <a href='https://unsplash.com/@varmamanyu?utm_source=medium&utm_medium=referral'>Manyu Varma</a> on Unsplash" %}
 
----
 
 ## Introduction
 
@@ -58,7 +56,6 @@ public abstract class AbstractEntity {
 }
 ```
 
----
 
 ## Basic Implementation
 
@@ -88,7 +85,6 @@ This implementation is not ideal because:
 
 Let's see how we can improve this implementation in the next section.
 
----
 
 ## Effective Implementation with @SQLDelete and @SQLRestriction
 
@@ -177,7 +173,6 @@ With Virtual Threads, there should be no need to manually clean up the ThreadLoc
 Check the previous article to set up a custom Spring interceptor to clean up the _ThreadLocal_ variable: 
 [Event Notification Pattern](https://gaetanopiazzolla.github.io/spring/design-patterns/2024/12/15/event-spring.html).
 
----
 
 ## Conclusion
 

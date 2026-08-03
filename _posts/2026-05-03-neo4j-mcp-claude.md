@@ -28,7 +28,6 @@ The complete source code and configuration for this tutorial is available on Git
 
 **[https://github.com/GaetanoPiazzolla/neo4j-mcp](https://github.com/GaetanoPiazzolla/neo4j-mcp)**
 
----
 
 ## 1. Start Neo4j
 
@@ -47,7 +46,6 @@ Verify the server is running by navigating to [http://localhost:7474](http://loc
 
 To stop the container later, you can simply run `docker compose down`.
 
----
 
 ## 2. Populate the Database
 
@@ -69,7 +67,6 @@ Import complete.
 ```
 *(Note: The script is idempotent, so you can run it multiple times safely.)*
 
----
 
 ## 3. Install the neo4j-mcp Binary
 
@@ -98,7 +95,6 @@ Verify the installation:
 neo4j-mcp -v  
 ```
 
----
 
 ## 4. Register neo4j-mcp in Claude Code
 
@@ -131,7 +127,6 @@ Try asking Claude Code questions like:
 - *What are the top 5 most expensive products?*
 - *Which suppliers provide beverages?*
 
----
 
 ## The Power of Claude Code Skills
 
@@ -145,7 +140,6 @@ mcp__neo4j-mcp__get-schema
 mcp__neo4j-mcp__read-cypher  { query: "<CYPHER>" }
 ```
 
----
 
 ## What is MCPorter?
 
@@ -191,7 +185,6 @@ mcporter call 'neo4j-mcp.read-cypher(query: "MATCH (p:Product) RETURN p.productN
 
 You can create a Claude Code skill that leverages this CLI setup, exporting credentials and executing `mcporter` via the `Bash` tool. You'll find an example of this in the repo at `.claude/skills/neo4j-query-cli/SKILL.md`.
 
----
 
 ## Conclusion: MCP, CLI, or both?
 

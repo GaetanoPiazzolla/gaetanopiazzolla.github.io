@@ -114,7 +114,6 @@ This architectural boundary is strictly enforced in the codebase using a `packag
 package gae.piaz.modulith.pubsub.shipping;
 ```
 
----
 
 ## Part 2: Producing Events
 
@@ -277,7 +276,6 @@ Treat that contract as append-only: add fields freely, but never rename or remov
 
 There is also an ordering subtlety that is easy to trip over. Modulith runs this mapping **before** it evaluates the SpEL routing key, so by then the payload is an `OrderCompletedV1`, not an `OrderCompleted`. Your public contract therefore has to expose every field the `@Externalized` expression mentions — which is why `customerId` appears in it. In-process listeners are unaffected; they still receive the original domain event.
 
----
 
 ## Part 3: Consuming Events
 
@@ -422,7 +420,6 @@ try {
 }
 ```
 
----
 
 ## Part 4: Hardening for Production (Advanced Features)
 
@@ -555,7 +552,6 @@ There is one prerequisite, and it has to be decided long before the incident: se
 
 How far back you can rewind is bounded by retention, and there are two knobs, confusingly both called `message_retention_duration` — one on the subscription, one on the topic. The subscription setting keeps *unacknowledged* messages for seven days by default, configurable from ten minutes up to 31 days. Topic-level retention, capped at 31 days too, does something the subscription setting cannot: it lets a subscription seek back past its own creation time, replaying messages published before it existed. Either way the ceiling is 31 days — `seek` is an incident-response tool, not an archive.
 
----
 
 ## Part 5: Operations & Testing
 
@@ -752,7 +748,6 @@ incompletePublications.resubmitIncompletePublications(publication -> true);
 await().untilAsserted(() -> assertThat(registry.findIncompletePublications()).isEmpty());
 ```
 
----
 
 ## Reference & Summary
 

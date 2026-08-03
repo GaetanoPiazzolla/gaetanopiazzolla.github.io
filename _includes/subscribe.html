@@ -4,9 +4,9 @@
   
   <div class="subscribe-options">
     <ul class="subscribe-links">
-      <li><a href="{{ '/feed.xml' | relative_url }}" target="_blank">📡 RSS Feed</a></li>
-      <li><a href="https://github.com/{{ site.github_username }}/{{ site.github_username }}.github.io" target="_blank">⭐ Site Repository</a></li>
-      <li><a href="https://medium.com/@gae-piaz" target="_blank">📝 Follow on Medium</a></li>
+      <li><a href="{{ '/feed.xml' | relative_url }}" target="_blank">[rss]</a></li>
+      <li><a href="https://github.com/{{ site.github_username }}/{{ site.github_username }}.github.io" target="_blank">[src]</a></li>
+      <li><a href="https://medium.com/@gae-piaz" target="_blank">[medium]</a></li>
     </ul>
   </div>
 </div>
@@ -14,7 +14,7 @@
 <style>
 .subscribe-description {
   font-size: 0.9em;
-  color: #666;
+  color: #888;
   margin-bottom: 15px;
   line-height: 1.4;
 }
@@ -34,18 +34,19 @@
 }
 
 .subscribe-links a {
-  color: #00992c;
+  color: #00cc66;
+  font-family: 'JetBrains Mono', monospace;
   text-decoration: none;
   font-size: 0.95em;
   display: block;
   padding: 8px 12px;
-  border: 1px solid #e8e8e8;
-  border-radius: 4px;
+  border: 1px solid #ddd;
+  border-radius: 0;
   transition: background-color 0.2s;
 }
 
 .subscribe-links a:hover {
-  background-color: #f8f9fa;
+  background-color: #fafafa;
   text-decoration: none;
 }
 </style> 

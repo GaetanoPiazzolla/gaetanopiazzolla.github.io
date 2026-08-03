@@ -173,7 +173,6 @@ The question isn't whether AI will automate development workflows - it already h
 
 **Share this with your team** - because who has time for manual git workflows in 2025?
 
----
 
 *Ready to automate your development workflow? Create your AGENTS.md file today and watch your productivity transform. Your future self will thank you.*
 

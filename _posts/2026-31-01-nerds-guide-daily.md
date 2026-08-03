@@ -32,7 +32,6 @@ This is a guide to building an **Automated Accountability System** using the too
 7. [Visualizing the Knowledge Graph](#7-visualizing-the-knowledge-graph)
 8. [Conclusion](#8-conclusion)
 
----
 
 ## 1. The Stack
 
@@ -45,7 +44,6 @@ Forget Notion complexity or Todoist silos. We're going with the "Unix Philosophy
 2.  **[Git](https://git-scm.com/)**: Version control. Because you *will* want to `git blame` yourself for that missed workout.
 3.  **[LLMs](https://copilot.github.com/)**: Your "Senior Engineer" for code reviewing your habits. Use Copilot, ChatGPT, Claude, or a local Llama. doesn't matter.
 
----
 
 ## 2. Setting Up Your Dev Environment
 
@@ -67,7 +65,6 @@ You want to commit from the gym? You have two options:
 1.  **GitHub Mobile:** The lightweight client. Great for quick edits or checking off boxes. You lose the Obsidian plugins but it works out of the box with your repo.
 2.  **Obsidian Mobile:** The full IDE in your pocket. It supports plugins, but aligning the git sync on iOS/Android requires some extra config (e.g., Working Copy on iOS or Git plugin setup on Android).
 
----
 
 ## 3. The Daily Spec: Writing Documentation for Your Future Self
 
@@ -117,7 +114,6 @@ Here's how it actually runs in production:
 
 That's it. No app-switching. No syncing issues. Just text files and Git commits.
 
----
 
 ## 4. CI/CD for Life: The Objective System
 
@@ -148,7 +144,6 @@ Every Sunday, review your week.
 *   Are you blocked on "Project X"?
 *   Do you need to refactor your routine?
 
----
 
 ## 5. Querying Your Life: The Tasks Plugin
 
@@ -175,7 +170,6 @@ sort by created
 Now you have a dynamic view of your backlog, right in your IDE... er, notes app. 
 Examples in [here](https://github.com/obsidian-tasks-group/obsidian-tasks). 
 
----
 
 ## 6. The Secret Sauce: LLM Code Review
 
@@ -204,7 +198,6 @@ You can ask the LLM to generate data for a graph.
 
 {% include image.html src="/assets/nerds-guide/january_2026_objectives_graph.png" alt="LLM Generated Graph showing consistency over time" caption="Real data here: My workout stream is crazy-good in January, despite a herniated disk." %}
 
----
 
 ## 7. Visualizing the Knowledge Graph
 
@@ -217,7 +210,6 @@ Over time, you see clusters forming. Your "Daily Notes" cluster around "Projects
 
 {% include image.html src="/assets/nerds-guide/obsidian-knowledge-graph.png" alt="Obsidian Knowledge Graph" caption="Visualizing the connections between your thoughts and projects." %}
 
----
 
 ## 8. Conclusion
 

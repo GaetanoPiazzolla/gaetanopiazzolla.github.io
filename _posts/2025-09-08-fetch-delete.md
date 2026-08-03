@@ -13,11 +13,9 @@ The best way of accessing logical deleted entities without writing weird queries
 
 **The Full code is available on [GitHub](https://github.com/GaetanoPiazzolla/logical-delete).**
 
----
 
 {% include image.html src="/assets/trani-inverno-2024.jpg" alt="Trani" caption="Trani, Cold winter Evening - 2024" %}
 
----
 
 ## Introduction
 
@@ -36,7 +34,6 @@ there are legitimate scenarios where we need to retrieve them:
 
 This article demonstrates how to elegantly solve this problem using advanced JPA techniques and AspectJ, avoiding the pitfalls of naive implementations.
 
----
 
 ## The Naive Approach: Custom Named Queries
 
@@ -92,7 +89,6 @@ Optional<Author> findDeletedAuthorWithBooks(Integer id);
 
 **5) Error-Prone**: Easy to forget adding deleted conditions in complex queries.
 
----
 
 ## The Professional Approach: @TransactionalDeleted Annotation
 
@@ -118,7 +114,6 @@ public class AuthorService {
 
 **No custom queries, no code duplication, no maintenance overhead.**
 
----
 
 ## Implementation Steps
 
@@ -261,7 +256,6 @@ public class TransactionsConfig {
 }
 ```
 
----
 
 ## Benefits of the Professional Approach
 
@@ -277,7 +271,6 @@ public class TransactionsConfig {
 
 **✅ Transparent Usage**: Clean, annotation-driven API
 
----
 
 ## Testing the Implementation
 
@@ -308,7 +301,6 @@ class FetchingDeletedTest {
 }
 ```
 
----
 
 ## Conclusion
 
@@ -324,6 +316,5 @@ This pattern demonstrates how combining Spring's AOP capabilities with Hibernate
 **Next Steps**: Consider extending this pattern to support mixed queries (both active and deleted entities) 
 or implementing audit logging for deleted entity access.
 
----
 
 *Feel free to [contact me](mailto:gae.piaz@gmail.com) for any questions or suggestions about this implementation.*

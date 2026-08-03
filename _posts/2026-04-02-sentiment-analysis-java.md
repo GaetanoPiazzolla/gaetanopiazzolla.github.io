@@ -364,6 +364,5 @@ This approach demonstrates that with the right tools and configuration, you can 
 
 The key is understanding your requirements and choosing the right tool for the job. Sometimes, the best solution is simpler than you think.
 
----
 
 *Interested in seeing this in action? Check out [BullSentiment.com](https://bullsentiment.com) for real-time stock sentiment analysis. The complete source code for this tutorial is available at [github.com/gaetanopiazzolla/sentiment-analysis-java](https://github.com/gaetanopiazzolla/sentiment-analysis-java).*

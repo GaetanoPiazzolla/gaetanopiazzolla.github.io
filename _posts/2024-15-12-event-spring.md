@@ -18,11 +18,9 @@ This enhancement addresses one of the downsides of the **Event Notification Patt
 
 The full application code is available on [GitHub](https://github.com/GaetanoPiazzolla/spring-event-notification).
 
----
 
 {% include image.html src="https://cdn-images-1.medium.com/v2/0*ZW7xuJSrQ9h-g9lT" alt="Ceiling" caption="Photo by <a href='https://unsplash.com/@maxlarochelle?utm_source=medium&utm_medium=referral'>Max LaRochelle</a> on Unsplash" %}
 
----
 
 ### 1- Entity Listeners
 To start, we use _@EntityListeners_ to specify the listener class for an entity. Below is an example where the Book entity is annotated to listen to lifecycle events via the _BookEntityListener_ class:
@@ -79,7 +77,6 @@ public class BookEntityListener {
 }
 ```
 
----
 
 ### 2- The Event Queue
 Instead of publishing events directly, we enqueue them for two key reasons:
@@ -133,7 +130,6 @@ Furthermore, oracle’s recommendation against pooling virtual threads makes _Th
 when using lightweight virtual threads. For details, 
 see [Oracle’s documentation on DONT POOL VIRTUAL THREADS](https://docs.oracle.com/en/java/javase/20/core/virtual-threads.html#GUID-9065C2D5-9006-4F1A-93E0-D5153BB40475).
 
----
 
 ### 3- ThreadLocal Clearing Interceptor
 To prevent event leakage when pooling threads, we clear the _ThreadLocal_ after requests are completed. This can be done using an interceptor:
@@ -175,7 +171,6 @@ public class WebConfig implements WebMvcConfigurer {
 }
 ```
 
----
 
 ### 4- Event Notification with Transaction Synchronization
 
@@ -256,7 +251,6 @@ public class TransactionSynchronizationAspect {
 Since the aspect executes after the transaction commits, it ensures events are only sent if the transaction is successful. 
 In case of a failure, events are not sent, and changes are rolled back.
 
----
 
 ### 5- Event Notification with DTO Response
 
@@ -312,7 +306,6 @@ public class EventNotificationResponseBodyAdvice implements ResponseBodyAdvice<O
 }
 ```
 
----
 
 ### 6- Consuming Events
 The DataChangeEvent events can be consumed using the @EventListener annotation.
@@ -337,7 +330,6 @@ Furthermore, Spring Modulith offers a seamless way to externalize events.
 To learn more about externalizing events with Spring Modulith, 
 Check [Simplified Event Externalization with Spring Modulith](https://spring.io/blog/2023/09/22/simplified-event-externalization-with-spring-modulith) for more details.
 
----
 
 ### 7- Alternatives and Conclusions
 

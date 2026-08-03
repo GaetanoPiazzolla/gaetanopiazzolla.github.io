@@ -93,7 +93,6 @@ that we have uploaded to the database, with a button to upload more.
 </div>
 {% endhighlight %}
 
----
 
 {% include image.html src="/assets/rag-spring-ai/client_screenshot.png" alt="client screenshot" caption="A screenshot of the Assistant" %}
 

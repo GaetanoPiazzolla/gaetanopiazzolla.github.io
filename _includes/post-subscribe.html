@@ -1,16 +1,16 @@
 <div class="post-subscribe">
   <div class="subscribe-links-simple">
     <a href="{{ '/feed.xml' | relative_url }}" target="_blank" class="simple-link">
-      📡 RSS Feed
+      [rss]
     </a>
     <a href="https://github.com/{{ site.github_username }}/{{ site.github_username }}.github.io" target="_blank" class="simple-link">
-      ⭐ Site Repository
+      [src]
     </a>
     <a href="https://medium.com/@gae-piaz" target="_blank" class="simple-link">
-      📝 Follow on Medium
+      [medium]
     </a>
     <a href="https://raw.githubusercontent.com/GaetanoPiazzolla/gaetanopiazzolla.github.io/master/{{ page.path }}" onclick="downloadMarkdown(event, this.href, '{{ page.title | slugify }}.md')" target="_blank" class="simple-link">
-      ⬇️ Download Markdown
+      [.md]
     </a>
   </div>
 </div>
@@ -29,14 +29,15 @@
 }
 
 .simple-link {
-  color: #2a7ae2;
+  color: #00cc66;
   text-decoration: none;
-  font-size: 0.9em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
   transition: color 0.2s ease;
 }
 
 .simple-link:hover {
-  color: #1e5a96;
+  color: #1a1a1a;
   text-decoration: underline;
 }
 

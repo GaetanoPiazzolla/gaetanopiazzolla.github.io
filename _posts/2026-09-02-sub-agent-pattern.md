@@ -125,7 +125,6 @@ Agents are defined as markdown files with YAML frontmatter:
 **architect.md**
 
 ```markdown
----
 name: architect
 description: Use for complex analysis requiring deep reasoning
 model: o3-mini
@@ -279,5 +278,4 @@ public String processDirect(String task, String data) {
 
 Full implementation: [https://github.com/GaetanoPiazzolla/llm-architect-builder](https://github.com/GaetanoPiazzolla/llm-architect-builder)
 
----
 *Interested in seeing this in action? Check out [BullSentiment.com](https://bullsentiment.com) for real-time stock sentiment analysis powered by sub-agent orchestration.*

@@ -17,11 +17,9 @@ The general concept is to use a local cache first, and a second level cache if t
 
 The goal is to improve the application's performance by reducing the number of round trips to remote hosts.
 
----
 
 {% include image.html src="/assets/cache.jpg" alt="A cache meme" %}
 
----
 
 **The first-level cache** will be provided by [Caffeine](https://github.com/ben-manes/caffeine), a high-performance caching library.
 
@@ -31,7 +29,6 @@ Of course, this implementation is made to be generic and can be easily adapted t
 
 The code is available [here](https://github.com/GaetanoPiazzolla/spring-boot-multi-layer-cache).
 
----
 
 ## Dumb (and Easy) Approach to Double Caching
 
@@ -85,7 +82,6 @@ public L1CacheService {
 MEH. This is not a good approach. It's super verbose and error-prone. We have to create a new service for each cache level.
 We can do better.
 
----
 
 ## Using Spring Cache Abstraction
 
@@ -174,7 +170,6 @@ So it's not a perfect solution because it still requires manual intervention in 
 
 Let's see how we can improve this.
 
----
 ## Using a Custom CacheManager
 
 We can implement our own, custom `CacheManager` to handle the double caching logic.
@@ -332,11 +327,9 @@ When the data is evicted from the local cache, it will also be evicted from the 
 
 The complete flow of operations is shown in the following Mermaid diagram:
 
----
 
 {% include image.html src="/assets/mermaid-cache.png" alt="Multi-level cache lookup flow" %}
 
----
 
 ### Testing
 
@@ -426,7 +419,6 @@ class MultiCacheAppIntegrationTest {
 }
 ```
 
----
 
 ### Conclusion
 

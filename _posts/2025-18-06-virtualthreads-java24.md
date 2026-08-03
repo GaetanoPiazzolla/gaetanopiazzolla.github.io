@@ -202,6 +202,5 @@ In the next articles:
 - we'll use and test an HikariCP alternative, built by the Red Hat / Quarkus team, which is Loom-friendly (designed with support for virtual threads in mind): [Agroal](https://github.com/agroal/agroal).
 - we'll test a new workload that involves also different scenarios than database queries, as calls to external services
 
----
 
 *This analysis was conducted using Spring Boot 3.3.1 and 3.5.0 with Java 19 and 24, using K6 for load testing and PostgreSQL for database operations. The complete testing framework and application code are available on [GitHub](https://github.com/GaetanoPiazzolla/spring-boot-virtual-threads-test).*

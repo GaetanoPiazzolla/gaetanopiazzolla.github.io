@@ -34,7 +34,6 @@ we will see 4 peculiar patterns/best practices for handling errors or exceptions
 3. [http://tutorials.jenkov.com/java-exception-handling/exception-wrapping.html](http://tutorials.jenkov.com/java-exception-handling/exception-wrapping.html)
 4. [https://stackoverflow.com/questions/484794/wrapping-a-checked-exception-into-an-unchecked-exception-in-java](https://stackoverflow.com/questions/484794/wrapping-a-checked-exception-into-an-unchecked-exception-in-java)
 
----
 
 ## 2- Fault Barrier Pattern
 
@@ -105,7 +104,6 @@ class ExceptionHandler implements Thread.UncaughtExceptionHandler {
 2. [https://www.baeldung.com/java-global-exception-handler](https://www.baeldung.com/java-global-exception-handler)
 3. [https://www.baeldung.com/exception-handling-for-rest-with-spring#controlleradvice](https://www.baeldung.com/exception-handling-for-rest-with-spring#controlleradvice)
 
----
 
 ## 3- Exception Bouncer Pattern
 
@@ -164,7 +162,6 @@ This exception can also be refined and enriched with opportune details and well 
 1. [http://wiki.c2.com/?BouncerPattern](http://wiki.c2.com/?BouncerPattern)
 
 
----
 
 
 # 4- Error Code Pattern

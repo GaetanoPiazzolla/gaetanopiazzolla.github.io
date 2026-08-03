@@ -1,5 +1,5 @@
 <div class="search-container">
-  <input type="text" id="search-input" placeholder="Search...">
+  <input type="text" id="search-input" placeholder="> search...">
   <div id="search-wrapper" style="display: none;">
     <div id="search-results"></div>
   </div>
@@ -20,14 +20,15 @@
     width: 90%;
     padding: 8px 12px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 0;
     font-size: 14px;
+    font-family: 'JetBrains Mono', monospace;
   }
   
   #search-input:focus {
     outline: none;
-    border: 1px solid green;
-    box-shadow: 0 0 4px rgba(0, 153, 44, 0.3);
+    border: 1px solid #00cc66;
+    box-shadow: 0 0 4px rgba(0, 204, 102, 0.3);
   }
   
   #search-wrapper {
@@ -35,7 +36,7 @@
     width: 100%;
     background: white;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 0;
     max-height: 400px;
     overflow-y: auto;
     z-index: 100;
@@ -57,10 +58,10 @@
   
   .search-results-list li a {
     display: block;
-    color: #00992c;
+    color: #00cc66;
     font-weight: 500;
   }
   .search-results-list li a:hover {
-    color:cadetblue;
+    color: #1a1a1a;
   }
 </style> 
