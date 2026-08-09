@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Local LLM Memory Calculator (Apple Silicon)</title>
+<style>
+  :root { --bg:#121212; --panel:#1e1e1e; --border:#333; --text:#e0e0e0; --muted:#888;
+          --ok:#2e9e5b; --warn:#c9962b; --danger:#cc3333; --accent:#007acc; }
+  body { font-family: ui-sans-serif, system-ui, sans-serif; background:var(--bg); color:var(--text); margin:0; padding:2rem; }
+  .dashboard { max-width:1080px; margin:0 auto; }
+  h1 { font-size:1.4rem; margin:0 0 .3rem; }
+  .sub { color:var(--muted); font-size:.9rem; margin:0 0 1.25rem; }
+  .platform { border:1px solid var(--border); background:var(--panel); border-left:3px solid var(--muted);
+              border-radius:6px; padding:.8rem 1.1rem; margin-bottom:1rem; font-size:.85rem; line-height:1.55; }
+  .platform.ok   { border-left-color:var(--ok); }
+  .platform.warn { border-left-color:var(--warn); }
+  .platform.bad  { border-left-color:var(--danger); }
+  .platform .det { display:block; margin-top:.45rem; color:var(--muted); }
+  .platform.ok .det   { color:var(--ok); }
+  .platform.warn .det { color:var(--warn); }
+  .platform.bad .det  { color:var(--danger); }
+  .controls { background:var(--panel); padding:1.25rem 1.5rem; border-radius:6px; border:1px solid var(--border);
+              margin-bottom:1rem; display:flex; gap:2.5rem; align-items:center; flex-wrap:wrap; }
+  .control-group { display:flex; flex-direction:column; gap:.4rem; }
+  label { font-size:.85rem; color:var(--muted); }
+  label b { color:var(--text); font-size:1rem; }
+  input[type=range] { width:240px; cursor:pointer; }
+  select { padding:.45rem; background:var(--bg); color:var(--text); border:1px solid var(--border); border-radius:4px; cursor:pointer; }
+  .budget { background:var(--panel); border:1px solid var(--border); border-radius:6px; padding:.9rem 1.5rem;
+            margin-bottom:1.5rem; font-size:.9rem; display:flex; gap:2rem; flex-wrap:wrap; }
+  .budget div span { color:var(--muted); }
+  .budget .rec-line { flex-basis:100%; border-top:1px solid var(--border); padding-top:.7rem; margin-top:.1rem; }
+  .budget .rec-line b { color:var(--accent); font-size:1rem; }
+  .tag.rec { background:#0d3b22; color:#4ade80; }
+  table { width:100%; border-collapse:collapse; font-size:.9rem; }
+  th { text-align:left; color:var(--muted); font-weight:500; font-size:.78rem; text-transform:uppercase;
+       letter-spacing:.5px; padding:.5rem .6rem; border-bottom:1px solid var(--border); }
+  th.num, td.num { text-align:right; font-variant-numeric:tabular-nums; }
+  td { padding:.55rem .6rem; border-bottom:1px solid #262626; }
+  tr.dim { opacity:.28; }
+  .name { font-weight:500; }
+  .tag { font-size:.68rem; background:#2a2a2a; color:var(--muted); padding:2px 6px; border-radius:4px; margin-left:6px;
+         text-transform:uppercase; letter-spacing:.5px; }
+  .bar-wrap { background:#242424; border-radius:3px; height:20px; position:relative; min-width:150px; overflow:hidden; }
+  .bar { height:100%; background:var(--accent); }
+  .bar.ok { background:var(--ok); } .bar.warn { background:var(--warn); } .bar.bad { background:var(--danger); }
+  .verdict { font-size:.8rem; font-weight:600; }
+  .verdict.ok { color:var(--ok); } .verdict.warn { color:var(--warn); } .verdict.bad { color:var(--danger); }
+  .pick { box-shadow: inset 3px 0 0 var(--accent); }
+  .note { color:var(--muted); font-size:.8rem; margin-top:1.5rem; line-height:1.6; }
+  code { background:#242424; padding:1px 5px; border-radius:3px; font-size:.85em; }
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+  <h1>What fits in memory — and how fast it runs</h1>
+  <p class="sub">Weights + KV cache taken from the real Unsloth GGUF files and Qwen3.6's config.
+     Speed is an order-of-magnitude estimate, not a benchmark.</p>
+
+  <div class="platform" id="platform">
+    <b>Apple Silicon only.</b> The budget below is macOS's GPU wired limit on unified memory (~75%).
+    On a discrete GPU the constraint is VRAM as a hard wall and bandwidth is 5–10× higher, which changes
+    <i>which model you should pick</i> — none of these numbers transfer.
+    <span class="det" id="platform-detect">Checking…</span>
+  </div>
+
+  <div class="controls">
+    <div class="control-group">
+      <label>Chip</label>
+      <select id="chip"></select>
+    </div>
+    <div class="control-group">
+      <label>Unified memory: <b><span id="ram-val">36</span> GB</b></label>
+      <input type="range" id="ram" min="16" max="128" step="2" value="36">
+    </div>
+    <div class="control-group">
+      <label>Memory bandwidth: <b><span id="bw-val">150</span> GB/s</b></label>
+      <input type="range" id="bw" min="60" max="900" step="10" value="150">
+    </div>
+    <div class="control-group">
+      <label>Context per slot: <b><span id="ctx-val">64</span>k</b></label>
+      <input type="range" id="ctx" min="16" max="256" step="16" value="64">
+    </div>
+    <div class="control-group">
+      <label>Parallel slots (subagents)</label>
+      <select id="slots">
+        <option value="1">1 — no subagents</option>
+        <option value="2" selected>2 — orchestrator + 1 subagent</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label>GPU wired limit</label>
+      <select id="limit">
+        <option value="0.75" selected>macOS default (~75%)</option>
+        <option value="0.83">raised via sysctl (~83%)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="budget" id="budget"></div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Model / quant</th>
+        <th class="num">Weights</th>
+        <th class="num">KV</th>
+        <th class="num">Total</th>
+        <th>Budget usage</th>
+        <th class="num">~tok/s</th>
+        <th>Verdict</th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <p class="note">
+    <b>How to read this.</b> The <i>Total</i> column is the hard constraint: weights + KV cache × slots + ~1.5&nbsp;GB of buffers.
+    Go over budget and the model won't start — or macOS begins swapping and throughput collapses to nothing.
+    The <i>~tok/s</i> column is the soft constraint: on Apple Silicon generation is memory-bandwidth-bound,
+    so what matters is how many bytes of weights get read <i>per token</i> — not how many GB the model occupies.
+    That's why a 35B MoE with 3B active parameters is ~4× faster than a dense 27B of the same file size.
+    <br><br>
+    <b>KV cache computed, not estimated.</b> Qwen3.6 is hybrid: only 1 layer in 4 does full attention
+    (<code>full_attention_interval: 4</code>), the rest are linear attention and accumulate no KV.
+    The 35B-A3B has 10 full layers of 40 with 2 KV heads → <b>20&nbsp;KB/token</b>. The dense 27B has 16 full layers of 64
+    with 4 KV heads → <b>64&nbsp;KB/token</b>. That's why the KV cache is small here and there's no reason to quantize it.
+    <br><br>
+    <b>Reference bandwidth:</b> M3 Pro ≈ 150&nbsp;GB/s · M4 Pro ≈ 273 · M3/M4 Max ≈ 400–546 · M3 Ultra ≈ 819.
+    File sizes are exact byte counts from Unsloth's GGUF repos; tok/s estimates assume ~75% bandwidth
+    efficiency and should be read with a ±30% margin. Your browser can't report installed RAM — set that slider yourself.
+    <br><br>
+    <b>Units.</b> Every size here is binary (GiB), which is what About&nbsp;This&nbsp;Mac, <code>ls -lh</code> and
+    llama.cpp all report — a "36&nbsp;GB" Mac really holds 36&nbsp;GiB. Bandwidth is the one decimal figure,
+    because GB/s is how the memory bus is specced; mixing the two costs ~7%, so the tok/s column derives
+    separately from the same byte count.
+  </p>
+</div>
+
+<script>
+  // kvKiBPerTok from config.json → 2 (K+V) * n_kv_heads * head_dim * 2 bytes (f16) * full_attention_layers
+  //   35B-A3B: 2*2*256*2*10 = 20480 B = 20 KiB/token
+  //   27B    : 2*4*256*2*16 = 65536 B = 64 KiB/token
+  const MOE = { total: 35.5, active: 3.0, kvKiBPerTok: 20 };
+  const DENSE = { total: 27.3, active: 27.3, kvKiBPerTok: 64 };
+
+  // Exact byte counts from the HuggingFace API (August 2026). Stored as bytes because capacity
+  // is binary (RAM, macOS, ls -lh) while bandwidth is decimal GB/s — deriving both avoids a 7% error.
+  const models = [
+    { name:"Qwen3.6-35B-A3B", quant:"UD-Q2_K_XL",  b:12574128416, arch:MOE },
+    { name:"Qwen3.6-35B-A3B", quant:"UD-IQ3_XXS",  b:14069266720, arch:MOE },
+    { name:"Qwen3.6-35B-A3B", quant:"UD-Q3_K_XL",  b:17227569440, arch:MOE },
+    { name:"Qwen3.6-35B-A3B", quant:"UD-IQ4_XS",   b:18209036576, arch:MOE },
+    { name:"Qwen3.6-35B-A3B", quant:"UD-IQ4_NL",   b:18536192288, arch:MOE },
+    { name:"Qwen3.6-35B-A3B", quant:"UD-Q4_K_S",   b:21388319008, arch:MOE },
+    { name:"Qwen3.6-35B-A3B", quant:"UD-Q4_K_XL",  b:22853663008, arch:MOE },
+    { name:"Qwen3.6-35B-A3B", quant:"UD-Q5_K_XL",  b:27159116064, arch:MOE },
+    { name:"Qwen3.6-35B-A3B", quant:"UD-Q6_K_XL",  b:32611711264, arch:MOE },
+    { name:"Qwen3.6-35B-A3B", quant:"UD-Q8_K_XL",  b:39099447584, arch:MOE },
+
+    { name:"Qwen3.6-27B",     quant:"UD-Q3_K_XL",  b:14473431264, arch:DENSE },
+    { name:"Qwen3.6-27B",     quant:"IQ4_XS",      b:15440005344, arch:DENSE },
+    { name:"Qwen3.6-27B",     quant:"UD-Q4_K_XL",  b:17612564704, arch:DENSE },
+    { name:"Qwen3.6-27B",     quant:"UD-Q5_K_XL",  b:20038256864, arch:DENSE },
+    { name:"Qwen3.6-27B",     quant:"Q6_K",        b:22523238624, arch:DENSE },
+    { name:"Qwen3.6-27B",     quant:"UD-Q6_K_XL",  b:25636485344, arch:DENSE }
+  ];
+
+  // Published unified-memory bandwidth per chip, GB/s.
+  const CHIPS = {
+    "M1":68, "M1 Pro":200, "M1 Max":400, "M1 Ultra":800,
+    "M2":100, "M2 Pro":200, "M2 Max":400, "M2 Ultra":800,
+    "M3":100, "M3 Pro":150, "M3 Max":400, "M3 Ultra":819,
+    "M4":120, "M4 Pro":273, "M4 Max":546,
+    "M5":153
+  };
+
+  const $ = id => document.getElementById(id);
+  const BUFFER_GB = 1.5;   // compute buffer + runtime overhead
+  const BW_EFF    = 0.75;  // bandwidth efficiency achievable in practice
+  const MOE_OVERHEAD = 2.2; // attention + shared expert + router: always read, not just the active experts
+
+  const gib = m => m.b / 2 ** 30;   // capacity: compare against RAM, which is binary
+  const gbDec = m => m.b / 1e9;     // speed: compare against bandwidth, which is decimal GB/s
+
+  function tokensPerSec(m, bw) {
+    const frac = m.arch.active / m.arch.total;
+    const readGB = m.arch.active === m.arch.total ? gbDec(m) : gbDec(m) * frac * MOE_OVERHEAD;
+    return (bw * BW_EFF) / readGB;
+  }
+
+  /* ---------- Apple Silicon check ---------- */
+
+  // WebGL is the only surface that names the GPU; Safari may withhold it.
+  function gpuRenderer() {
+    try {
+      const gl = document.createElement('canvas').getContext('webgl');
+      if (!gl) return null;
+      const ext = gl.getExtension('WEBGL_debug_renderer_info');
+      return ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER);
+    } catch { return null; }
+  }
+
+  function detectPlatform() {
+    const isMac = /Mac/i.test(navigator.platform || navigator.userAgent);
+    const r = gpuRenderer() || '';
+    const named = r.match(/Apple\s+(M\d+)(?:\s+(Pro|Max|Ultra))?/i);
+    const chip = named ? named[1].toUpperCase() + (named[2] ? ' ' + named[2][0].toUpperCase() + named[2].slice(1).toLowerCase() : '') : null;
+
+    if (chip && CHIPS[chip]) return { state:'ok', chip, msg:`Detected ${chip} — bandwidth set to ${CHIPS[chip]} GB/s. Set the memory slider to your actual RAM.` };
+    if (chip)                return { state:'ok', chip:null, msg:`Detected ${chip}. Bandwidth for this chip isn't in the table — set it yourself.` };
+    if (/Apple\s+GPU/i.test(r)) return { state:'ok', chip:null, msg:"Apple Silicon confirmed, but this browser doesn't expose the chip model — pick it above." };
+    if (isMac && r)          return { state:'bad', chip:null, msg:`Detected "${r}" — this looks like an Intel Mac. These numbers don't apply to your machine.` };
+    if (!isMac && r)         return { state:'bad', chip:null, msg:`Detected "${r}" — this isn't Apple Silicon. These numbers don't apply to your machine.` };
+    return { state:'warn', chip:null, msg:'Could not read your GPU (WebGL blocked or unavailable) — assuming Apple Silicon.' };
+  }
+
+  // Warn, never block: the check is a heuristic, and a false negative shouldn't lock anyone out.
+  function applyPlatform() {
+    const d = detectPlatform();
+    $('platform').className = 'platform ' + d.state;
+    $('platform-detect').textContent = d.msg;
+    if (d.chip && CHIPS[d.chip]) { $('chip').value = d.chip; setChip(); }
+  }
+
+  /* ---------- controls ---------- */
+
+  function buildChipSelect() {
+    $('chip').innerHTML = '<option value="">Custom</option>' +
+      Object.keys(CHIPS).map(c => `<option value="${c}">${c} — ${CHIPS[c]} GB/s</option>`).join('');
+  }
+
+  function setChip() {
+    const c = $('chip').value;
+    if (c && CHIPS[c]) { $('bw').value = CHIPS[c]; render(); }
+  }
+
+  function render() {
+    const ram   = +$('ram').value;
+    const bw    = +$('bw').value;
+    const ctxK  = +$('ctx').value;
+    const slots = +$('slots').value;
+    const factor = +$('limit').value;
+    const budget = ram * factor;
+
+    $('ram-val').textContent = ram;
+    $('bw-val').textContent  = bw;
+    $('ctx-val').textContent = ctxK;
+
+    const rows = models.map(m => {
+      const kv    = m.arch.kvKiBPerTok * ctxK / 1024 * slots; // GiB: KiB/tok × 1024 tok/k ÷ 1024²
+      const total = gib(m) + kv + BUFFER_GB;
+      const pct   = total / budget;
+      const tps   = tokensPerSec(m, bw);
+
+      let cls, verdict;
+      if (pct > 1)         { cls='bad';  verdict="won't fit"; }
+      else if (pct > 0.92) { cls='warn'; verdict='at the limit'; }
+      else                 { cls='ok';   verdict='fits'; }
+      if (cls !== 'bad' && tps < 10) { cls='warn'; verdict='fits, but slow'; }
+
+      return { m, kv, total, pct, tps, cls, verdict };
+    }).sort((a,b) => b.total - a.total);
+
+    // Recommended = largest MoE quant that still leaves ~10% headroom and stays usable.
+    // Quality rises with quant, so take the biggest that fits rather than the safest.
+    const rec = rows.find(r => r.m.arch === MOE && r.pct <= 0.90 && r.tps >= 10);
+    if (rec) rec.rec = true;
+
+    $('budget').innerHTML = `
+      <div><span>GPU budget:</span> <b>${budget.toFixed(1)} GiB</b> of ${ram} GiB</div>
+      <div><span>Total context:</span> <b>${ctxK * slots}k</b> (${ctxK}k × ${slots} slots)</div>
+      <div><span>Reserved for the system:</span> <b>${(ram - budget).toFixed(1)} GiB</b></div>
+      <div class="rec-line">${rec
+        ? `<span>Download this:</span> <b>${rec.m.quant}</b> — ${rec.total.toFixed(1)} GiB, ${(rec.pct*100).toFixed(0)}% of budget, ~${rec.tps.toFixed(0)} tok/s`
+        : `<span>Download this:</span> <b>nothing here fits</b> — this model family is too big for ${ram} GiB; use a smaller model`}</div>`;
+
+    $('rows').innerHTML = rows.map(r => `
+      <tr class="${r.cls==='bad' ? 'dim' : ''} ${r.rec ? 'pick' : ''}">
+        <td class="name">${r.m.name} <code>${r.m.quant}</code>
+            <span class="tag">${r.m.arch===MOE ? 'moe · 3b active' : 'dense'}</span>
+            ${r.rec ? '<span class="tag rec">download this</span>' : ''}</td>
+        <td class="num">${gib(r.m).toFixed(1)}</td>
+        <td class="num">${r.kv.toFixed(1)}</td>
+        <td class="num"><b>${r.total.toFixed(1)}</b></td>
+        <td><div class="bar-wrap"><div class="bar ${r.cls}" style="width:${Math.min(r.pct*100,100)}%"></div></div></td>
+        <td class="num">${r.tps < 100 ? r.tps.toFixed(0) : '100+'}</td>
+        <td class="verdict ${r.cls}">${r.verdict}</td>
+      </tr>`).join('');
+  }
+
+  ['ram','bw','ctx','slots','limit'].forEach(id => {
+    $(id).addEventListener('input', render);
+    $(id).addEventListener('change', render);
+  });
+  // Moving the bandwidth slider by hand means the chip preset no longer describes it.
+  $('bw').addEventListener('input', () => { $('chip').value = ''; });
+  $('chip').addEventListener('change', setChip);
+
+  buildChipSelect();
+  render();
+  applyPlatform();
+</script>
+</body>
+</html>

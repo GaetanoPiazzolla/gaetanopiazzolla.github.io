@@ -255,6 +255,27 @@ h1, h2, h3, h4, h5, h6 {
     white-space: nowrap;
 }
 
+.post-content hr {
+    border: none;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #ddd;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin: 1.2em 0 0.5em;
+    height: auto;
+}
+
+.post-content hr::before {
+    content: "// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -";
+}
+
+/* a heading straight after another heading needs no separator — the one above already split the section */
+.post-content :is(h2, h3, h4) + :is(h2, h3, h4)::before {
+    content: none;
+}
+
 .post-meta {
     color: #888;
     font-family: 'JetBrains Mono', monospace;
