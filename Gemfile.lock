@@ -256,6 +256,7 @@ PLATFORMS
   arm64-darwin-23
   arm64-darwin-24
   arm64-darwin-25
+  arm64-darwin-26
 
 DEPENDENCIES
   github-pages (~> 228)
